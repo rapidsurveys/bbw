@@ -16,7 +16,15 @@ Description: The blocked weighted bootstrap (BBW) is an estimation technique
     Global Alliance for Improved Nutrition, UNICEF Sierra Leone,  UNICEF Sudan
     and Valid International. It has been tested by the Centers for Disease
     Control (CDC) using infant and young child feeding (IYCF) data.
+Imports: car
+Depends: R (>= 3.0.1)
+Suggests: knitr,
+    rmarkdown,
+    testthat
 License: AGPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+URL: https://validmeasures/bbw
+BugReports: https://github.com/validmeasures/bbw/issues
+VignetteBuilder: knitr
