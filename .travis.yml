@@ -1,0 +1,20 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: r
+
+warnings_are_errors: true
+sudo: false
+cache: packages
+
+#addons:
+#   apt:
+#     packages:
+#       - libgsl0-dev # for topicmodels
+#       - libxml2-dev # for XML, a dependency of quantreg
+
+r_github_packages:
+  - r-lib/covr
+
+after_success:
+  - Rscript -e 'covr::codecov()'
+
