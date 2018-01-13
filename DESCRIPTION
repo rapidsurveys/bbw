@@ -1,11 +1,22 @@
-Package: bwb
+Package: bbw
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Blocked Weighted Bootstrap
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author@R: as.person(c(
+    "Mark Myatt <mark@brixtonhealth.com> [aut]",
+    "Ernest Guevarra <ernestgmd@gmail.com> [ctb, crea]"
+  ))
+Description: The blocked weighted bootstrap (BBW) is an estimation technique 
+    for use with data from two-stage cluster sampled surveys in which either 
+    prior weighting (e.g. population-proportional sampling or PPS as used in 
+    Standardized Monitoring and Assessment of Relief and Transitions or SMART 
+    surveys) or posterior weighting (e.g. as used in rapid assessment method or
+    RAM and simpe spatial sampling method or S3M surveys). The method was 
+    developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, 
+    Global Alliance for Improved Nutrition, UNICEF Sierra Leone,  UNICEF Sudan
+    and Valid International. It has been tested by the Centers for Disease
+    Control (CDC) using infant and young child feeding (IYCF) data.
+License: AGPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
