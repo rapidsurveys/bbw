@@ -31,7 +31,7 @@ With **RAM** and **S3M** surveys, the sample is complex in the sense that it is 
 
 <br/>
 
-<a name=FIG1></a><img src="man/figures/rouletteWheel.png" align="center" />
+<a name=FIG1></a><img src="man/figures/rouletteWheel.png" align="left" />
 
 ![](man/figures/rouletteWheel.png)
 
