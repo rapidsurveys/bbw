@@ -1,12 +1,8 @@
 # bbw: Blocked Weighted Bootstrap
 
-[![GitHub top language](https://img.shields.io/github/languages/top/validmeasures/bbw.svg)](https://github.com/validmeasures/bbw/search?l=r)
-[![GitHub release](https://img.shields.io/github/release/validmeasures/bbw.svg)](https://github.com/validmeasures/bbw/blob/master/NEWS.md)
 [![Travis](https://img.shields.io/travis/validmeasures/bbw.svg?branch=master)](https://travis-ci.org/validmeasures/bbw)
 [![Build status](https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true)](https://ci.appveyor.com/project/ernestguevarra/bbw/branch/master)
 [![codecov](https://codecov.io/gh/validmeasures/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/validmeasures/bbw)
-[![license](https://img.shields.io/github/license/validmeasures/bbw.svg)](https://github.com/validmeasures/bbw/blob/master/LICENSE)
-
 
 ## Overview
 The \code{blocked weighted bootstrap (BBW)} is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. *population-proportional sampling* or *PPS* as used in **Standardized Monitoring and Assessment of Relief and Transiations** or **SMART** surveys) or *posterior weighting* (e.g. as used in **Rapid Assessment Method** or **RAM** and **Simple Spatial Sampling Method** or **S3M** surveys). The method was developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, Global Alliance for Improved Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has been tested by the Centers for Diseasech Control (CDC) using infant and young child feeding (IYCF) data.
