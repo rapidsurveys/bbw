@@ -33,4 +33,3 @@ test_that("boot row number is replicates", {
 test_that("boot column number is length of params", {
   expect_equal(ncol(boot), 4)
 })
-

@@ -8,7 +8,3 @@ xProbit <- bootPROBIT(x = indicatorsCH1,
 test_that("xProbit is a numeric vector", {
   expect_is(xProbit, "numeric")
 })
-
-test_that("xProbit values <= 1", {
-  expect_true(xProbit[1] <= 1)
-})
