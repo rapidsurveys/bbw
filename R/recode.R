@@ -46,7 +46,7 @@
 #'     \item Users are advised to carefully check the results of recode() calls
 #'     with any outputs that are the results of a function call.
 #'
-#'     \item The ouput may be the (scalar) value of a variable as in:
+#'     \item The output may be the (scalar) value of a variable as in:
 #'
 #'          recodes = "999=scalarVariable"
 #'
@@ -59,7 +59,7 @@
 #' @param anr Coerce result to numeric (default is TRUE)
 #' @param levels Order of the levels in the returned factor; the default is to use
 #'    the sort order of the level names.
-#' @return Recoded variale
+#' @return Recoded variable
 #' @examples
 #'
 #' #

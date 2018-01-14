@@ -52,7 +52,7 @@ recode(var, recodes, afr, anr = TRUE, levels)
     \item Users are advised to carefully check the results of recode() calls
     with any outputs that are the results of a function call.
 
-    \item The ouput may be the (scalar) value of a variable as in:
+    \item The output may be the (scalar) value of a variable as in:
 
          recodes = "999=scalarVariable"
 
@@ -70,7 +70,7 @@ FALSE otherwise}
 the sort order of the level names.}
 }
 \value{
-Recoded variale
+Recoded variable
 }
 \description{
 Recode function
