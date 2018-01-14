@@ -25,6 +25,6 @@ License: AGPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-URL: https://validmeasures/bbw
+URL: https://github.com/validmeasures/bbw
 BugReports: https://github.com/validmeasures/bbw/issues
 VignetteBuilder: knitr
