@@ -29,8 +29,8 @@ Statistics function (PROBIT) for bootstrap estimation
 # Example call to bootBW function:
 
 
-bootPROBIT(x = indicators.ALL,
-           params = "ADL01",
-           threshold = 210)
+bootPROBIT(x = indicatorsCH1,
+           params = "muac1",
+           threshold = 115)
 
 }

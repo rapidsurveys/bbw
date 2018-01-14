@@ -2,7 +2,7 @@
 % Please edit documentation in R/bootBW.R
 \name{bootBW}
 \alias{bootBW}
-\title{Blocked Weighted Bootstrap}
+\title{\code{bootBW} : Blocked Weighted Bootstrap}
 \usage{
 bootBW(x, w, statistic, params, outputColumns, replicates = 400)
 }
@@ -30,63 +30,11 @@ A data frame with:
 }
 }
 \description{
-The \code{blocked weighted bootstrap (BWB)} is an estimation technique for
+The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
 weighting (e.g. \code{population proportional sampling} or \code{PPS} as
 used in \code{SMART} surveys) or posterior weighting (e.g. as used in
-\code{RAM} and \code{S3M} surveys). The method was developed by ACF,
-Brixton Health, CONCERN, GAIN, UNICEF (Sierra Leone), UNICEF (Sudan) and
-Valid International. It has been tested by CDC using IYCF data.
-}
-\details{
-The bootstrap technique is summarised in this
-\href{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{article}.
-The \code{BWB} used in \code{RAM} and \code{S3M} is a modification to the
-percentile bootstrap to include \code{blocking} and \code{weighting} to
-account for a complex sample design.
-
-With \code{RAM} and \code{S3M} surveys, the sample is complex in the sense
-that it is an unweighted cluster sample. Data analysis procedures need to
-account for the sample design. A \code{blocked weighted bootstrap (BWB)}
-can be used:
-\describe{
-\item{\code{Blocked}}{The block corresponds to the primary sampling unit
-(\code{PSU = cluster}). \code{PSUs} are resampled with replacement.
-Observations within the resampled \code{PSUs} are also sampled with
-replacement.}
-\item{\code{Weighted}}{\code{RAM} and \code{S3M} samples do not use
-\code{population proportional sampling (PPS)} to weight the sample prior to
-data collection (e.g. as is done with \code{SMART} surveys). This means that
-a posterior weighting procedure is required. \code{BWB} uses a
-\code{"roulette wheel"} algorithm to weight (i.e. by population) the
-selection probability of \code{PSUs} in bootstrap replicates.}
-}
-
-In the case of prior weighting by \code{PPS} all clusters are given the
-same weight. With posterior weighting (as in \code{RAM} or \code{S3M})
-the weight is the population of each \code{PSU}. This procedure is very
-similar to the \code{fitness proportional selection} technique used in
-evolutionary computing.
-A total of \emph{m} \code{PSUs} are sampled with replacement for each
-bootstrap replicate (where \emph{m} is the number of \code{PSUs} in the survey
-sample).
-
-The required statistic is applied to each replicate. The reported estimate
-consists of the \code{0.025th (95\% LCL)}, \code{0.5th (point estimate)}, and
-\code{0.975th (95\% UCL)} quantiles of the distribution of the statistic across
-all survey replicates.
-
-Early versions of the \code{BWB} did not resample observations within
-\code{PSUs} following:
-
-Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for
-inference with clustered errors, Review of Economics and Statistics,
-2008:90;414–427
-
-and used a large number (e.g. 3999) survey replicates. Current versions of
-the \code{BWB} resample observations within \code{PSUs} and use a smaller
-number of survey replicates (e.g. n = 400). This is a more computationally
-efficient approach
+\code{RAM} and \code{S3M} surveys).
 }
 \examples{
 # Example function - estimate a proportion for a binary (0/1) variable):
@@ -100,11 +48,11 @@ oneP <- function(x, params) {
 
 # Example call to bootBW function using RAM-OP test data:
 
-bootP <- bootBW(x = indicators.ALL,
-                w = testPSU,
+bootP <- bootBW(x = indicatorsHH,
+                w = villageData,
                 statistic = oneP,
-                params = "ADL01",
-                outputColumns = "ADL01",
+                params = "anc1",
+                outputColumns = "anc1",
                 replicates = 9)
 
 # Example estimate with 95\% CI:
