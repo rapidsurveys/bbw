@@ -16,61 +16,27 @@ knitr::opts_chunk$set(
 )
 ```
 
-The \code{blocked weighted bootstrap (BBW)} is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. \code{population-proportional sampling} or \code{PPS} as used in \code{Standardized Monitoring and Assessment of Relief and Transiations} or \code{SMART} surveys) or posterior weighting (e.g. as used in \code{Rapid Assessment Method} or \code{RAM} and \code{Simple Spatial Sampling Method} or \code{S3M} surveys). The method was developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, Global Alliance for Improved Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has been tested by the Centers for Diseasech Control (CDC) using infant and young child feeding data.
+The \code{blocked weighted bootstrap (BBW)} is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. *population-proportional sampling* or *PPS* as used in **Standardized Monitoring and Assessment of Relief and Transiations** or **SMART** surveys) or *posterior weighting* (e.g. as used in **Rapid Assessment Method** or **RAM** and **Simple Spatial Sampling Method*}** or **S3M** surveys). The method was developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, Global Alliance for Improved Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has been tested by the Centers for Diseasech Control (CDC) using infant and young child feeding (IYCF) data.
 
-The BWB used in RAM and S3M is a modification to the percentile bootstrap to include blocking and weighing to account for a complex sample design.
+The bootstrap technique is summarised in this Wikipedia [article](https://en.wikipedia.org/wiki/Bootstrapping_(statistics)). The \code{BBW} used in **RAM** and **S3M** is a modification to the \code{percentile bootstrap} to include *blocking* and *weighing* to account for a *complex sample design*.
 
-With RAM and S3M surveys, the sample is complex in the sense that it is an unweighted cluster sample. Data analysis procedures need to account for the sample design. A blocked weighted bootstrap (BWB) can be used :
+With **RAM** and **S3M** surveys, the sample is complex in the sense that it is an unweighted cluster sample. Data analysis procedures need to account for the sample design. A \code{blocked weighted bootstrap (BBW)} can be used:
 
-Blocked : The block corresponds to the primary sampling unit (PSU = cluster). PSUs are resampled with replacement. Observations within the resampled PSUs are also sampled with replacement.
+**Blocked**: The block corresponds to the primary sampling unit (\(PSU = cluster\)). *PSU*s are resampled with replacement. Observations within the resampled *PSU*s are also sampled with replacement.
 
-Weighted : RAM and S3M samples do not use population proportional sampling (PPS) to weight the sample prior to data collection (e.g. as is done with SMART surveys). This means that a posterior weighting procedure is required. BBW uses a "roulette wheel" algorithm (see illustration below) to weight (i.e. by population) the selection probability of PSUs in bootstrap replicates.
+**Weighted**: **RAM** and **S3M** samples do not use *population proportional sampling (PPS)* to weight the sample prior to data collection (e.g. as is done with **SMART** surveys). This means that a posterior weighting procedure is required. \code{BBW} uses a *"roulette wheel"* algorithm (see illustration below) to weight (i.e. by population) the selection probability of *PSU*s in bootstrap replicates.
 
+![](tools/rouletteWheel.png)
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+In the case of prior weighting by *PPS* all clusters are given the same weight. With posterior weighting (as in **RAM** or **S3M**) the weight is the population of each *PSU*. This procedure is very similar to the \code{fitness proportional selection} technique used in *evolutionary computing*.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+A total of \(m\) *PSU*s are sampled with replacement for each bootstrap replicate (where \(m\) is the number of *PSU*s in the survey sample).
 
-## Vignette Info
+The required statistic is applied to each replicate. The reported estimate consists of the \code{0.025th} (\code{95% LCL}), \code{0.5th} (*point estimate*), and \code{0.975th} (\code{95% UCL}) quantiles of the distribution of the statistic across all survey replicates.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+Early versions of the \code{BBW} did not resample observations within *PSU*s following:
 
-## Styles
+> Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for inference with clustered errors, Review 
+  of Economics and Statistics, 2008:90;414–427
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
-
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+and used a large number (e.g. \(3999\)) survey replicates. Current versions of the \code{BBW} resample observations within *PSU*s and use a smaller number of survey replicates (e.g. \(n = 400\)). This is a more computationally efficient approach
