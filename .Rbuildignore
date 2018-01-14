@@ -6,3 +6,4 @@
 ^data-raw$
 ^LICENSE$
 ^\.travis\.yml$
+^cran-comments\.md$
