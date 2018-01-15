@@ -1,3 +1,8 @@
+## Resubmission - 15 January 2018
+This is a resubmission. In this version, I have corrected the authors'
+specifications in the DESCRIPTION by combining a series of calls to person().
+Checks run with the changes results are below.
+
 ## Test environments
 * local OS X install, R 3.4.3
 * ubuntu 12.04 (on travis-ci), R 3.4.2
