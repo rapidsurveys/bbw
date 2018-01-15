@@ -1,7 +1,7 @@
 Package: bbw
 Type: Package
 Title: Blocked Weighted Bootstrap
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(
     person("Mark", "Myatt", email = "mark@brixtonhealth.com", role = "aut"),
     person("Ernest", "Guevarra", email = "ernestgmd@gmail.com", role = c("ctb", "cre")))
@@ -14,7 +14,10 @@ Description: The blocked weighted bootstrap (BBW) is an estimation technique
     developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, 
     Global Alliance for Improved Nutrition, UNICEF Sierra Leone,  UNICEF Sudan
     and Valid International. It has been tested by the Centers for Disease
-    Control (CDC) using infant and young child feeding (IYCF) data.
+    Control (CDC) using infant and young child feeding (IYCF) data. See Aaron
+    et al (2016) <doi:10.1371/journal.pone.0163176> and Aaron et al (2016) 
+    <doi:10.1371/journal.pone.0162462> for application of the blocked weighted
+    bootstrap to estimate indicators from two-stage cluster sampled surveys.
 Imports: car
 Depends: R (>= 3.0.1)
 Suggests: knitr,
