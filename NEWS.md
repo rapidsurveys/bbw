@@ -1,2 +1,7 @@
+# bbw 0.1.1
+* Corrected authors' specifications in `DESCRIPTION` by combining two calls 
+to `person()` to provide details for each of the two authors/contributors to 
+the package.
+
 # bbw 0.1.0
-* Initial release of the \code(bbw} package to perform **blocked weighted bootstrapping**
+* Initial release of the `bbw` package to perform **blocked weighted bootstrapping**
