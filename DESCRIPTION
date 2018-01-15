@@ -1,11 +1,10 @@
 Package: bbw
 Type: Package
 Title: Blocked Weighted Bootstrap
-Version: 0.1.0
-Authors@R: as.person(c(
-    "Mark Myatt <mark@brixtonhealth.com> [aut]",
-    "Ernest Guevarra <ernestgmd@gmail.com> [ctb, cre]"
-  ))
+Version: 0.1.1
+Authors@R: c(
+    person("Mark", "Myatt", email = "mark@brixtonhealth.com", role = "aut"),
+    person("Ernest", "Guevarra", email = "ernestgmd@gmail.com", role = c("ctb", "cre")))
 Description: The blocked weighted bootstrap (BBW) is an estimation technique 
     for use with data from two-stage cluster sampled surveys in which either 
     prior weighting (e.g. population-proportional sampling or PPS as used in 
