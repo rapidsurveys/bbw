@@ -1,8 +1,10 @@
 ################################################################################
 #
-#' Statistics function (simple proportion) for bootstrap estimation
+#' bootClassic
 #'
-#' @param x A data frame with primary sampling unit (PSU) in column named
+#' Simple proportion statistics function for bootstrap estimation
+#'
+#' @param x A data frame with \code{primary sampling unit (PSU)} in column named
 #'   \code{psu} and with data column/s containing the binary variable/s (0/1) of
 #'   interest with column names corresponding to \code{params} values
 #' @param params A vector of column names corresponding to the binary variables

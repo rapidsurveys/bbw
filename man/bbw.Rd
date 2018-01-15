@@ -9,16 +9,20 @@
 The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
 weighting (e.g. \code{population proportional sampling} or \code{PPS} as
-used in \code{SMART} surveys) or posterior weighting (e.g. as used in
-\code{RAM} and \code{S3M} surveys). The method was developed by ACF,
-Brixton Health, CONCERN, GAIN, UNICEF (Sierra Leone), UNICEF (Sudan) and
-Valid International. It has been tested by CDC using IYCF data.
+used in \code{Standardized Monitoring and Assessment of Relief and
+Transitions} or \code{SMART} surveys) or posterior weighting (e.g. as used in
+\code{Rapid Assessment Method} or \code{RAM} and \code{Simple Spatial
+Sampling Method} or \code{S3M} surveys). The method was developed by
+Accion contra la Faim (ACF), Brixton Health, Concern Worldwide, Global
+Alliance for Improved Nutrition (GAIN), UNICEF Sierra Leone, UNICEF Sudan and
+Valid International. It has been tested by the Centers for Disease
+Control (CDC) using infant and young child feeding (IYCF) data.
 }
 \details{
 The bootstrap technique is summarised in this
 \href{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{article}.
 The \code{BBW} used in \code{RAM} and \code{S3M} is a modification to the
-percentile bootstrap to include \code{blocking} and \code{weighting} to
+\code{percentile bootstrap} to include \code{blocking} and \code{weighting} to
 account for a complex sample design.
 
 With \code{RAM} and \code{S3M} surveys, the sample is complex in the sense
@@ -27,7 +31,7 @@ account for the sample design. A \code{blocked weighted bootstrap (BBW)}
 can be used:
 \describe{
 \item{\code{Blocked}}{The block corresponds to the primary sampling unit
-(\code{PSU = cluster}). \code{PSUs} are resampled with replacement.
+(\eqn{PSU = cluster}). \code{PSUs} are resampled with replacement.
 Observations within the resampled \code{PSUs} are also sampled with
 replacement.}
 
@@ -42,11 +46,11 @@ selection probability of \code{PSUs} in bootstrap replicates.}
 In the case of prior weighting by \code{PPS} all clusters are given the
 same weight. With posterior weighting (as in \code{RAM} or \code{S3M})
 the weight is the population of each \code{PSU}. This procedure is very
-similar to the \code{fitness proportional selection} technique used in
-evolutionary computing.
+similar to the \href{https://en.wikipedia.org/wiki/Fitness_proportionate_selection}{fitness proportionate selection}
+technique used in evolutionary computing.
 
-A total of \emph{m} \code{PSUs} are sampled with replacement for each
-bootstrap replicate (where \emph{m} is the number of \code{PSUs} in the survey
+A total of \eqn{m} \code{PSUs} are sampled with replacement for each
+bootstrap replicate (where \eqn{m} is the number of \code{PSUs} in the survey
 sample).
 
 The required statistic is applied to each replicate. The reported estimate
@@ -57,12 +61,12 @@ all survey replicates.
 Early versions of the \code{BBW} did not resample observations within
 \code{PSUs} following:
 
-> Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for
+\cite{Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for
 inference with clustered errors, Review of Economics and Statistics,
-2008:90;414–427
+2008:90;414–427 \url{doi.org/10.1162/rest.90.3.414}}
 
-and used a large number (e.g. 3999) survey replicates. Current versions of
+and used a large number (e.g. \eqn{3999}) survey replicates. Current versions of
 the \code{BBW} resample observations within \code{PSUs} and use a smaller
-number of survey replicates (e.g. n = 400). This is a more computationally
+number of survey replicates (e.g. \eqn{n = 400}). This is a more computationally
 efficient approach
 }

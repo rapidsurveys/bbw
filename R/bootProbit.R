@@ -1,8 +1,10 @@
 ################################################################################
 #
-#' Statistics function (PROBIT) for bootstrap estimation
+#' bootPROBIT
 #'
-#' @param x A data frame with primary sampling unit (PSU) in column named
+#' PROBIT statistics function for bootstrap estimation
+#'
+#' @param x A data frame with \code{primary sampling unit (PSU)} in column named
 #'   \code{psu} and with data column/s containing the continuous variable/s of
 #'   interest with column names corresponding to \code{params} values
 #' @param params A vector of column names corresponding to the continuous
@@ -14,7 +16,6 @@
 #' @examples
 #'
 #' # Example call to bootBW function:
-#'
 #'
 #' bootPROBIT(x = indicatorsCH1,
 #'            params = "muac1",

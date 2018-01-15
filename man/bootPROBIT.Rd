@@ -2,12 +2,12 @@
 % Please edit documentation in R/bootProbit.R
 \name{bootPROBIT}
 \alias{bootPROBIT}
-\title{Statistics function (PROBIT) for bootstrap estimation}
+\title{bootPROBIT}
 \usage{
 bootPROBIT(x, params, threshold = THRESHOLD)
 }
 \arguments{
-\item{x}{A data frame with primary sampling unit (PSU) in column named
+\item{x}{A data frame with \code{primary sampling unit (PSU)} in column named
 \code{psu} and with data column/s containing the continuous variable/s of
 interest with column names corresponding to \code{params} values}
 
@@ -22,12 +22,11 @@ A numeric vector of the PROBIT estimate of each continuous variable
   of interest with length equal to \code{length(params)}
 }
 \description{
-Statistics function (PROBIT) for bootstrap estimation
+PROBIT statistics function for bootstrap estimation
 }
 \examples{
 
 # Example call to bootBW function:
-
 
 bootPROBIT(x = indicatorsCH1,
            params = "muac1",
