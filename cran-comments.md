@@ -1,4 +1,10 @@
 ## Resubmission - 15 January 2018
+This is a resubmission. In this version, I have added references to classical
+approach to bootstrapping for cluster samples and references for application of
+the blocked weighted bootstrap for analysing data from cluster surveys. Checks
+run with results below.
+
+## Resubmission - 15 January 2018
 This is a resubmission. In this version, I have corrected the authors'
 specifications in the DESCRIPTION by combining a series of calls to person().
 Checks run with the changes results are below.
