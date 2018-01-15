@@ -1,3 +1,8 @@
+# bbw 0.1.2
+* added references to classical approach to bootstrapping for cluster samples 
+and references for application of the blocked weighted bootstrap for analysing 
+data from cluster surveys.
+
 # bbw 0.1.1
 * Corrected authors' specifications in `DESCRIPTION` by combining two calls 
 to `person()` to provide details for each of the two authors/contributors to 
