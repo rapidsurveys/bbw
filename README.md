@@ -32,7 +32,9 @@ With **RAM** and **S3M** surveys, the sample is complex in the sense that it is 
 <br/>
 
 <a name=FIG1></a>
+<p align="center">
 ![](man/figures/rouletteWheel.png)
+</p>
 
 <br/>
 
@@ -41,3 +43,5 @@ In the case of prior weighting by *PPS* all clusters are given the same weight. 
 A total of \(m\) *PSU*s are sampled with replacement for each bootstrap replicate (where \(m\) is the number of *PSU*s in the survey sample).
 
 The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (*95\% LCL*), 0.5th (*point estimate*), and 0.975th (*95\% UCL*) quantiles of the distribution of the statistic across all survey replicates.
+
+The main reason to use `BBW` is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The `BBW` also allows for a wider range of hypothesis tests to be used with complex sample survey data.
