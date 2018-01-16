@@ -15,52 +15,42 @@ recode(var, recodes, afr, anr = TRUE, levels)
     semicolons of the form \code{input=output} as in:
         \code{"1=1;2=1;3:6=2;else=NA"}
 
-    \cr
     \item If an input value satisfies more than one specification, then the
     first (reading from left to right) is applied
 
-    \cr
     \item If no specification is satisfied, then the input value is carried
     over to the result unchanged
 
-    \cr
     \item \code{NA} is allowed on both input and output
 
-    \cr
     \item The following recode specifications are supported:
 
-    \cr
         \tabular{lll}{
           \strong{Specification} \tab \strong{Example}          \tab \strong{Notes}                                                 \cr
           Single values          \tab \code{9=NA}               \tab                                                                \cr
           Set of values          \tab \code{c(1,2,5)=1}         \tab The left-hand-side is any R function call that returns a vector\cr
                                  \tab \code{seq(1,9,2)='odd'}   \tab                                                                \cr
                                  \tab \code{1:10=1}             \tab                                                                \cr
-          Range of values        \tab \code{7:9=3}              \tab Special values \code{lo} and \code{hi} may be used                           \cr
+          Range of values        \tab \code{7:9=3}              \tab Special values \code{lo} and \code{hi} may be used             \cr
                                  \tab \code{lo:115=1}           \tab                                                                \cr
           Other values           \tab \code{else=NA}            \tab
         }
 
-    \cr
     \item Character values are quoted as in :
 
          \code{recodes = "c(1,2,5)='sanitary' else='unsanitary'"}
 
-    \cr
     \item The output may be the (scalar) result of a function call as in:
 
          \code{recodes = "999=median(var, na.rm = TRUE)"}
 
-    \cr
     \item Users are advised to carefully check the results of \code{recode()} calls
     with any outputs that are the results of a function call.
 
-    \cr
     \item The output may be the (scalar) value of a variable as in:
 
          \code{recodes = "999=scalarVariable"}
 
-    \cr
     \item If all of the output values are numeric, and if \code{'afr'} is \code{FALSE},
     then a numeric result is returned; if \code{var} is a factor then
     (by default) so is the result.
