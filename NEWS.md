@@ -1,3 +1,7 @@
+# bbw 0.1.3
+* corrected DOI references format in `DESCRIPTION` as per required
+specifications.
+
 # bbw 0.1.2
 * added references to classical approach to bootstrapping for cluster samples 
 and references for application of the blocked weighted bootstrap for analysing 
