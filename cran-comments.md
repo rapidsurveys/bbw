@@ -1,4 +1,8 @@
 ## Resubmission - 16 January 2018
+This is resubmission. In this version, I have corrected the DOI references
+format as per required specification. Checks run with results below.
+
+## Resubmission - 16 January 2018
 This is a resubmission. In this version, I have added references to classical
 approach to bootstrapping for cluster samples and references for application of
 the blocked weighted bootstrap for analysing data from cluster surveys. Checks
