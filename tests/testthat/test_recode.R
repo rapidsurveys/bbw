@@ -9,12 +9,12 @@ test_that("x is numeric", {
   expect_is(x, "numeric")
 })
 
-test_that("recode is c(1, 1, 2, 2, NA", {
+test_that("recode is c(1, 1, 2, 2, NA)", {
   expect_equal(x[1], 1)
   expect_equal(x[2], 1)
   expect_equal(x[3], 2)
   expect_equal(x[4], 2)
-  expect_equal(x[5], NA)
+  expect_equal(x[5], "NA")
 })
 
 var <- letters[1:5]
@@ -25,10 +25,10 @@ test_that("x is numeric", {
   expect_is(x, "numeric")
 })
 
-test_that("recode is c(1, 2, NA, NA, NA", {
+test_that("recode is c(1, 2, NA, NA, NA)", {
   expect_equal(x[1], 1)
   expect_equal(x[2], 2)
-  expect_equal(x[3], NA)
-  expect_equal(x[4], NA)
-  expect_equal(x[5], NA)
+  expect_equal(x[3], "NA")
+  expect_equal(x[4], "NA")
+  expect_equal(x[5], "NA")
 })
