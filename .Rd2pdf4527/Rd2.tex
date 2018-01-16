@@ -1,0 +1,560 @@
+\documentclass[a4paper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\usepackage[utf8]{inputenc} % @SET ENCODING@
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `bbw'}}
+\par\bigskip{\large \today}
+\end{center}
+\begin{description}
+\raggedright{}
+\inputencoding{utf8}
+\item[Type]\AsIs{Package}
+\item[Title]\AsIs{Blocked Weighted Bootstrap}
+\item[Version]\AsIs{0.1.2}
+\item[Description]\AsIs{The blocked weighted bootstrap (BBW) is an estimation technique
+for use with data from two-stage cluster sampled surveys in which either
+prior weighting (e.g. population-proportional sampling or PPS as used in
+Standardized Monitoring and Assessment of Relief and Transitions or SMART
+surveys) or posterior weighting (e.g. as used in rapid assessment method or
+RAM and simple spatial sampling method or S3M surveys). The method was
+developed by Accion Contra la Faim, Brixton Health, Concern Worldwide,
+Global Alliance for Improved Nutrition, UNICEF Sierra Leone,  UNICEF Sudan
+and Valid International. It has been tested by the Centers for Disease
+Control (CDC) using infant and young child feeding (IYCF) data. See Cameron
+et al (2008) <doi.org/10.1162/rest.90.3.414> for application of bootstrap
+to cluster samples. See Aaron et al (2016) <doi.org/10.1371/journal.pone.0163176>
+and Aaron et al (2016) <doi.org/10.1371/journal.pone.0162462> for application
+of the blocked weighted bootstrap to estimate indicators from two-stage
+cluster sampled surveys.}
+\item[Imports]\AsIs{car}
+\item[Depends]\AsIs{R (>= 3.0.1)}
+\item[Suggests]\AsIs{knitr,
+rmarkdown,
+testthat}
+\item[License]\AsIs{AGPL-3}
+\item[Encoding]\AsIs{UTF-8}
+\item[LazyData]\AsIs{true}
+\item[RoxygenNote]\AsIs{6.0.1}
+\item[URL]\AsIs{}\url{https://github.com/validmeasures/bbw}\AsIs{}
+\item[BugReports]\AsIs{}\url{https://github.com/validmeasures/bbw/issues}\AsIs{}
+\item[VignetteBuilder]\AsIs{knitr}
+\end{description}
+\Rdcontents{\R{} topics documented:}
+\inputencoding{utf8}
+\HeaderA{bbw}{Blocked Weighted Bootstrap}{bbw}
+\aliasA{bbw-package}{bbw}{bbw.Rdash.package}
+%
+\begin{Description}\relax
+The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
+use with data from two-stage cluster sampled surveys in which either prior
+weighting (e.g. \code{population proportional sampling} or \code{PPS} as
+used in \code{Standardized Monitoring and Assessment of Relief and
+Transitions} or \code{SMART} surveys) or posterior weighting (e.g. as used in
+\code{Rapid Assessment Method} or \code{RAM} and \code{Simple Spatial
+Sampling Method} or \code{S3M} surveys). The method was developed by
+Accion contra la Faim (ACF), Brixton Health, Concern Worldwide, Global
+Alliance for Improved Nutrition (GAIN), UNICEF Sierra Leone, UNICEF Sudan and
+Valid International. It has been tested by the Centers for Disease
+Control (CDC) using infant and young child feeding (IYCF) data.
+\end{Description}
+%
+\begin{Details}\relax
+The bootstrap technique is summarised in this
+\Rhref{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{article}.
+The \code{BBW} used in \code{RAM} and \code{S3M} is a modification to the
+\code{percentile bootstrap} to include \code{blocking} and \code{weighting} to
+account for a complex sample design.
+
+With \code{RAM} and \code{S3M} surveys, the sample is complex in the sense
+that it is an unweighted cluster sample. Data analysis procedures need to
+account for the sample design. A \code{blocked weighted bootstrap (BBW)}
+can be used:
+\begin{description}
+
+\item[\code{Blocked}] The block corresponds to the primary sampling unit
+(\eqn{PSU = cluster}{}). \code{PSUs} are resampled with replacement.
+Observations within the resampled \code{PSUs} are also sampled with
+replacement.
+
+\item[\code{Weighted}] \code{RAM} and \code{S3M} samples do not use
+\code{population proportional sampling (PPS)} to weight the sample prior to
+data collection (e.g. as is done with \code{SMART} surveys). This means that
+a posterior weighting procedure is required. \code{BBW} uses a
+\code{"roulette wheel"} algorithm to weight (i.e. by population) the
+selection probability of \code{PSUs} in bootstrap replicates.
+
+\end{description}
+
+
+In the case of prior weighting by \code{PPS} all clusters are given the
+same weight. With posterior weighting (as in \code{RAM} or \code{S3M})
+the weight is the population of each \code{PSU}. This procedure is very
+similar to the \Rhref{https://en.wikipedia.org/wiki/Fitness_proportionate_selection}{fitness proportionate selection}
+technique used in evolutionary computing.
+
+A total of \eqn{m}{} \code{PSUs} are sampled with replacement for each
+bootstrap replicate (where \eqn{m}{} is the number of \code{PSUs} in the survey
+sample).
+
+The required statistic is applied to each replicate. The reported estimate
+consists of the \code{0.025th (95\% LCL)}, \code{0.5th (point estimate)}, and
+\code{0.975th (95\% UCL)} quantiles of the distribution of the statistic across
+all survey replicates.
+
+Early versions of the \code{BBW} did not resample observations within
+\code{PSUs} following:
+
+\Cite{Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for
+inference with clustered errors, Review of Economics and Statistics,
+2008:90;414–427 \url{doi.org/10.1162/rest.90.3.414}}
+
+and used a large number (e.g. \eqn{3999}{}) survey replicates. Current versions of
+the \code{BBW} resample observations within \code{PSUs} and use a smaller
+number of survey replicates (e.g. \eqn{n = 400}{}). This is a more computationally
+efficient approach
+\end{Details}
+\inputencoding{utf8}
+\HeaderA{bootBW}{\code{bootBW} : Blocked Weighted Bootstrap}{bootBW}
+%
+\begin{Description}\relax
+The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
+use with data from two-stage cluster sampled surveys in which either prior
+weighting (e.g. \code{population proportional sampling} or \code{PPS} as
+used in \code{SMART} surveys) or posterior weighting (e.g. as used in
+\code{RAM} and \code{S3M} surveys).
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+bootBW(x, w, statistic, params, outputColumns, replicates = 400)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A data frame with primary sampling unit (PSU) in column named \code{psu}
+
+\item[\code{w}] A data frame with primary sampling unit (PSU) in column named \code{psu}
+and survey weight (i.e. PSU population) in column named \code{pop}
+
+\item[\code{statistic}] A function operating on data in \code{x} (see Example)
+
+\item[\code{params}] Parameters (named columns in \code{x}) passed to the function
+specified in \code{statistic}
+
+\item[\code{outputColumns}] Names of columns in output data frame
+
+\item[\code{replicates}] Number of bootstrap replicates
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A data frame with:
+\begin{description}
+
+\item[] \code{ncol} = length(outputColumns)
+\item[] \code{nrow} = replicates
+\item[] \code{names} = outputColumns
+
+\end{description}
+
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+# Example function - estimate a proportion for a binary (0/1) variable):
+
+oneP <- function(x, params) {
+  v1 <- params[1]
+  v1Data <- x[[v1]]
+  oneP <- mean(v1Data, na.rm = TRUE)
+  return(oneP)
+}
+
+# Example call to bootBW function using RAM-OP test data:
+
+bootP <- bootBW(x = indicatorsHH,
+                w = villageData,
+                statistic = oneP,
+                params = "anc1",
+                outputColumns = "anc1",
+                replicates = 9)
+
+# Example estimate with 95% CI:
+
+quantile(bootP, probs = c(0.500, 0.025, 0.975), na.rm = TRUE)
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{bootClassic}{bootClassic}{bootClassic}
+%
+\begin{Description}\relax
+Simple proportion statistics function for bootstrap estimation
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+bootClassic(x, params)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A data frame with \code{primary sampling unit (PSU)} in column named
+\code{psu} and with data column/s containing the binary variable/s (0/1) of
+interest with column names corresponding to \code{params} values
+
+\item[\code{params}] A vector of column names corresponding to the binary variables
+of interest contained in \code{x}
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A numeric vector of the mean of each binary variable of interest with
+length equal to \code{length(params)}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+# Example call to bootClassic function
+
+meanResults <- bootClassic(x = indicatorsHH,
+                           params = "anc1")
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{bootPROBIT}{bootPROBIT}{bootPROBIT}
+%
+\begin{Description}\relax
+PROBIT statistics function for bootstrap estimation
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+bootPROBIT(x, params, threshold = THRESHOLD)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A data frame with \code{primary sampling unit (PSU)} in column named
+\code{psu} and with data column/s containing the continuous variable/s of
+interest with column names corresponding to \code{params} values
+
+\item[\code{params}] A vector of column names corresponding to the continuous
+variables of interest contained in \code{x}
+
+\item[\code{threshold}] cut-off value for continuous variable to differentiate
+case and non-case
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A numeric vector of the PROBIT estimate of each continuous variable
+of interest with length equal to \code{length(params)}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+
+# Example call to bootBW function:
+
+bootPROBIT(x = indicatorsCH1,
+           params = "muac1",
+           threshold = 115)
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{indicatorsCH1}{Child Morbidity, Health Service Coverage, Anthropometry}{indicatorsCH1}
+\keyword{datasets}{indicatorsCH1}
+%
+\begin{Description}\relax
+Child indicators on morbidity, health service coverage and anthropometry
+calculated from survey data collected in survey conducted in 4 districts
+from 3 regions in Somalia.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+indicatorsCH1
+\end{verbatim}
+\end{Usage}
+%
+\begin{Format}
+A data frame with 14 columns and 3090 rows.
+\begin{description}
+
+\item[\code{psu}] The PSU identifier. This must use the same coding system
+used to identify the PSUs that is used in the indicators dataset
+\item[\code{mID}] The mother identifier
+\item[\code{cID}] The child identifier
+\item[\code{ch1}] Diarrhoea in the past 2 weeks (0/1)
+\item[\code{ch2}] Fever in the past 2 weeks (0/1)
+\item[\code{ch3}] Cough in the past 2 weeks (0/1)
+\item[\code{ch4}] Immunisation card (0/1)
+\item[\code{ch5}] BCG immunisation (0/1)
+\item[\code{ch6}] Vitamin A coverage in the past month (0/1)
+\item[\code{ch7}] Anti-helminth coverage in the past month (0/1)
+\item[\code{sex}] Sex of child
+\item[\code{muac1}] Mid-upper arm circumference in mm
+\item[\code{muac2}] Mid-upper arm circumference in mm
+\item[\code{oedema}] Oedema (0/1)
+
+\end{description}
+\end{Format}
+%
+\begin{Source}\relax
+Mother and child health and nutrition survey in 3 regions of Somalia
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{indicatorsCH2}{Infant and Child Feeding Index}{indicatorsCH2}
+\keyword{datasets}{indicatorsCH2}
+%
+\begin{Description}\relax
+Infant and young child feeding indicators using the infant and child feeding
+index (ICFI) by Arimond and Ruel. Calculated from survey data collected in
+survey conducted in 4 districts from 3 regions in Somalia.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+indicatorsCH2
+\end{verbatim}
+\end{Usage}
+%
+\begin{Format}
+A data frame with 13 columns and 2083 rows.
+\begin{description}
+
+\item[\code{psu}] The PSU identifier. This must use the same coding system
+used to identify the PSUs that is used in the indicators dataset
+\item[\code{mID}] The mother identifier
+\item[\code{cID}] The child identifier
+\item[\code{ebf}] Exclusive breastfeeding (0/1)
+\item[\code{cbf}] Continued breastfeeding (0/1)
+\item[\code{ddd}] Dietary diversity (0/1)
+\item[\code{mfd}] Meal frequency (0/1)
+\item[\code{icfi}] Infant and child feeding index (from 0 to 6)
+\item[\code{iycf}] Good IYCF
+\item[\code{icfiProp}] Good ICFI
+\item[\code{age}] Child's age
+\item[\code{bf}] Child is breastfeeding (0/1)
+\item[\code{bfStop}] Age in months child stopped breastfeeding
+
+\end{description}
+\end{Format}
+%
+\begin{Source}\relax
+Mother and child health and nutrition survey in 3 regions of Somalia
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{indicatorsHH}{Mother Indicators Dataset}{indicatorsHH}
+\keyword{datasets}{indicatorsHH}
+%
+\begin{Description}\relax
+Mother indicators for health and nutrition calculated from survey data
+collected in survey conducted in 4 districts from 3 regions in Somalia.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+indicatorsHH
+\end{verbatim}
+\end{Usage}
+%
+\begin{Format}
+A data frame with 24 columns and 2136 rows:
+\begin{description}
+
+\item[\code{psu}] The PSU identifier. This must use the same coding system
+used to identify the PSUs that is used in the indicators dataset
+\item[\code{mID}] The mother identifier
+\item[\code{mMUAC}] Mothers with mid-upper arm circumference < 230 mm (0/1)
+\item[\code{anc1}] At least 1 antenatal care visit with a trained health
+professional (0/1)
+\item[\code{anc2}] At least 4 antenatal care visits with any service
+provider (0/1)
+\item[\code{anc3}] FeFol coverage (0/1)
+\item[\code{anc4}] Vitamin A coverage (0/1)
+\item[\code{wash1}] Improved sources of drinking water (0/1)
+\item[\code{wash2}] Improved sources of other water (0/1)
+\item[\code{wash3}] Probable safe drinking water (0/1)
+\item[\code{wash4}] Number of litres of water collected in a day
+\item[\code{wash5}] Improved toilet facilities (0/1)
+\item[\code{wash6}] Human waste disposal practices / behaviour (0/1)
+\item[\code{wash7a}] Handwashing score (from 0 to 5)
+\item[\code{wash7b}] Handwashing score of 5 (0/1)
+\item[\code{hhs1}] Household hunger score (from 0 to 6)
+\item[\code{hhs2}] Little or no hunger (0/1)
+\item[\code{hhs3}] Moderate hunger (0/1)
+\item[\code{hhs4}] Severe hunger (0/1)
+\item[\code{mfg}] Mother's dietary diversity score
+\item[\code{pVitA}] Plant-based vitamin A-rich foods (0/1)
+\item[\code{aVitA}] Animal-based vitamin A-rich foods (0/1)
+\item[\code{xVitA}] Any vitamin A-rich foods (0/1)
+\item[\code{iron}] Iron-rich foods (0/1)
+
+\end{description}
+\end{Format}
+%
+\begin{Source}\relax
+Mother and child health and nutrition survey in 3 regions of Somalia
+\end{Source}
+\inputencoding{utf8}
+\HeaderA{recode}{Recode}{recode}
+%
+\begin{Description}\relax
+Utility function that recodes variables based on user recode specifications.
+Handles both numeric or factor variables.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+recode(var, recodes, afr, anr = TRUE, levels)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{var}] Variable to recode
+
+\item[\code{recodes}] Character string of recode specifications:
+\begin{itemize}
+
+\item Recode specifications in a character string separated by
+semicolons of the form \code{input=output} as in:
+\code{"1=1;2=1;3:6=2;else=NA"}
+
+\\{}
+\item If an input value satisfies more than one specification, then the
+first (reading from left to right) is applied
+
+\\{}
+\item If no specification is satisfied, then the input value is carried
+over to the result unchanged
+
+\\{}
+\item \code{NA} is allowed on both input and output
+
+\\{}
+\item The following recode specifications are supported:
+
+\\{}
+
+\Tabular{lll}{
+\strong{Specification} & \strong{Example}          & \strong{Notes}                                                 \\{}
+Single values          & \code{9=NA}               &                                                                \\{}
+Set of values          & \code{c(1,2,5)=1}         & The left-hand-side is any R function call that returns a vector\\{}
+& \code{seq(1,9,2)='odd'}   &                                                                \\{}
+& \code{1:10=1}             &                                                                \\{}
+Range of values        & \code{7:9=3}              & Special values \code{lo} and \code{hi} may be used                           \\{}
+& \code{lo:115=1}           &                                                                \\{}
+Other values           & \code{else=NA}            &
+}
+
+\\{}
+\item Character values are quoted as in :
+
+\code{recodes = "c(1,2,5)='sanitary' else='unsanitary'"}
+
+\\{}
+\item The output may be the (scalar) result of a function call as in:
+
+\code{recodes = "999=median(var, na.rm = TRUE)"}
+
+\\{}
+\item Users are advised to carefully check the results of \code{recode()} calls
+with any outputs that are the results of a function call.
+
+\\{}
+\item The output may be the (scalar) value of a variable as in:
+
+\code{recodes = "999=scalarVariable"}
+
+\\{}
+\item If all of the output values are numeric, and if \code{'afr'} is \code{FALSE},
+then a numeric result is returned; if \code{var} is a factor then
+(by default) so is the result.
+
+\end{itemize}
+
+
+\item[\code{afr}] Return a factor. Default is TRUE if \code{var} is a factor and is
+FALSE otherwise
+
+\item[\code{anr}] Coerce result to numeric (default is TRUE)
+
+\item[\code{levels}] Order of the levels in the returned factor; the default is to use
+the sort order of the level names.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+Recoded variable
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+# Recode values from 1 to 9 to varios specifications
+var <- sample(x = 1:9, size = 100, replace = TRUE)
+
+# Recode single values
+recode(var = var, recodes = "9=NA")
+
+# Recode set of values
+recode(var = var, recodes = "c(1,2,5)=1")
+
+# Recode range of values
+recode(var = var, recodes = "1:3=1;4:6=2;7:9=3")
+
+# Recode other values
+recode(var = var, recodes = "c(1,2,5)=1;else=NA")
+
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{villageData}{Cluster Population Weights Dataset}{villageData}
+\keyword{datasets}{villageData}
+%
+\begin{Description}\relax
+Dataset containing cluster population weights for use in performing
+posterior weighting with the blocked weighted bootstrap approach. This
+dataset is from a mother and child health and nutrition survey conducted in
+4 districts from 3 regions in Somalia.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+villageData
+\end{verbatim}
+\end{Usage}
+%
+\begin{Format}
+A data frame with 6 columns and 117 rows:
+\begin{description}
+
+\item[\code{region}] Region in Somalia from which the cluster belongs to
+\item[\code{district}] District in Somalia from which the cluster belongs to
+\item[\code{psu}] The PSU identifier. This must use the same coding system
+used to identify the PSUs that is used in the indicators dataset
+\item[\code{lon}] Longitude coordinate of the cluster
+\item[\code{lat}] Latitude coordinate of the cluster
+\item[\code{pop}] Population size of the cluster
+
+\end{description}
+\end{Format}
+%
+\begin{Source}\relax
+Mother and child health and nutrition survey in 3 regions of Somalia
+\end{Source}
+\printindex{}
+\end{document}
