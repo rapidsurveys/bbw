@@ -1,0 +1,23 @@
+\begin{theindex}
+
+  \item $*$Topic{\relax \fontsize  {12}{14}\selectfont  \ \textbf  {datasets}}
+    \subitem \texttt  {indicatorsCH1}, \hyperpage{5}
+    \subitem \texttt  {indicatorsCH2}, \hyperpage{6}
+    \subitem \texttt  {indicatorsHH}, \hyperpage{7}
+
+  \indexspace
+
+  \item \texttt  {bbw}, \hyperpage{2}
+  \item \texttt  {bbw-package} \textit  {(\texttt  {bbw})}, 
+		\hyperpage{2}
+  \item \texttt  {bootBW}, \hyperpage{3}
+  \item \texttt  {bootClassic}, \hyperpage{4}
+  \item \texttt  {bootPROBIT}, \hyperpage{4}
+
+  \indexspace
+
+  \item \texttt  {indicatorsCH1}, \hyperpage{5}
+  \item \texttt  {indicatorsCH2}, \hyperpage{6}
+  \item \texttt  {indicatorsHH}, \hyperpage{7}
+
+\end{theindex}
