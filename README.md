@@ -1,4 +1,4 @@
-# bbw: Blocked Weighted Bootstrap
+# bbw: Blocked Weighted Bootstrap <img src="man/figures/anlaytics.png" align="right" />
 
 [![CRAN](https://img.shields.io/cran/v/bbw.svg)](https://cran.r-project.org/package=bbw)
 [![CRAN](https://img.shields.io/cran/l/bbw.svg)](https://CRAN.R-project.org/package=bbw)
