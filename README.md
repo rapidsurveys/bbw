@@ -28,7 +28,7 @@ With **RAM** and **S3M** surveys, the sample is complex in the sense that it is 
 
 <br/>
 
-**Blocked**: The block corresponds to the primary sampling unit ($PSU = cluster$). *PSU*s are resampled with replacement. Observations within the resampled *PSU*s are also sampled with replacement.
+**Blocked**: The block corresponds to the primary sampling unit (*PSU = cluster*). *PSU*s are resampled with replacement. Observations within the resampled *PSU*s are also sampled with replacement.
 
 **Weighted**: **RAM** and **S3M** samples do not use *population proportional sampling (PPS)* to weight the sample prior to data collection (e.g. as is done with **SMART** surveys). This means that a posterior weighting procedure is required. `BBW` uses a *"roulette wheel"* algorithm (see [illustration below](#FIG1)) to weight (i.e. by population) the selection probability of *PSU*s in bootstrap replicates.
 
@@ -41,7 +41,7 @@ With **RAM** and **S3M** surveys, the sample is complex in the sense that it is 
 
 In the case of prior weighting by *PPS* all clusters are given the same weight. With posterior weighting (as in **RAM** or **S3M**) the weight is the population of each *PSU*. This procedure is very similar to the `fitness proportional selection` technique used in *evolutionary computing*.
 
-A total of $m$ *PSU*s are sampled with replacement for each bootstrap replicate (where $m$ is the number of *PSU*s in the survey sample).
+A total of *m* *PSU*s are sampled with replacement for each bootstrap replicate (where *m* is the number of *PSU*s in the survey sample).
 
 The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (*95% LCL*), 0.5th (*point estimate*), and 0.975th (*95% UCL*) quantiles of the distribution of the statistic across all survey replicates.
 
