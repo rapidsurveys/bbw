@@ -1,6 +1,3 @@
-# packrat library
-packrat/lib*/
-
 # inst folder docs
 inst/doc
 
@@ -38,3 +35,4 @@ vignettes/*.pdf
 .Rproj.user
 
 .github
+.DS_Store
