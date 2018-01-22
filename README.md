@@ -33,10 +33,9 @@ With **RAM** and **S3M** surveys, the sample is complex in the sense that it is 
 **Weighted**: **RAM** and **S3M** samples do not use *population proportional sampling (PPS)* to weight the sample prior to data collection (e.g. as is done with **SMART** surveys). This means that a posterior weighting procedure is required. `BBW` uses a *"roulette wheel"* algorithm (see [illustration below](#FIG1)) to weight (i.e. by population) the selection probability of *PSU*s in bootstrap replicates.
 
 <br/>
-<p style="text-align:center">
+
 <a name="FIG1"></a>
 ![](man/figures/rouletteWheel.png)
-</p>
 
 <br/>
 
