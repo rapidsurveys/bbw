@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">bbw</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">bbw</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.3.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -38,13 +42,13 @@
   </a>
 </li>
 <li>
-  <a href="../articles/bbw.html">Get Started</a>
+  <a href="../articles/bbw.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -64,17 +68,20 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Blocked Weighted Bootstrap</h1>
                         <h4 class="author">Mark Myatt and Ernest Guevarra</h4>
             
-            <h4 class="date">2018-03-07</h4>
-          </div>
+            <h4 class="date">2018-04-18</h4>
+      
+      <small>Source: <a href="https://github.com/validmeasures/bbw/blob/master/vignettes/bbw.Rmd"><code>vignettes/bbw.Rmd</code></a></small>
+      <div class="hidden name"><code>bbw.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p>The <code>blocked weighted bootstrap (BBW)</code> is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. <em>population-proportional sampling</em> or <em>PPS</em> as used in <strong>Standardized Monitoring and Assessment of Relief and Transiations</strong> or <strong>SMART</strong> surveys) or <em>posterior weighting</em> (e.g. as used in <strong>Rapid Assessment Method</strong> or <strong>RAM</strong> and <strong>Simple Spatial Sampling Method</strong> or <strong>S3M</strong> surveys). The method was developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, Global Alliance for Improved Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has been tested by the Centers for Disease Control (CDC) using infant and young child feeding (IYCF) data.</p>
 <p><br></p>
 <p>The bootstrap technique is summarised in this <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">article</a>. The <code>BBW</code> used in <strong>RAM</strong> and <strong>S3M</strong> is a modification to the <code>percentile bootstrap</code> to include <em>blocking</em> and <em>weighing</em> to account for a <em>complex sample design</em>.</p>
@@ -103,7 +110,6 @@
 <p>and used a large number (e.g. <span class="math inline">\(3999\)</span>) survey replicates. Current versions of the <code>BBW</code> resample observations within <em>PSU</em>s and use a smaller number of survey replicates (e.g. <span class="math inline">\(n = 400\)</span>). This is a more computationally efficient approach.</p>
 <p><br></p>
 <p>The main reason to use <code>BBW</code> is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The <code>BBW</code> also allows for a wider range of hypothesis tests to be used with complex sample survey data.</p>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -122,6 +128,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>
