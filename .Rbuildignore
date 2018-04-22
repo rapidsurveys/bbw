@@ -10,3 +10,4 @@
 ^_config\.yml$
 ^\.github$
 ^docs$
+^netlify\.toml$
