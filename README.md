@@ -2,6 +2,7 @@
 
 [![CRAN](https://img.shields.io/cran/v/bbw.svg)](https://cran.r-project.org/package=bbw)
 [![CRAN](https://img.shields.io/cran/l/bbw.svg)](https://CRAN.R-project.org/package=bbw)
+[![CRAN](http://cranlogs.r-pkg.org/badges/bbw)](https://CRAN.R-project.org/package=bbw)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/bbw)](https://CRAN.R-project.org/package=bbw)
 [![Travis](https://img.shields.io/travis/validmeasures/bbw.svg?branch=master)](https://travis-ci.org/validmeasures/bbw)
 [![Build status](https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true)](https://ci.appveyor.com/project/ernestguevarra/bbw/branch/master)
