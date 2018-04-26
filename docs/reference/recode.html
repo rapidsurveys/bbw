@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Recode — recode" />
 
 <meta property="og:description" content="Utility function that recodes variables based on user recode specifications.
@@ -39,8 +42,6 @@ Handles both numeric or factor variables." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -101,14 +102,16 @@ Handles both numeric or factor variables." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Recode</h1>
-    <small>Source: <a href='https://github.com/validmeasures/bbw/blob/master/R/recode.R'><code>R/recode.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/validmeasures/bbw/blob/master/R/recode.R'><code>R/recode.R</code></a></small>
     <div class="hidden name"><code>recode.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Utility function that recodes variables based on user recode specifications.
 Handles both numeric or factor variables.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>recode</span>(<span class='no'>var</span>, <span class='no'>recodes</span>, <span class='no'>afr</span>, <span class='kw'>anr</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>levels</span>)</pre>
     
@@ -131,35 +134,16 @@ Handles both numeric or factor variables.</p>
     over to the result unchanged</p></li>
 <li><p><code>NA</code> is allowed on both input and output</p></li>
 <li><p>The following recode specifications are supported:</p>
-<p></p><table><tr><td>
-          <strong>Specification</strong> </td>
-<td> <strong>Example</strong>          </td>
-<td> <strong>Notes</strong>                                                 </td>
-</tr><tr><td><br />
-          Single values          </td>
-<td> <code>9=NA</code>               </td>
-<td>                                                                </td>
-</tr><tr><td><br />
-          Set of values          </td>
-<td> <code>c(1,2,5)=1</code>         </td>
-<td> The left-hand-side is any R function call that returns a vector</td>
-</tr><tr><td><br />
-                                 </td>
-<td> <code>seq(1,9,2)='odd'</code>   </td>
-<td>                                                                </td>
-</tr><tr><td><br />
-                                 </td>
-<td> <code>1:10=1</code>             </td>
-<td>                                                                </td>
-</tr><tr><td><br />
-          Range of values        </td>
-<td> <code>7:9=3</code>              </td>
-<td> Special values <code>lo</code> and <code>hi</code> may be used             </td>
-</tr><tr><td><br />
-                                 </td>
-<td> <code>lo:115=1</code>           </td>
-<td>                                                                </td>
-</tr></table></li>
+<p></p><table class='table'>
+<tr><td><strong>Specification</strong></td><td><strong>Example</strong></td><td><strong>Notes</strong></td></tr>
+<tr><td>Single values</td><td><code>9=NA</code></td><td></td></tr>
+<tr><td>Set of values</td><td><code>c(1,2,5)=1</code></td><td>The left-hand-side is any R function call that returns a vector</td></tr>
+<tr><td></td><td><code>seq(1,9,2)='odd'</code></td><td></td></tr>
+<tr><td></td><td><code>1:10=1</code></td><td></td></tr>
+<tr><td>Range of values</td><td><code>7:9=3</code></td><td>Special values <code>lo</code> and <code>hi</code> may be used</td></tr>
+<tr><td></td><td><code>lo:115=1</code></td><td></td></tr>
+</table>
+</li>
 <li><p>Character values are quoted as in :</p>
 <p><code>recodes = "c(1,2,5)='sanitary' else='unsanitary'"</code></p></li>
 <li><p>The output may be the (scalar) result of a function call as in:</p>
