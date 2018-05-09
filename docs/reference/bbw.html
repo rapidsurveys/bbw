@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Blocked Weighted Bootstrap — bbw" />
 
 <meta property="og:description" content="The blocked weighted bootstrap (BBW) is an estimation technique for
@@ -50,7 +53,15 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-102485058-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-102485058-4');
+</script>
 
   </head>
 
@@ -110,10 +121,11 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Blocked Weighted Bootstrap</h1>
-    <small>Source: <a href='https://github.com/validmeasures/bbw/blob/master/R/bbw.R'><code>R/bbw.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/validmeasures/bbw/blob/master/R/bbw.R'><code>R/bbw.R</code></a></small>
     <div class="hidden name"><code>bbw.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The <code>blocked weighted bootstrap (BBW)</code> is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
@@ -127,6 +139,7 @@ Alliance for Improved Nutrition (GAIN), UNICEF Sierra Leone, UNICEF Sudan and
 Valid International. It has been tested by the Centers for Disease
 Control (CDC) using infant and young child feeding (IYCF) data.</p>
     
+    </div>
 
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>

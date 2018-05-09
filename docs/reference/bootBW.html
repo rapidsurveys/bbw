@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="<code>bootBW</code> : Blocked Weighted Bootstrap — bootBW" />
 
 <meta property="og:description" content="The blocked weighted bootstrap (BBW) is an estimation technique for
@@ -44,7 +47,15 @@ RAM and S3M surveys)." />
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-102485058-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-102485058-4');
+</script>
 
   </head>
 
@@ -104,10 +115,11 @@ RAM and S3M surveys)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1><code>bootBW</code> : Blocked Weighted Bootstrap</h1>
-    <small>Source: <a href='https://github.com/validmeasures/bbw/blob/master/R/bootBW.r'><code>R/bootBW.r</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/validmeasures/bbw/blob/master/R/bootBW.r'><code>R/bootBW.r</code></a></small>
     <div class="hidden name"><code>bootBW.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The <code>blocked weighted bootstrap (BBW)</code> is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
@@ -115,6 +127,7 @@ weighting (e.g. <code>population proportional sampling</code> or <code>PPS</code
 used in <code>SMART</code> surveys) or posterior weighting (e.g. as used in
 <code>RAM</code> and <code>S3M</code> surveys).</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>bootBW</span>(<span class='no'>x</span>, <span class='no'>w</span>, <span class='no'>statistic</span>, <span class='no'>params</span>, <span class='no'>outputColumns</span>, <span class='kw'>replicates</span> <span class='kw'>=</span> <span class='fl'>400</span>)</pre>
     
