@@ -12,3 +12,5 @@
 ^docs$
 ^netlify\.toml$
 ^_pkgdown\.yml$
+^revdep$
+^LICENSE\.md$
