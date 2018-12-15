@@ -1,4 +1,4 @@
-# bbw: Blocked Weighted Bootstrap <img src="man/figures/analytics.png" align="right" />
+# bbw: Blocked Weighted Bootstrap <img src="man/figures/bbw.png" width="150" align="right" />
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
