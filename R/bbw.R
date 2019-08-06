@@ -68,6 +68,7 @@
 #' @docType package
 #' @name bbw
 #' @export bootBW
+#' @export bootBW_df
 #' @export bootClassic
 #' @export bootPROBIT
 #' @export recode
@@ -75,6 +76,7 @@
 #' @importFrom graphics axTicks axis barplot
 #' @importFrom car powerTransform
 #' @importFrom car bcPower
+#' @importFrom dplyr filter
 NULL
 
 ## quiets concerns of R CMD check re: the psus and THRESHOLD that appear in bbw

@@ -49,3 +49,12 @@ A total of *m* *PSU*s are sampled with replacement for each bootstrap replicate 
 The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (*95% LCL*), 0.5th (*point estimate*), and 0.975th (*95% UCL*) quantiles of the distribution of the statistic across all survey replicates.
 
 The main reason to use `BBW` is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The `BBW` also allows for a wider range of hypothesis tests to be used with complex sample survey data.
+
+## Development
+
+- Make changes to R folder, and bbw.R exports
+- document and install:
+`setwd("bbw")`
+`document()`
+`setwd("..")`
+`install("bbw")`
