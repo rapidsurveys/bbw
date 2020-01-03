@@ -8,21 +8,25 @@
 
 <title>Blocked Weighted Bootstrap — bbw • bbw</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Blocked Weighted Bootstrap — bbw" />
 
+<meta property="og:title" content="Blocked Weighted Bootstrap — bbw" />
 <meta property="og:description" content="The blocked weighted bootstrap (BBW) is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
 weighting (e.g. population proportional sampling or PPS as
@@ -47,6 +51,7 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
 
 
 
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -55,6 +60,7 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -73,7 +79,7 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bbw</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -81,7 +87,7 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -95,11 +101,10 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/validmeasures/bbw">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -110,6 +115,7 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -121,7 +127,6 @@ Control (CDC) using infant and young child feeding (IYCF) data." />
     </div>
 
     <div class="ref-description">
-    
     <p>The <code>blocked weighted bootstrap (BBW)</code> is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
 weighting (e.g. <code>population proportional sampling</code> or <code>PPS</code> as
@@ -133,10 +138,10 @@ Accion contra la Faim (ACF), Brixton Health, Concern Worldwide, Global
 Alliance for Improved Nutrition (GAIN), UNICEF Sierra Leone, UNICEF Sudan and
 Valid International. It has been tested by the Centers for Disease
 Control (CDC) using infant and young child feeding (IYCF) data.</p>
-    
     </div>
 
-        
+
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The bootstrap technique is summarised in this
@@ -152,14 +157,17 @@ can be used:</p><dl class='dl-horizontal'>
 (\(PSU = cluster\)). <code>PSUs</code> are resampled with replacement.
 Observations within the resampled <code>PSUs</code> are also sampled with
 replacement.</p></dd>
-    <dt><code>Weighted</code></dt><dd><p><code>RAM</code> and <code>S3M</code> samples do not use
+
+<dt><code>Weighted</code></dt><dd><p><code>RAM</code> and <code>S3M</code> samples do not use
 <code>population proportional sampling (PPS)</code> to weight the sample prior to
 data collection (e.g. as is done with <code>SMART</code> surveys). This means that
 a posterior weighting procedure is required. <code>BBW</code> uses a
 <code>"roulette wheel"</code> algorithm to weight (i.e. by population) the
 selection probability of <code>PSUs</code> in bootstrap replicates.</p></dd>
+
 </dl>
-    <p>In the case of prior weighting by <code>PPS</code> all clusters are given the
+
+<p>In the case of prior weighting by <code>PPS</code> all clusters are given the
 same weight. With posterior weighting (as in <code>RAM</code> or <code>S3M</code>)
 the weight is the population of each <code>PSU</code>. This procedure is very
 similar to the <a href='https://en.wikipedia.org/wiki/Fitness_proportionate_selection'>fitness proportionate selection</a>
@@ -180,18 +188,33 @@ inference with clustered errors, Review of Economics and Statistics,
 the <code>BBW</code> resample observations within <code>PSUs</code> and use a smaller
 number of survey replicates (e.g. \(n = 400\)). This is a more computationally
 efficient approach</p>
-    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Useful links:</p><ul>
+<li><p><a href='https://github.com/validmeasures/bbw'>https://github.com/validmeasures/bbw</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/validmeasures/bbw/issues'>https://github.com/validmeasures/bbw/issues</a></p></li>
+</ul>
+
+</div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
       <li><a href="#details">Details</a></li>
-          </ul>
+      <li><a href="#see-also">See also</a></li>
+    </ul>
+
+    <h2>Author</h2>
+    <p><strong>Maintainer</strong>: Ernest Guevarra <a href='mailto:ernest@guevarra.io'>ernest@guevarra.io</a> (<a href='https://orcid.org/0000-0002-4887-4415'>ORCID</a>)</p>
+<p>Authors:</p><ul>
+<li><p>Mark Myatt <a href='mailto:mark@brixtonhealth.com'>mark@brixtonhealth.com</a></p></li>
+</ul>
+
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -199,13 +222,16 @@ efficient approach</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
