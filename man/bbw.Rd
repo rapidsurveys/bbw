@@ -3,7 +3,6 @@
 \docType{package}
 \name{bbw}
 \alias{bbw}
-\alias{bbw-package}
 \title{Blocked Weighted Bootstrap}
 \description{
 The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
