@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bbw
+# bbw: Blocked Weighted Bootstrap <img src="man/figures/bbw.png" width="200" align="right" />
 
 <!-- badges: start -->
 
@@ -18,8 +18,6 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 status](https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true)](https://ci.appveyor.com/project/ernestguevarra/bbw/branch/master)
 [![codecov](https://codecov.io/gh/validmeasures/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/validmeasures/bbw)
 <!-- badges: end -->
-
-# bbw: Blocked Weighted Bootstrap <img src="man/figures/bbw.png" width="200" align="right" />
 
 ## Overview
 
