@@ -2,7 +2,7 @@
 % Please edit documentation in R/bootProbit.R
 \name{bootPROBIT}
 \alias{bootPROBIT}
-\title{bootPROBIT}
+\title{PROBIT statistics function for bootstrap estimation}
 \usage{
 bootPROBIT(x, params, threshold = THRESHOLD)
 }

@@ -3,6 +3,7 @@
 \docType{package}
 \name{bbw}
 \alias{bbw}
+\alias{bbw-package}
 \title{Blocked Weighted Bootstrap}
 \description{
 The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
@@ -69,3 +70,21 @@ the \code{BBW} resample observations within \code{PSUs} and use a smaller
 number of survey replicates (e.g. \eqn{n = 400}). This is a more computationally
 efficient approach
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/validmeasures/bbw}
+  \item Report bugs at \url{https://github.com/validmeasures/bbw/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Ernest Guevarra \email{ernest@guevarra.io} (\href{https://orcid.org/0000-0002-4887-4415}{ORCID})
+
+Authors:
+\itemize{
+  \item Mark Myatt \email{mark@brixtonhealth.com}
+}
+
+}
+\keyword{internal}

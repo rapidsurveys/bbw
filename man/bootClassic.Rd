@@ -2,7 +2,7 @@
 % Please edit documentation in R/bootClassic.R
 \name{bootClassic}
 \alias{bootClassic}
-\title{bootClassic}
+\title{Simple proportion statistics function for bootstrap estimation}
 \usage{
 bootClassic(x, params)
 }
