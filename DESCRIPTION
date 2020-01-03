@@ -1,7 +1,7 @@
 Package: bbw
 Type: Package
 Title: Blocked Weighted Bootstrap
-Version: 0.1.4
+Version: 0.1.3
 Authors@R: c(
     person("Mark", "Myatt", email = "mark@brixtonhealth.com", role = "aut"),
     person("Ernest", "Guevarra", comment = c(ORCID = "0000-0002-4887-4415"), 
@@ -11,16 +11,15 @@ Description: The blocked weighted bootstrap (BBW) is an estimation technique
     prior weighting (e.g. population-proportional sampling or PPS as used in 
     Standardized Monitoring and Assessment of Relief and Transitions or SMART 
     surveys) or posterior weighting (e.g. as used in rapid assessment method or
-    RAM and simple spatial sampling method or S3M surveys). The method was 
-    developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, 
-    Global Alliance for Improved Nutrition, UNICEF Sierra Leone,  UNICEF Sudan
-    and Valid International. It has been tested by the Centers for Disease
-    Control (CDC) using infant and young child feeding (IYCF) data. See Cameron
-    et al (2008) <doi:10.1162/rest.90.3.414> for application of bootstrap
-    to cluster samples. See Aaron et al (2016) <doi:10.1371/journal.pone.0163176> 
-    and Aaron et al (2016) <doi:10.1371/journal.pone.0162462> for application 
-    of the blocked weighted bootstrap to estimate indicators from two-stage 
-    cluster sampled surveys.
+    RAM and simple spatial sampling method or S3M surveys) is implemented.
+    The method was developed by Brixton Health, Global Alliance for Improved 
+    Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has 
+    been tested by the Centers for Disease Control (CDC) using infant and young 
+    child feeding (IYCF) data. See Cameron et al (2008) <doi:10.1162/rest.90.3.414> 
+    for application of bootstrap to cluster samples. See Aaron et al (2016) 
+    <doi:10.1371/journal.pone.0163176> and Aaron et al (2016) 
+    <doi:10.1371/journal.pone.0162462> for application of the blocked weighted 
+    bootstrap to estimate indicators from two-stage cluster sampled surveys.
 Imports: car
 Depends: R (>= 3.0.1)
 Suggests: knitr,
