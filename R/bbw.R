@@ -67,15 +67,14 @@
 #'
 #' @docType package
 #' @name bbw
-#' @export bootBW
-#' @export bootClassic
-#' @export bootPROBIT
-#' @export recode
+#' @keywords internal
 #' @importFrom stats runif na.omit pnorm sd
 #' @importFrom graphics axTicks axis barplot
 #' @importFrom car powerTransform
 #' @importFrom car bcPower
-NULL
+#
+################################################################################
+"_PACKAGE"
 
 ## quiets concerns of R CMD check re: the psus and THRESHOLD that appear in bbw
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("psu", "THRESHOLD"))

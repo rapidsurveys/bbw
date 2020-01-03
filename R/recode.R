@@ -74,6 +74,10 @@
 #' # Recode other values
 #' recode(var = var, recodes = "c(1,2,5)=1;else=NA")
 #'
+#' @export
+#'
+#
+################################################################################
 recode <- function(var, recodes, afr, anr = TRUE, levels) {
   squeezeBlanks <- function(text) {
     gsub(" *", "",  text)

@@ -45,77 +45,51 @@
 #'
 #' quantile(bootP, probs = c(0.500, 0.025, 0.975), na.rm = TRUE)
 #'
+#' @export
+#'
+#
+################################################################################
 bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
-  #
-  # Scale weights and accumulate weights
-  #
+  ## Scale weights and accumulate weights
   w$weight <- w$pop / sum(w$pop)
   w$cumWeight <- cumsum(w$weight)
-  #
-  # Create data.frame with named columns for output
-  #
+  ## Create data.frame with named columns for output
   boot <- data.frame(matrix(ncol = length(outputColumns), nrow = replicates))
   names(boot) <- outputColumns
-  #
-  # Create an empty data.frame with same structure of 'x' with sufficient rows
-  # to hold the largest possible survey replicates (i.e. number of clusters
-  # multiplied by the size of the largest cluster)
-  #
+  ## Create an empty data.frame with same structure of 'x' with sufficient rows
+  ## to hold the largest possible survey replicates (i.e. number of clusters
+  ## multiplied by the size of the largest cluster)
   nClusters <- nrow(w)
   maxRows <- nClusters * max(table(x$psu))
   emptyDF <- rbind(as.data.frame(lapply(x, function(x) rep.int(NA, maxRows))))
-  #
-  # Vector to hold clusters to be included in a survey replicate
-  #
+  ## Vector to hold clusters to be included in a survey replicate
   sampledClusters <- vector(mode = mode(x$psu), length = nClusters)
-  #
-  # And now ... resample!
-  #
+  ## And now ... resample!
   for(i in 1:replicates) {
-    #
-    # Create a dataframe to hold a survey replicate
-    #
+    ## Create a dataframe to hold a survey replicate
     xBW <- emptyDF
-    #
-    # Blocking Bootstrap from 'x' (blocking on x$psu = cluster identifier)
-    #
+    ## Blocking Bootstrap from 'x' (blocking on x$psu = cluster identifier)
     for(j in 1:nClusters) {
-      #
-      # "Roulette Wheel" algorithm (to select a weighted sample of clusters)
-      #
+      ## "Roulette Wheel" algorithm (to select a weighted sample of clusters)
       sampledClusters[j] <- w$psu[which.max(w$cumWeight >= runif(n = 1, min = 0, max = 1))]
     }
-    #
-    # Pointer for inserting selected clusters into the survey replicate
-    #
+    ## Pointer for inserting selected clusters into the survey replicate
     rowIndex <- 1
-    #
-    # Build a (blocking weighted) bootstrap replicate from the selected clusters
-    #
+    ## Build a (blocking weighted) bootstrap replicate from the selected clusters
     for(k in 1:nClusters) {
-      #
-      # Extract data for cluster and resample within the cluster
-      #
+      ## Extract data for cluster and resample within the cluster
       y <- subset(x, psu == sampledClusters[k])
       clusterN <- nrow(y)
       y <- y[sample(1:clusterN, replace = TRUE), ]
-      #
-      # Insert cluster replicate into survey replicate
-      #
+      ## Insert cluster replicate into survey replicate
       endRow <- rowIndex + clusterN
       xBW[rowIndex:(endRow - 1), ] <- y
-      #
-      # Update pointer
-      #
+      ## Update pointer
       rowIndex <- endRow
     }
-    #
-    # Select data for analysis
-    #
+    ## Select data for analysis
     xBW <- xBW[1:(rowIndex - 1), ]
-    #
-    # Apply statistic
-    #
+    ## Apply statistic
     boot[i, ] <- statistic(xBW, params)
   }
   return(boot)
