@@ -1,0 +1,11 @@
+bootBW                  'bootBW' : Blocked Weighted Bootstrap
+bootClassic             Simple proportion statistics function for
+                        bootstrap estimation
+bootPROBIT              PROBIT statistics function for bootstrap
+                        estimation
+indicatorsCH1           Child Morbidity, Health Service Coverage,
+                        Anthropometry
+indicatorsCH2           Infant and Child Feeding Index
+indicatorsHH            Mother Indicators Dataset
+recode                  Recode
+villageData             Cluster Population Weights Dataset
