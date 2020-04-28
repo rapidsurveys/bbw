@@ -4,7 +4,8 @@
 \name{indicatorsHH}
 \alias{indicatorsHH}
 \title{Mother Indicators Dataset}
-\format{A data frame with 24 columns and 2136 rows:
+\format{
+A data frame with 24 columns and 2136 rows:
 \describe{
 \item{\code{psu}}{The PSU identifier. This must use the same coding system
   used to identify the PSUs that is used in the indicators dataset}
@@ -33,7 +34,8 @@
 \item{\code{aVitA}}{Animal-based vitamin A-rich foods (0/1)}
 \item{\code{xVitA}}{Any vitamin A-rich foods (0/1)}
 \item{\code{iron}}{Iron-rich foods (0/1)}
-}}
+}
+}
 \source{
 Mother and child health and nutrition survey in 3 regions of Somalia
 }

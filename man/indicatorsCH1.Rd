@@ -4,7 +4,8 @@
 \name{indicatorsCH1}
 \alias{indicatorsCH1}
 \title{Child Morbidity, Health Service Coverage, Anthropometry}
-\format{A data frame with 14 columns and 3090 rows.
+\format{
+A data frame with 14 columns and 3090 rows.
 \describe{
 \item{\code{psu}}{The PSU identifier. This must use the same coding system
   used to identify the PSUs that is used in the indicators dataset}
@@ -21,7 +22,8 @@
 \item{\code{muac1}}{Mid-upper arm circumference in mm}
 \item{\code{muac2}}{Mid-upper arm circumference in mm}
 \item{\code{oedema}}{Oedema (0/1)}
-}}
+}
+}
 \source{
 Mother and child health and nutrition survey in 3 regions of Somalia
 }

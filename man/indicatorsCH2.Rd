@@ -4,7 +4,8 @@
 \name{indicatorsCH2}
 \alias{indicatorsCH2}
 \title{Infant and Child Feeding Index}
-\format{A data frame with 13 columns and 2083 rows.
+\format{
+A data frame with 13 columns and 2083 rows.
 \describe{
 \item{\code{psu}}{The PSU identifier. This must use the same coding system
   used to identify the PSUs that is used in the indicators dataset}
@@ -20,7 +21,8 @@
 \item{\code{age}}{Child's age}
 \item{\code{bf}}{Child is breastfeeding (0/1)}
 \item{\code{bfStop}}{Age in months child stopped breastfeeding}
-}}
+}
+}
 \source{
 Mother and child health and nutrition survey in 3 regions of Somalia
 }

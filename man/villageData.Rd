@@ -4,7 +4,8 @@
 \name{villageData}
 \alias{villageData}
 \title{Cluster Population Weights Dataset}
-\format{A data frame with 6 columns and 117 rows:
+\format{
+A data frame with 6 columns and 117 rows:
 \describe{
 \item{\code{region}}{Region in Somalia from which the cluster belongs to}
 \item{\code{district}}{District in Somalia from which the cluster belongs to}
@@ -13,7 +14,8 @@
 \item{\code{lon}}{Longitude coordinate of the cluster}
 \item{\code{lat}}{Latitude coordinate of the cluster}
 \item{\code{pop}}{Population size of the cluster}
-}}
+}
+}
 \source{
 Mother and child health and nutrition survey in 3 regions of Somalia
 }
