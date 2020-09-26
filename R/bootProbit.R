@@ -2,15 +2,17 @@
 #
 #' PROBIT statistics function for bootstrap estimation
 #'
-#' @param x A data frame with \code{primary sampling unit (PSU)} in column named
-#'   \code{psu} and with data column/s containing the continuous variable/s of
-#'   interest with column names corresponding to \code{params} values
+#' @param x A data frame with **primary sampling unit (PSU)** in column named
+#'   `psu` and with data column/s containing the continuous variable/s of
+#'   interest with column names corresponding to `params` values
 #' @param params A vector of column names corresponding to the continuous
-#'   variables of interest contained in \code{x}
+#'   variables of interest contained in `x`
 #' @param threshold cut-off value for continuous variable to differentiate
 #'   case and non-case
+#'
 #' @return A numeric vector of the PROBIT estimate of each continuous variable
-#'   of interest with length equal to \code{length(params)}
+#'   of interest with length equal to `length(params)`
+#'
 #' @examples
 #'
 #' # Example call to bootBW function:

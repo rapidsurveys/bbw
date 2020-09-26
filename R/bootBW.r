@@ -2,27 +2,25 @@
 #'
 #' Blocked Weighted Bootstrap
 #'
-#' The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
+#' The **blocked weighted bootstrap (BBW)** is an estimation technique for
 #' use with data from two-stage cluster sampled surveys in which either prior
-#' weighting (e.g. \code{population proportional sampling} or \code{PPS} as
-#' used in \code{SMART} surveys) or posterior weighting (e.g. as used in
-#' \code{RAM} and \code{S3M} surveys).
+#' weighting (e.g. **population proportional sampling** or **PPS** as
+#' used in **SMART** surveys) or posterior weighting (e.g. as used in
+#' **RAM** and **S3M** surveys).
 #'
-#' @param x A data frame with primary sampling unit (PSU) in column named \code{psu}
-#' @param w A data frame with primary sampling unit (PSU) in column named \code{psu}
-#'   and survey weight (i.e. PSU population) in column named \code{pop}
-#' @param statistic A function operating on data in \code{x} (see Example)
-#' @param params Parameters (named columns in \code{x}) passed to the function
-#'   specified in \code{statistic}
+#' @param x A data frame with primary sampling unit (PSU) in column named `psu`
+#' @param w A data frame with primary sampling unit (PSU) in column named `psu`
+#'   and survey weight (i.e. PSU population) in column named `pop`
+#' @param statistic A function operating on data in `x` (see example)
+#' @param params Parameters (named columns in `x`) passed to the function
+#'   specified in `statistic`
 #' @param outputColumns Names of columns in output data frame
 #' @param replicates Number of bootstrap replicates
 #'
 #' @return A data frame with:
-#' \describe{
-#' \item{}{\code{ncol} = length(outputColumns)}
-#' \item{}{\code{nrow} = replicates}
-#' \item{}{\code{names} = outputColumns}
-#' }
+#'   * ncol = length(outputColumns)
+#'   * nrow = replicates
+#'   * names = outputColumns
 #'
 #' @examples
 #' # Example function - estimate a proportion for a binary (0/1) variable):
@@ -51,6 +49,7 @@
 #'
 #
 ################################################################################
+
 bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
   ## Scale weights and accumulate weights
   w$weight <- w$pop / sum(w$pop)
