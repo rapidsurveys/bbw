@@ -5,23 +5,22 @@
 \alias{indicatorsCH1}
 \title{Child Morbidity, Health Service Coverage, Anthropometry}
 \format{
-A data frame with 14 columns and 3090 rows.
-\describe{
-\item{\code{psu}}{The PSU identifier. This must use the same coding system
-used to identify the PSUs that is used in the indicators dataset}
-\item{\code{mID}}{The mother identifier}
-\item{\code{cID}}{The child identifier}
-\item{\code{ch1}}{Diarrhoea in the past 2 weeks (0/1)}
-\item{\code{ch2}}{Fever in the past 2 weeks (0/1)}
-\item{\code{ch3}}{Cough in the past 2 weeks (0/1)}
-\item{\code{ch4}}{Immunisation card (0/1)}
-\item{\code{ch5}}{BCG immunisation (0/1)}
-\item{\code{ch6}}{Vitamin A coverage in the past month (0/1)}
-\item{\code{ch7}}{Anti-helminth coverage in the past month (0/1)}
-\item{\code{sex}}{Sex of child}
-\item{\code{muac1}}{Mid-upper arm circumference in mm}
-\item{\code{muac2}}{Mid-upper arm circumference in mm}
-\item{\code{oedema}}{Oedema (0/1)}
+A data frame with 14 columns and 3090 rows.\tabular{ll}{
+   \strong{Variable} \tab \strong{Description} \cr
+   \code{psu} \tab The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset \cr
+   \code{mID} \tab The mother identifier \cr
+   \code{cID} \tab The child identifier \cr
+   \code{ch1} \tab Diarrhoea in the past 2 weeks (0/1) \cr
+   \code{ch2} \tab Fever in the past 2 weeks (0/1) \cr
+   \code{ch3} \tab Cough in the past 2 weeks (0/1) \cr
+   \code{ch4} \tab Immunisation card (0/1) \cr
+   \code{ch5} \tab BCG immunisation (0/1) \cr
+   \code{ch6} \tab Vitamin A coverage in the past month (0/1) \cr
+   \code{ch7} \tab Anti-helminth coverage in the past month (0/1) \cr
+   \code{sex} \tab Sex of child \cr
+   \code{muac1} \tab Mid-upper arm circumference in mm \cr
+   \code{muac2} \tab Mid-upper arm circumference in mm \cr
+   \code{oedema} \tab Oedema (0/1) \cr
 }
 }
 \source{

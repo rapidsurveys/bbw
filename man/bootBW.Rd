@@ -12,7 +12,7 @@ bootBW(x, w, statistic, params, outputColumns, replicates = 400)
 \item{w}{A data frame with primary sampling unit (PSU) in column named \code{psu}
 and survey weight (i.e. PSU population) in column named \code{pop}}
 
-\item{statistic}{A function operating on data in \code{x} (see Example)}
+\item{statistic}{A function operating on data in \code{x} (see example)}
 
 \item{params}{Parameters (named columns in \code{x}) passed to the function
 specified in \code{statistic}}
@@ -23,18 +23,18 @@ specified in \code{statistic}}
 }
 \value{
 A data frame with:
-\describe{
-\item{}{\code{ncol} = length(outputColumns)}
-\item{}{\code{nrow} = replicates}
-\item{}{\code{names} = outputColumns}
+\itemize{
+\item ncol = length(outputColumns)
+\item nrow = replicates
+\item names = outputColumns
 }
 }
 \description{
-The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
+The \strong{blocked weighted bootstrap (BBW)} is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
-weighting (e.g. \code{population proportional sampling} or \code{PPS} as
-used in \code{SMART} surveys) or posterior weighting (e.g. as used in
-\code{RAM} and \code{S3M} surveys).
+weighting (e.g. \strong{population proportional sampling} or \strong{PPS} as
+used in \strong{SMART} surveys) or posterior weighting (e.g. as used in
+\strong{RAM} and \strong{S3M} surveys).
 }
 \examples{
 # Example function - estimate a proportion for a binary (0/1) variable):

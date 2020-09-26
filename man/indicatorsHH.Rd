@@ -5,35 +5,32 @@
 \alias{indicatorsHH}
 \title{Mother Indicators Dataset}
 \format{
-A data frame with 24 columns and 2136 rows:
-\describe{
-\item{\code{psu}}{The PSU identifier. This must use the same coding system
-used to identify the PSUs that is used in the indicators dataset}
-\item{\code{mID}}{The mother identifier}
-\item{\code{mMUAC}}{Mothers with mid-upper arm circumference < 230 mm (0/1)}
-\item{\code{anc1}}{At least 1 antenatal care visit with a trained health
-professional (0/1)}
-\item{\code{anc2}}{At least 4 antenatal care visits with any service
-provider (0/1)}
-\item{\code{anc3}}{FeFol coverage (0/1)}
-\item{\code{anc4}}{Vitamin A coverage (0/1)}
-\item{\code{wash1}}{Improved sources of drinking water (0/1)}
-\item{\code{wash2}}{Improved sources of other water (0/1)}
-\item{\code{wash3}}{Probable safe drinking water (0/1)}
-\item{\code{wash4}}{Number of litres of water collected in a day}
-\item{\code{wash5}}{Improved toilet facilities (0/1)}
-\item{\code{wash6}}{Human waste disposal practices / behaviour (0/1)}
-\item{\code{wash7a}}{Handwashing score (from 0 to 5)}
-\item{\code{wash7b}}{Handwashing score of 5 (0/1)}
-\item{\code{hhs1}}{Household hunger score (from 0 to 6)}
-\item{\code{hhs2}}{Little or no hunger (0/1)}
-\item{\code{hhs3}}{Moderate hunger (0/1)}
-\item{\code{hhs4}}{Severe hunger (0/1)}
-\item{\code{mfg}}{Mother's dietary diversity score}
-\item{\code{pVitA}}{Plant-based vitamin A-rich foods (0/1)}
-\item{\code{aVitA}}{Animal-based vitamin A-rich foods (0/1)}
-\item{\code{xVitA}}{Any vitamin A-rich foods (0/1)}
-\item{\code{iron}}{Iron-rich foods (0/1)}
+A data frame with 24 columns and 2136 rows:\tabular{ll}{
+   \strong{Variable} \tab \strong{Description} \cr
+   \code{psu} \tab The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset \cr
+   \code{mID} \tab The mother identifier \cr
+   \code{mMUAC} \tab Mothers with mid-upper arm circumference < 230 mm (0/1) \cr
+   \code{anc1} \tab At least 1 antenatal care visit with a trained health professional (0/1) \cr
+   \code{anc2} \tab At least 4 antenatal care visits with any service provider (0/1) \cr
+   \code{anc3} \tab FeFol coverage (0/1) \cr
+   \code{anc4} \tab Vitamin A coverage (0/1) \cr
+   \code{wash1} \tab Improved sources of drinking water (0/1) \cr
+   \code{wash2} \tab Improved sources of other water (0/1) \cr
+   \code{wash3} \tab Probable safe drinking water (0/1) \cr
+   \code{wash4} \tab Number of litres of water collected in a day \cr
+   \code{wash5} \tab Improved toilet facilities (0/1) \cr
+   \code{wash6} \tab Human waste disposal practices / behaviour (0/1) \cr
+   \code{wash7a} \tab Handwashing score (from 0 to 5) \cr
+   \code{wash7b} \tab Handwashing score of 5 (0/1) \cr
+   \code{hhs1} \tab Household hunger score (from 0 to 6) \cr
+   \code{hhs2} \tab Little or no hunger (0/1) \cr
+   \code{hhs3} \tab Moderate hunger (0/1) \cr
+   \code{hhs4} \tab Severe hunger (0/1) \cr
+   \code{mfg} \tab Mother's dietary diversity score \cr
+   \code{pVitA} \tab Plant-based vitamin A-rich foods (0/1) \cr
+   \code{aVitA} \tab Animal-based vitamin A-rich foods (0/1) \cr
+   \code{xVitA} \tab Any vitamin A-rich foods (0/1) \cr
+   \code{iron} \tab Iron-rich foods (0/1) \cr
 }
 }
 \source{

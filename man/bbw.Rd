@@ -12,14 +12,10 @@ weighting (e.g. \code{population proportional sampling} or \code{PPS} as
 used in \code{Standardized Monitoring and Assessment of Relief and
 Transitions} or \code{SMART} surveys) or posterior weighting (e.g. as used in
 \code{Rapid Assessment Method} or \code{RAM} and \code{Simple Spatial
-Sampling Method} or \code{S3M} surveys). The method was developed by
-Accion contra la Faim (ACF), Brixton Health, Concern Worldwide, Global
-Alliance for Improved Nutrition (GAIN), UNICEF Sierra Leone, UNICEF Sudan and
-Valid International. It has been tested by the Centers for Disease
-Control (CDC) using infant and young child feeding (IYCF) data.
+Sampling Method} or \code{S3M} surveys).
 }
 \details{
-The bootstrap technique is summarised in this
+The bootstrap technique is described in this
 \href{https://en.wikipedia.org/wiki/Bootstrapping_(statistics)}{article}.
 The \code{BBW} used in \code{RAM} and \code{S3M} is a modification to the
 \code{percentile bootstrap} to include \code{blocking} and \code{weighting} to
