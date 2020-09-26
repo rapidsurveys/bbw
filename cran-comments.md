@@ -5,6 +5,14 @@ This is the second CRAN release of `bbw`. In this release:
 * updated package documentation specifically the DESCRIPTION, README, 
 datasets and function/s documentation and vignettes
 
+* added CodeFactor workflow
+
+* corrected some code styling to be consistent with entire package
+
+* added GitHub actions workflows for `R CMD check` and for testing coverage
+
+* changed license to GPL-3
+
 ## Test environments
 * local OS X install, R 4.0.2
 * ubuntu 16.04.6 (on travis-ci), release, devel and oldrelease
