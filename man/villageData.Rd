@@ -10,7 +10,7 @@ A data frame with 6 columns and 117 rows:
 \item{\code{region}}{Region in Somalia from which the cluster belongs to}
 \item{\code{district}}{District in Somalia from which the cluster belongs to}
 \item{\code{psu}}{The PSU identifier. This must use the same coding system
-  used to identify the PSUs that is used in the indicators dataset}
+used to identify the PSUs that is used in the indicators dataset}
 \item{\code{lon}}{Longitude coordinate of the cluster}
 \item{\code{lat}}{Latitude coordinate of the cluster}
 \item{\code{pop}}{Population size of the cluster}

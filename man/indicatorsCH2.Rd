@@ -8,7 +8,7 @@
 A data frame with 13 columns and 2083 rows.
 \describe{
 \item{\code{psu}}{The PSU identifier. This must use the same coding system
-  used to identify the PSUs that is used in the indicators dataset}
+used to identify the PSUs that is used in the indicators dataset}
 \item{\code{mID}}{The mother identifier}
 \item{\code{cID}}{The child identifier}
 \item{\code{ebf}}{Exclusive breastfeeding (0/1)}

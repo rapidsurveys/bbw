@@ -73,8 +73,8 @@ efficient approach
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/validmeasures/bbw}
-  \item Report bugs at \url{https://github.com/validmeasures/bbw/issues}
+  \item \url{https://github.com/rapidsurveys/bbw}
+  \item Report bugs at \url{https://github.com/rapidsurveys/bbw/issues}
 }
 
 }

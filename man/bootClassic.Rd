@@ -16,7 +16,7 @@ of interest contained in \code{x}}
 }
 \value{
 A numeric vector of the mean of each binary variable of interest with
-  length equal to \code{length(params)}
+length equal to \code{length(params)}
 }
 \description{
 Simple proportion statistics function for bootstrap estimation

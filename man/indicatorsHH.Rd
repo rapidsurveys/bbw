@@ -8,13 +8,13 @@
 A data frame with 24 columns and 2136 rows:
 \describe{
 \item{\code{psu}}{The PSU identifier. This must use the same coding system
-  used to identify the PSUs that is used in the indicators dataset}
+used to identify the PSUs that is used in the indicators dataset}
 \item{\code{mID}}{The mother identifier}
 \item{\code{mMUAC}}{Mothers with mid-upper arm circumference < 230 mm (0/1)}
 \item{\code{anc1}}{At least 1 antenatal care visit with a trained health
-  professional (0/1)}
+professional (0/1)}
 \item{\code{anc2}}{At least 4 antenatal care visits with any service
-  provider (0/1)}
+provider (0/1)}
 \item{\code{anc3}}{FeFol coverage (0/1)}
 \item{\code{anc4}}{Vitamin A coverage (0/1)}
 \item{\code{wash1}}{Improved sources of drinking water (0/1)}
