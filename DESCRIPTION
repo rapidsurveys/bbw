@@ -1,7 +1,7 @@
 Package: bbw
 Type: Package
 Title: Blocked Weighted Bootstrap
-Version: 0.1.4
+Version: 0.2.0
 Authors@R: c(
     person("Mark", "Myatt", email = "mark@brixtonhealth.com", role = "aut"),
     person("Ernest", "Guevarra", comment = c(ORCID = "0000-0002-4887-4415"), 
