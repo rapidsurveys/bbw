@@ -25,7 +25,7 @@ The `blocked weighted bootstrap (BBW)` is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either
 prior weighting (e.g. *population-proportional sampling* or *PPS* as
 used in **Standardized Monitoring and Assessment of Relief and
-Transiations** or **SMART** surveys) or *posterior weighting* (e.g. as
+Transitions** or **SMART** surveys) or *posterior weighting* (e.g. as
 used in **Rapid Assessment Method** or **RAM** and **Simple Spatial
 Sampling Method** or **S3M** surveys) is implemented. The method was
 developed by Brixton Health, Global Alliance for Improved Nutrition,
