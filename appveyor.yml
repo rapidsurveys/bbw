@@ -31,17 +31,17 @@ environment:
     WARNINGS_ARE_ERRORS: 1
 
   matrix:
-    #- R_VERSION: release
-    #  R_ARCH: x64
-
-    - R_VERSION: devel
+    - R_VERSION: release
       R_ARCH: x64
 
-    #- R_VERSION: release
-    #  R_ARCH: i386
+    #- R_VERSION: devel
+    #  R_ARCH: x64
 
-    - R_VERSION: devel
+    - R_VERSION: release
       R_ARCH: i386
+
+    #- R_VERSION: devel
+    #  R_ARCH: i386
 
 artifacts:
   - path: '*.Rcheck\**\*.log'
