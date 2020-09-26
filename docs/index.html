@@ -17,12 +17,9 @@
     prior weighting (e.g. population-proportional sampling or PPS as used in 
     Standardized Monitoring and Assessment of Relief and Transitions or SMART 
     surveys) or posterior weighting (e.g. as used in rapid assessment method or
-    RAM and simple spatial sampling method or S3M surveys) is implemented.
-    The method was developed by Brixton Health, Global Alliance for Improved 
-    Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has 
-    been tested by the Centers for Disease Control (CDC) using infant and young 
-    child feeding (IYCF) data. See Cameron et al (2008) &lt;doi:10.1162/rest.90.3.414&gt; 
-    for application of bootstrap to cluster samples. See Aaron et al (2016) 
+    RAM and simple spatial sampling method or S3M surveys) is implemented. See 
+    Cameron et al (2008) &lt;doi:10.1162/rest.90.3.414&gt; for application of 
+    bootstrap to cluster samples. See Aaron et al (2016) 
     &lt;doi:10.1371/journal.pone.0163176&gt; and Aaron et al (2016) 
     &lt;doi:10.1371/journal.pone.0162462&gt; for application of the blocked weighted 
     bootstrap to estimate indicators from two-stage cluster sampled surveys.">
@@ -94,7 +91,7 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>The <code>blocked weighted bootstrap (BBW)</code> is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. <em>population-proportional sampling</em> or <em>PPS</em> as used in <strong>Standardized Monitoring and Assessment of Relief and Transitions</strong> or <strong>SMART</strong> surveys) or <em>posterior weighting</em> (e.g. as used in <strong>Rapid Assessment Method</strong> or <strong>RAM</strong> and <strong>Simple Spatial Sampling Method</strong> or <strong>S3M</strong> surveys) is implemented. The method was developed by Brixton Health, Global Alliance for Improved Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has been tested by the Centers for Disease Control (CDC) using infant and young child feeding (IYCF) data.</p>
+<p>The <strong>blocked weighted bootstrap</strong> is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. <em>population-proportional sampling</em> or <em>PPS</em> as used in <strong>Standardized Monitoring and Assessment of Relief and Transitions</strong> or <strong>SMART</strong> surveys) or <em>posterior weighting</em> (e.g. as used in <strong>Rapid Assessment Method</strong> or <strong>RAM</strong> and <strong>Simple Spatial Sampling Method</strong> or <strong>S3M</strong> surveys) is implemented.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -110,13 +107,13 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>The <code>bbw</code> used in <strong>RAM</strong> and <strong>S3M</strong> is a modification to the <code>percentile bootstrap</code> to include <em>blocking</em> and <em>weighting</em> to account for a <em>complex sample design</em>.</p>
-<p>With <strong>RAM</strong> and <strong>S3M</strong> surveys, the sample is complex in the sense that it is an unweighted cluster sample. Data analysis procedures need to account for the sample design. A <code>blocked weighted bootstrap (bbw)</code> can be used:</p>
+<p><code>bbw</code> as used in <strong>RAM</strong> and <strong>S3M</strong> is a modification to the <em>percentile bootstrap</em> to include <em>blocking</em> and <em>weighting</em> to account for a <em>complex sample design</em>.</p>
+<p>With <strong>RAM</strong> and <strong>S3M</strong> surveys, the sample is complex in the sense that it is an unweighted cluster sample. Data analysis procedures need to account for the sample design. A <strong>blocked weighted bootstrap</strong> can be used:</p>
 <p><br></p>
 <p><strong>Blocked</strong>: The block corresponds to the primary sampling unit (<em>PSU = cluster</em>). <em>PSU</em>s are resampled with replacement. Observations within the resampled <em>PSU</em>s are also sampled with replacement.</p>
 <p><strong>Weighted</strong>: <strong>RAM</strong> and <strong>S3M</strong> samples do not use <em>population proportional sampling (PPS)</em> to weight the sample prior to data collection (e.g. as is done with <strong>SMART</strong> surveys). This means that a posterior weighting procedure is required. <code>bbw</code> uses a <em>“roulette wheel”</em> algorithm (see <a href="#FIG1">illustration below</a>) to weight (i.e. by population) the selection probability of <em>PSU</em>s in bootstrap replicates.</p>
 <p><img src="reference/figures/rouletteWheel.png" width="50%" style="display: block; margin: auto;"></p>
-<p>In the case of prior weighting by <em>PPS</em> all clusters are given the same weight. With posterior weighting (as in <strong>RAM</strong> or <strong>S3M</strong>) the weight is the population of each <em>PSU</em>. This procedure is very similar to the <code>fitness proportional selection</code> technique used in <em>evolutionary computing</em>.</p>
+<p>In the case of prior weighting by <em>PPS</em> all clusters are given the same weight. With posterior weighting (as in <strong>RAM</strong> or <strong>S3M</strong>) the weight is the population of each <em>PSU</em>. This procedure is very similar to the <em>fitness proportional selection</em> technique used in <em>evolutionary computing</em>.</p>
 <p>A total of <em>m</em> <em>PSU</em>s are sampled with replacement for each bootstrap replicate (where <em>m</em> is the number of <em>PSU</em>s in the survey sample).</p>
 <p>The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (<em>95% LCL</em>), 0.5th (<em>point estimate</em>), and 0.975th (<em>95% UCL</em>) quantiles of the distribution of the statistic across all survey replicates.</p>
 <p>The main reason to use <code>bbw</code> is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The <code>bbw</code> also allows for a wider range of hypothesis tests to be used with complex sample survey data.</p>
@@ -169,7 +166,7 @@
 <li><a href="https://CRAN.R-project.org/package=bbw"><img src="http://cranlogs.r-pkg.org/badges/grand-total/bbw" alt="CRAN"></a></li>
 <li><a href="https://travis-ci.org/rapidsurveys/bbw"><img src="https://img.shields.io/travis/rapidsurveys/bbw.svg?branch=master" alt="Travis"></a></li>
 <li><a href="https://ci.appveyor.com/project/rapidsurveys/bbw/branch/master"><img src="https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true" alt="Build status"></a></li>
-<li><a href="https://codecov.io/gh/rapidsurveys/bbw"><img src="https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://codecov.io/gh/rapidsurveys/bbw?branch=master"><img src="https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 </div>

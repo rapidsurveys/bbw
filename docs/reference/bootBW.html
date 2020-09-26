@@ -124,11 +124,11 @@ RAM and S3M surveys)." />
     </div>
 
     <div class="ref-description">
-    <p>The <code>blocked weighted bootstrap (BBW)</code> is an estimation technique for
+    <p>The <strong>blocked weighted bootstrap (BBW)</strong> is an estimation technique for
 use with data from two-stage cluster sampled surveys in which either prior
-weighting (e.g. <code>population proportional sampling</code> or <code>PPS</code> as
-used in <code>SMART</code> surveys) or posterior weighting (e.g. as used in
-<code>RAM</code> and <code>S3M</code> surveys).</p>
+weighting (e.g. <strong>population proportional sampling</strong> or <strong>PPS</strong> as
+used in <strong>SMART</strong> surveys) or posterior weighting (e.g. as used in
+<strong>RAM</strong> and <strong>S3M</strong> surveys).</p>
     </div>
 
     <pre class="usage"><span class='fu'>bootBW</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>w</span>, <span class='va'>statistic</span>, <span class='va'>params</span>, <span class='va'>outputColumns</span>, replicates <span class='op'>=</span> <span class='fl'>400</span><span class='op'>)</span></pre>
@@ -147,7 +147,7 @@ and survey weight (i.e. PSU population) in column named <code>pop</code></p></td
     </tr>
     <tr>
       <th>statistic</th>
-      <td><p>A function operating on data in <code>x</code> (see Example)</p></td>
+      <td><p>A function operating on data in <code>x</code> (see example)</p></td>
     </tr>
     <tr>
       <th>params</th>
@@ -166,12 +166,11 @@ specified in <code>statistic</code></p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with:</p><dl>
-<dt></dt><dd><p><code>ncol</code> = length(outputColumns)</p></dd>
-<dt></dt><dd><p><code>nrow</code> = replicates</p></dd>
-<dt></dt><dd><p><code>names</code> = outputColumns</p></dd>
-
-</dl>
+    <p>A data frame with:</p><ul>
+<li><p>ncol = length(outputColumns)</p></li>
+<li><p>nrow = replicates</p></li>
+<li><p>names = outputColumns</p></li>
+</ul>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

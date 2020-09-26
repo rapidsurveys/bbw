@@ -85,14 +85,14 @@
 
     
     
-<p>The <code>blocked weighted bootstrap (BBW)</code> is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. <em>population-proportional sampling</em> or <em>PPS</em> as used in <strong>Standardized Monitoring and Assessment of Relief and Transitions</strong> or <strong>SMART</strong> surveys) or <em>posterior weighting</em> (e.g. as used in <strong>Rapid Assessment Method</strong> or <strong>RAM</strong> and <strong>Simple Spatial Sampling Method</strong> or <strong>S3M</strong> surveys). The method was developed by Accion Contra la Faim, Brixton Health, Concern Worldwide, Global Alliance for Improved Nutrition, UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has been tested by the Centers for Disease Control (CDC) using infant and young child feeding (IYCF) data.</p>
+<p>The <strong>blocked weighted bootstrap</strong> is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. <em>population-proportional sampling</em> or <em>PPS</em> as used in <strong>Standardized Monitoring and Assessment of Relief and Transitions</strong> or <strong>SMART</strong> surveys) or <em>posterior weighting</em> (e.g. as used in <strong>Rapid Assessment Method</strong> or <strong>RAM</strong> and <strong>Simple Spatial Sampling Method</strong> or <strong>S3M</strong> surveys).</p>
 <p><br></p>
-<p>The bootstrap technique is summarised in this <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">article</a>. The <code>BBW</code> used in <strong>RAM</strong> and <strong>S3M</strong> is a modification to the <code>percentile bootstrap</code> to include <em>blocking</em> and <em>weighing</em> to account for a <em>complex sample design</em>.</p>
+<p>The bootstrap technique is described in this <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">article</a>. The <strong>blocked weighted bootstrap</strong> used in <strong>RAM</strong> and <strong>S3M</strong> is a modification to the <em>percentile bootstrap</em> to include <em>blocking</em> and <em>weighing</em> to account for a <em>complex sample design</em>.</p>
 <p><br></p>
-<p>With <strong>RAM</strong> and <strong>S3M</strong> surveys, the sample is complex in the sense that it is an unweighted cluster sample. Data analysis procedures need to account for the sample design. A <code>blocked weighted bootstrap (BBW)</code> can be used:</p>
+<p>With <strong>RAM</strong> and <strong>S3M</strong> surveys, the sample is complex in the sense that it is an unweighted cluster sample. Data analysis procedures need to account for the sample design. A <em>blocked weighted bootstrap</em> can be used:</p>
 <p><br></p>
 <p><strong>Blocked</strong>: The block corresponds to the primary sampling unit (<span class="math inline">\(PSU = cluster\)</span>). <em>PSU</em>s are resampled with replacement. Observations within the resampled <em>PSU</em>s are also sampled with replacement.</p>
-<p><strong>Weighted</strong>: <strong>RAM</strong> and <strong>S3M</strong> samples do not use <em>population proportional sampling (PPS)</em> to weight the sample prior to data collection (e.g. as is done with <strong>SMART</strong> surveys). This means that a posterior weighting procedure is required. <code>BBW</code> uses a <em>“roulette wheel”</em> algorithm (see <a href="#FIG1">Figure 1</a> below) to weight (i.e. by population) the selection probability of <em>PSU</em>s in bootstrap replicates.</p>
+<p><strong>Weighted</strong>: <strong>RAM</strong> and <strong>S3M</strong> samples do not use <em>population proportional sampling (PPS)</em> to weight the sample prior to data collection (e.g. as is done with <strong>SMART</strong> surveys). This means that a posterior weighting procedure is required. <code>bbw</code> uses a <em>“roulette wheel”</em> algorithm (see <a href="#FIG1">Figure 1</a> below) to weight (i.e. by population) the selection probability of <em>PSU</em>s in bootstrap replicates.</p>
 <p><br></p>
 <a name="FIG1"></a> <strong>Figure 1:</strong> Roulette wheel algorithm
 <p align="center">
@@ -104,15 +104,15 @@
 <p><br></p>
 <p>The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (<em>95% LCL</em>), 0.5th (<em>point estimate</em>), and 0.975th (<em>95% UCL</em>) quantiles of the distribution of the statistic across all survey replicates.</p>
 <p><br></p>
-<p>Early versions of the <code>BBW</code> did not resample observations within <em>PSU</em>s following:</p>
+<p>Early versions of the <code>bbw</code> did not resample observations within <em>PSU</em>s following:</p>
 <p><br></p>
 <blockquote>
 <p>Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for inference with clustered errors, Review of Economics and Statistics, 2008:90;414–427 &lt;doi.org/10.1162/rest.90.3.414&gt;</p>
 </blockquote>
 <p><br></p>
-<p>and used a large number (e.g. <span class="math inline">\(3999\)</span>) survey replicates. Current versions of the <code>BBW</code> resample observations within <em>PSU</em>s and use a smaller number of survey replicates (e.g. <span class="math inline">\(n = 400\)</span>). This is a more computationally efficient approach.</p>
+<p>and used a large number (e.g. <span class="math inline">\(3999\)</span>) survey replicates. Current versions of the <code>bbw</code> resample observations within <em>PSU</em>s and use a smaller number of survey replicates (e.g. <span class="math inline">\(n = 400\)</span>). This is a more computationally efficient approach.</p>
 <p><br></p>
-<p>The main reason to use <code>BBW</code> is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The <code>BBW</code> also allows for a wider range of hypothesis tests to be used with complex sample survey data.</p>
+<p>The main reason to use <code>bbw</code> is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The <code>bbw</code> also allows for a wider range of hypothesis tests to be used with complex sample survey data.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
