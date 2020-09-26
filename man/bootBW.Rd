@@ -2,7 +2,7 @@
 % Please edit documentation in R/bootBW.r
 \name{bootBW}
 \alias{bootBW}
-\title{\code{bootBW} : Blocked Weighted Bootstrap}
+\title{Blocked Weighted Bootstrap}
 \usage{
 bootBW(x, w, statistic, params, outputColumns, replicates = 400)
 }
