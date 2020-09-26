@@ -71,6 +71,8 @@
 #' @importFrom stats runif na.omit pnorm sd
 #' @importFrom car powerTransform
 #' @importFrom car bcPower
+#' @importFrom withr with_options
+#'
 #
 ################################################################################
 "_PACKAGE"

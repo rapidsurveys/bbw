@@ -67,18 +67,18 @@ bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
   ## Vector to hold clusters to be included in a survey replicate
   sampledClusters <- vector(mode = mode(x$psu), length = nClusters)
   ## And now ... resample!
-  for(i in 1:replicates) {
+  for(i in seq_len(replicates)) {
     ## Create a dataframe to hold a survey replicate
     xBW <- emptyDF
     ## Blocking Bootstrap from 'x' (blocking on x$psu = cluster identifier)
-    for(j in 1:nClusters) {
+    for(j in seq_len(nClusters)) {
       ## "Roulette Wheel" algorithm (to select a weighted sample of clusters)
       sampledClusters[j] <- w$psu[which.max(w$cumWeight >= runif(n = 1, min = 0, max = 1))]
     }
     ## Pointer for inserting selected clusters into the survey replicate
     rowIndex <- 1
     ## Build a (blocking weighted) bootstrap replicate from the selected clusters
-    for(k in 1:nClusters) {
+    for(k in seq_len(nClusters)) {
       ## Extract data for cluster and resample within the cluster
       y <- subset(x, psu == sampledClusters[k])
       clusterN <- nrow(y)

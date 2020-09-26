@@ -23,7 +23,7 @@
 
 bootClassic <- function(x, params) {
   result <- vector(mode = "numeric", length = length(params))
-  for(i in 1:length(params)) {
+  for(i in seq_len(length(params))) {
     result[i]  <- mean(x[[params[i]]], na.rm = TRUE)
   }
   return(result)
