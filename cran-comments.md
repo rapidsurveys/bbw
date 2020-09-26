@@ -1,30 +1,28 @@
-## Resubmission - 16 January 2018
-This is resubmission. In this version, I have corrected the DOI references
-format as per required specification. Checks run with results below.
+## Release summary
 
-## Resubmission - 16 January 2018
-This is a resubmission. In this version, I have added references to classical
-approach to bootstrapping for cluster samples and references for application of
-the blocked weighted bootstrap for analysing data from cluster surveys. Checks
-run with results below.
+This is the second CRAN release of `bbw`. In this release:
 
-## Resubmission - 15 January 2018
-This is a resubmission. In this version, I have corrected the authors'
-specifications in the DESCRIPTION by combining a series of calls to person().
-Checks run with the changes results are below.
+* updated package documentation specifically the DESCRIPTION, README, 
+datasets and function/s documentation and vignettes
 
 ## Test environments
-* local OS X install, R 3.4.3
-* ubuntu 12.04 (on travis-ci), R 3.4.2
-* local ubuntu 16.04 install, R 3.4.3
-* win-builder (devel and release)
-* windows (on appveyor), R 3.4.3
+* local OS X install, R 4.0.2
+* ubuntu 16.04.6 (on travis-ci), release, devel and oldrelease
+* local ubuntu 16.04 install, R 18.04.5
+* win-builder (devel, release and old release)
+* windows (on appveyor), x64 release, i386 release
+* github actions windows-latest, r: release
+* github actions macOS-latest, r: release
+* github actions ubuntu-20.04, r: release, devel
+* rhub windows-latest r devel
+* rhub ubuntu 16.04 r release
+* rhub fedora r devel
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+0 errors | 0 warnings | 0 notes
 
 ## Reverse dependencies
-This is a new release, so there are no reverse/downstream dependencies.
+`bbw` doesn't have any downstream / reverse dependencies 
+(see https://github.com/rapidsurveys/ppitables/tree/master/revdep)
+
