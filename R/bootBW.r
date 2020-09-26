@@ -1,6 +1,6 @@
 ################################################################################
 #'
-#' \code{bootBW} : Blocked Weighted Bootstrap
+#' Blocked Weighted Bootstrap
 #'
 #' The \code{blocked weighted bootstrap (BBW)} is an estimation technique for
 #' use with data from two-stage cluster sampled surveys in which either prior
@@ -16,12 +16,14 @@
 #'   specified in \code{statistic}
 #' @param outputColumns Names of columns in output data frame
 #' @param replicates Number of bootstrap replicates
+#'
 #' @return A data frame with:
 #' \describe{
 #' \item{}{\code{ncol} = length(outputColumns)}
 #' \item{}{\code{nrow} = replicates}
 #' \item{}{\code{names} = outputColumns}
 #' }
+#'
 #' @examples
 #' # Example function - estimate a proportion for a binary (0/1) variable):
 #'
