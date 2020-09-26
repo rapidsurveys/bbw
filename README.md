@@ -16,7 +16,9 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 [![Travis](https://img.shields.io/travis/rapidsurveys/bbw.svg?branch=master)](https://travis-ci.org/rapidsurveys/bbw)
 [![Build
 status](https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true)](https://ci.appveyor.com/project/rapidsurveys/bbw/branch/master)
-[![codecov](https://codecov.io/gh/rapidsuveys/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/rapidsurveys/bbw)
+![R-CMD-check](https://github.com/rapidsurveys/bbw/workflows/R-CMD-check/badge.svg)
+[![codecov](https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/rapidsurveys/bbw)
+![test-coverage](https://github.com/rapidsurveys/bbw/workflows/test-coverage/badge.svg)
 <!-- badges: end -->
 
 ## Overview
