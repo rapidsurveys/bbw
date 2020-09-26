@@ -7,7 +7,7 @@
 bootPROBIT(x, params, threshold = THRESHOLD)
 }
 \arguments{
-\item{x}{A data frame with \code{primary sampling unit (PSU)} in column named
+\item{x}{A data frame with \strong{primary sampling unit (PSU)} in column named
 \code{psu} and with data column/s containing the continuous variable/s of
 interest with column names corresponding to \code{params} values}
 

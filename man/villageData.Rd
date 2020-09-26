@@ -5,15 +5,14 @@
 \alias{villageData}
 \title{Cluster Population Weights Dataset}
 \format{
-A data frame with 6 columns and 117 rows:
-\describe{
-\item{\code{region}}{Region in Somalia from which the cluster belongs to}
-\item{\code{district}}{District in Somalia from which the cluster belongs to}
-\item{\code{psu}}{The PSU identifier. This must use the same coding system
-used to identify the PSUs that is used in the indicators dataset}
-\item{\code{lon}}{Longitude coordinate of the cluster}
-\item{\code{lat}}{Latitude coordinate of the cluster}
-\item{\code{pop}}{Population size of the cluster}
+A data frame with 6 columns and 117 rows:\tabular{ll}{
+   \strong{Variable} \tab \strong{Description} \cr
+   \code{region} \tab Region in Somalia from which the cluster belongs to \cr
+   \code{district} \tab District in Somalia from which the cluster belongs to \cr
+   \code{psu} \tab The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset \cr
+   \code{lon} \tab Longitude coordinate of the cluster \cr
+   \code{lat} \tab Latitude coordinate of the cluster \cr
+   \code{pop} \tab Population size of the cluster \cr
 }
 }
 \source{

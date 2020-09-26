@@ -7,7 +7,7 @@
 bootClassic(x, params)
 }
 \arguments{
-\item{x}{A data frame with \code{primary sampling unit (PSU)} in column named
+\item{x}{A data frame with \strong{primary sampling unit (PSU)} in column named
 \code{psu} and with data column/s containing the binary variable/s (0/1) of
 interest with column names corresponding to \code{params} values}
 
@@ -22,7 +22,6 @@ length equal to \code{length(params)}
 Simple proportion statistics function for bootstrap estimation
 }
 \examples{
-
 # Example call to bootClassic function
 
 meanResults <- bootClassic(x = indicatorsHH,

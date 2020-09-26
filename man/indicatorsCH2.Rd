@@ -5,22 +5,21 @@
 \alias{indicatorsCH2}
 \title{Infant and Child Feeding Index}
 \format{
-A data frame with 13 columns and 2083 rows.
-\describe{
-\item{\code{psu}}{The PSU identifier. This must use the same coding system
-used to identify the PSUs that is used in the indicators dataset}
-\item{\code{mID}}{The mother identifier}
-\item{\code{cID}}{The child identifier}
-\item{\code{ebf}}{Exclusive breastfeeding (0/1)}
-\item{\code{cbf}}{Continued breastfeeding (0/1)}
-\item{\code{ddd}}{Dietary diversity (0/1)}
-\item{\code{mfd}}{Meal frequency (0/1)}
-\item{\code{icfi}}{Infant and child feeding index (from 0 to 6)}
-\item{\code{iycf}}{Good IYCF}
-\item{\code{icfiProp}}{Good ICFI}
-\item{\code{age}}{Child's age}
-\item{\code{bf}}{Child is breastfeeding (0/1)}
-\item{\code{bfStop}}{Age in months child stopped breastfeeding}
+A data frame with 13 columns and 2083 rows.\tabular{ll}{
+   \strong{Variable} \tab \strong{Description} \cr
+   \code{psu} \tab The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset \cr
+   \code{mID} \tab The mother identifier \cr
+   \code{cID} \tab The child identifier \cr
+   \code{ebf} \tab Exclusive breastfeeding (0/1) \cr
+   \code{cbf} \tab Continued breastfeeding (0/1) \cr
+   \code{ddd} \tab Dietary diversity (0/1) \cr
+   \code{mfd} \tab Meal frequency (0/1) \cr
+   \code{icfi} \tab Infant and child feeding index (from 0 to 6) \cr
+   \code{iycf} \tab Good IYCF \cr
+   \code{icfiProp} \tab Good ICFI \cr
+   \code{age} \tab Child's age \cr
+   \code{bf} \tab Child is breastfeeding (0/1) \cr
+   \code{bfStop} \tab Age in months child stopped breastfeeding \cr
 }
 }
 \source{
