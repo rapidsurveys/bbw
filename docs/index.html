@@ -112,7 +112,10 @@
 <p><br></p>
 <p><strong>Blocked</strong>: The block corresponds to the primary sampling unit (<em>PSU = cluster</em>). <em>PSU</em>s are resampled with replacement. Observations within the resampled <em>PSU</em>s are also sampled with replacement.</p>
 <p><strong>Weighted</strong>: <strong>RAM</strong> and <strong>S3M</strong> samples do not use <em>population proportional sampling (PPS)</em> to weight the sample prior to data collection (e.g. as is done with <strong>SMART</strong> surveys). This means that a posterior weighting procedure is required. <code>bbw</code> uses a <em>“roulette wheel”</em> algorithm (see <a href="#FIG1">illustration below</a>) to weight (i.e. by population) the selection probability of <em>PSU</em>s in bootstrap replicates.</p>
+<p align="center">
+</p>
 <p><img src="reference/figures/rouletteWheel.png" width="50%" style="display: block; margin: auto;"></p>
+
 <p>In the case of prior weighting by <em>PPS</em> all clusters are given the same weight. With posterior weighting (as in <strong>RAM</strong> or <strong>S3M</strong>) the weight is the population of each <em>PSU</em>. This procedure is very similar to the <em>fitness proportional selection</em> technique used in <em>evolutionary computing</em>.</p>
 <p>A total of <em>m</em> <em>PSU</em>s are sampled with replacement for each bootstrap replicate (where <em>m</em> is the number of <em>PSU</em>s in the survey sample).</p>
 <p>The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (<em>95% LCL</em>), 0.5th (<em>point estimate</em>), and 0.975th (<em>95% UCL</em>) quantiles of the distribution of the statistic across all survey replicates.</p>
@@ -167,6 +170,7 @@
 <li><a href="https://travis-ci.org/rapidsurveys/bbw"><img src="https://img.shields.io/travis/rapidsurveys/bbw.svg?branch=master" alt="Travis"></a></li>
 <li><a href="https://ci.appveyor.com/project/rapidsurveys/bbw/branch/master"><img src="https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true" alt="Build status"></a></li>
 <li><a href="https://codecov.io/gh/rapidsurveys/bbw?branch=master"><img src="https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/rapidsurveys/bbw"><img src="https://www.codefactor.io/repository/github/rapidsurveys/bbw/badge" alt="CodeFactor"></a></li>
 </ul>
 </div>
 </div>
