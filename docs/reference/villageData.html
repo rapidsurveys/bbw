@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,6 @@
 posterior weighting with the blocked weighted bootstrap approach. This
 dataset is from a mother and child health and nutrition survey conducted in
 4 districts from 3 regions in Somalia." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ dataset is from a mother and child health and nutrition survey conducted in
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -96,7 +99,7 @@ dataset is from a mother and child health and nutrition survey conducted in
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/validmeasures/bbw">
+  <a href="https://github.com/rapidsurveys/bbw/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -115,7 +118,7 @@ dataset is from a mother and child health and nutrition survey conducted in
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Cluster Population Weights Dataset</h1>
-    <small class="dont-index">Source: <a href='https://github.com/validmeasures/bbw/blob/master/R/bbw.R'><code>R/bbw.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/rapidsurveys/bbw/blob/master/R/data.R'><code>R/data.R</code></a></small>
     <div class="hidden name"><code>villageData.Rd</code></div>
     </div>
 
@@ -126,33 +129,151 @@ dataset is from a mother and child health and nutrition survey conducted in
 4 districts from 3 regions in Somalia.</p>
     </div>
 
-    <pre class="usage"><span class='no'>villageData</span></pre>
+    <pre class="usage"><span class='va'>villageData</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 6 columns and 117 rows:</p><dl class='dl-horizontal'>
+    <p>A data frame with 6 columns and 117 rows:</p><dl>
 <dt><code>region</code></dt><dd><p>Region in Somalia from which the cluster belongs to</p></dd>
 <dt><code>district</code></dt><dd><p>District in Somalia from which the cluster belongs to</p></dd>
 <dt><code>psu</code></dt><dd><p>The PSU identifier. This must use the same coding system
-  used to identify the PSUs that is used in the indicators dataset</p></dd>
+used to identify the PSUs that is used in the indicators dataset</p></dd>
 <dt><code>lon</code></dt><dd><p>Longitude coordinate of the cluster</p></dd>
 <dt><code>lat</code></dt><dd><p>Latitude coordinate of the cluster</p></dd>
 <dt><code>pop</code></dt><dd><p>Population size of the cluster</p></dd>
 
 </dl>
+
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>Mother and child health and nutrition survey in 3 regions of Somalia</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>villageData</span>
+</div><div class='output co'>#&gt;              region  district psu      lon      lat   pop
+#&gt; 1   Middle Shabelle     Balad  54       NA       NA   972
+#&gt; 2   Middle Shabelle     Balad  52       NA       NA  7290
+#&gt; 3   Middle Shabelle    Jowhar  20 45.27875 2.439890  1500
+#&gt; 4   Middle Shabelle    Jowhar   2 45.30573 2.404840   870
+#&gt; 5   Middle Shabelle     Balad  34 45.14977 2.202420  2700
+#&gt; 6   Middle Shabelle     Balad  39 45.20709 2.333073  3000
+#&gt; 7   Middle Shabelle     Balad  33 45.21939 2.244340  2400
+#&gt; 8   Middle Shabelle     Balad  26 45.29041 2.292640  1080
+#&gt; 9   Middle Shabelle     Balad  41       NA       NA  3936
+#&gt; 10  Middle Shabelle     Balad  37 45.23932 2.108720  3300
+#&gt; 11  Middle Shabelle     Balad  40       NA       NA  3600
+#&gt; 12  Middle Shabelle     Balad  22 45.52795 2.260980  3600
+#&gt; 13  Middle Shabelle     Balad  28 45.29514 2.305110  1800
+#&gt; 14  Middle Shabelle    Jowhar  14       NA       NA   510
+#&gt; 15  Middle Shabelle    Jowhar  10       NA       NA   798
+#&gt; 16  Middle Shabelle     Balad  25 45.28563 2.289360  1500
+#&gt; 17  Middle Shabelle     Balad  21 45.23162 2.216730 12650
+#&gt; 18  Middle Shabelle    Jowhar   6 45.53803 2.396500   830
+#&gt; 19  Middle Shabelle     Balad  48       NA       NA   570
+#&gt; 20  Middle Shabelle     Balad  46       NA       NA  2574
+#&gt; 21  Middle Shabelle    Jowhar   8       NA       NA   660
+#&gt; 22  Middle Shabelle     Balad  32 45.21228 2.269420  3300
+#&gt; 23  Middle Shabelle     Balad  31 45.18030 2.155880  1800
+#&gt; 24  Middle Shabelle     Balad  55       NA       NA   690
+#&gt; 25  Middle Shabelle     Balad  44       NA       NA  2166
+#&gt; 26  Middle Shabelle     Balad  47       NA       NA   894
+#&gt; 27  Middle Shabelle     Balad  50       NA       NA  1860
+#&gt; 28  Middle Shabelle     Balad  24 45.27693 2.251100  1050
+#&gt; 29  Middle Shabelle    Jowhar  13       NA       NA  1278
+#&gt; 30  Middle Shabelle    Jowhar   9 45.30002 2.443480  1630
+#&gt; 31  Middle Shabelle    Jowhar  19 45.27760 2.438220   900
+#&gt; 32  Middle Shabelle    Jowhar  18 45.27951 2.437200  2400
+#&gt; 33  Middle Shabelle     Balad  27 45.29648 2.307950  3000
+#&gt; 34  Middle Shabelle    Jowhar  15       NA       NA  1814
+#&gt; 35  Middle Shabelle     Balad  45       NA       NA  2556
+#&gt; 36  Middle Shabelle     Balad  43       NA       NA   900
+#&gt; 37  Middle Shabelle    Jowhar   4 45.30514 2.464600  3000
+#&gt; 38  Middle Shabelle    Jowhar  11 45.53059 2.414410  6430
+#&gt; 39  Middle Shabelle     Balad  38 45.19637 2.357950  4020
+#&gt; 40  Middle Shabelle     Balad  57       NA       NA   940
+#&gt; 41  Middle Shabelle    Jowhar  17 45.53053 2.435260   516
+#&gt; 42  Middle Shabelle     Balad  23 45.52513 2.233440  2100
+#&gt; 43  Middle Shabelle     Balad  56       NA       NA  1002
+#&gt; 44  Middle Shabelle     Balad  53       NA       NA  1230
+#&gt; 45  Middle Shabelle    Jowhar   7       NA       NA   490
+#&gt; 46  Middle Shabelle     Balad  58       NA       NA  1116
+#&gt; 47  Middle Shabelle     Balad  42       NA       NA  2520
+#&gt; 48  Middle Shabelle     Balad  36       NA       NA  1680
+#&gt; 49  Middle Shabelle     Balad  35 45.14918 2.195880  2220
+#&gt; 50  Middle Shabelle     Balad  51       NA       NA  3420
+#&gt; 51  Middle Shabelle     Balad  49       NA       NA  1344
+#&gt; 52  Middle Shabelle     Balad  29 45.24641 2.217770  4225
+#&gt; 53  Middle Shabelle     Balad  30 45.29125 2.305350  3300
+#&gt; 54  Middle Shabelle    Jowhar   3 45.30000 4.443230  1790
+#&gt; 55  Middle Shabelle    Jowhar   1 45.30311 2.468530   900
+#&gt; 56  Middle Shabelle    Jowhar   5       NA       NA  1200
+#&gt; 58              Bay    Baidoa  80       NA       NA  1200
+#&gt; 59              Bay    Baidoa  81       NA       NA   800
+#&gt; 60              Bay    Baidoa  82       NA       NA   950
+#&gt; 61              Bay    Baidoa  83       NA       NA  1200
+#&gt; 62              Bay    Baidoa  84       NA       NA   700
+#&gt; 63              Bay    Baidoa  85       NA       NA   800
+#&gt; 64              Bay    Baidoa  86       NA       NA   400
+#&gt; 65              Bay    Baidoa  87       NA       NA   700
+#&gt; 66              Bay    Baidoa  88       NA       NA   600
+#&gt; 67              Bay    Baidoa  89       NA       NA   500
+#&gt; 68              Bay    Baidoa  90       NA       NA   650
+#&gt; 69              Bay    Baidoa  91       NA       NA  1000
+#&gt; 70              Bay    Baidoa  92       NA       NA  1200
+#&gt; 71              Bay    Baidoa  93       NA       NA   800
+#&gt; 72              Bay    Baidoa  94       NA       NA   750
+#&gt; 73              Bay    Baidoa  95       NA       NA  1500
+#&gt; 74              Bay    Baidoa  96       NA       NA   800
+#&gt; 75              Bay    Baidoa  97       NA       NA   900
+#&gt; 76              Bay    Baidoa  98       NA       NA   450
+#&gt; 77              Bay    Baidoa  79       NA       NA   900
+#&gt; 78              Bay Burhakaba  59       NA       NA   900
+#&gt; 79              Bay Burhakaba  60       NA       NA  1200
+#&gt; 80              Bay Burhakaba  61       NA       NA   800
+#&gt; 81              Bay Burhakaba  62       NA       NA   800
+#&gt; 82              Bay Burhakaba  63       NA       NA   900
+#&gt; 83              Bay Burhakaba  64       NA       NA   800
+#&gt; 84              Bay Burhakaba  65       NA       NA   600
+#&gt; 85              Bay Burhakaba  66       NA       NA   500
+#&gt; 86              Bay Burhakaba  67       NA       NA   560
+#&gt; 87              Bay Burhakaba  68       NA       NA   600
+#&gt; 88              Bay Burhakaba  69       NA       NA   500
+#&gt; 89              Bay Burhakaba  70       NA       NA   400
+#&gt; 90              Bay Burhakaba  71       NA       NA   600
+#&gt; 91              Bay Burhakaba  72       NA       NA   800
+#&gt; 92              Bay Burhakaba  73       NA       NA   600
+#&gt; 93              Bay Burhakaba  74       NA       NA   450
+#&gt; 94              Bay Burhakaba  75       NA       NA   550
+#&gt; 95              Bay Burhakaba  76       NA       NA   500
+#&gt; 96              Bay Burhakaba  77       NA       NA   700
+#&gt; 97              Bay Burhakaba  78       NA       NA   750
+#&gt; 98           Bakool    Baidoa  99       NA       NA   300
+#&gt; 99           Bakool    Baidoa 100       NA       NA   280
+#&gt; 100          Bakool    Baidoa 101       NA       NA   300
+#&gt; 101          Bakool    Baidoa 102       NA       NA   400
+#&gt; 102          Bakool    Baidoa 103       NA       NA   450
+#&gt; 103          Bakool    Baidoa 104       NA       NA   500
+#&gt; 104          Bakool    Baidoa 105       NA       NA   400
+#&gt; 105          Bakool    Baidoa 106       NA       NA   400
+#&gt; 106          Bakool    Baidoa 107       NA       NA   280
+#&gt; 107          Bakool    Baidoa 108       NA       NA   600
+#&gt; 108          Bakool    Baidoa 109       NA       NA   350
+#&gt; 109          Bakool    Baidoa 110       NA       NA   400
+#&gt; 110          Bakool    Baidoa 111       NA       NA   250
+#&gt; 111          Bakool    Baidoa 112       NA       NA   250
+#&gt; 112          Bakool    Baidoa 113       NA       NA   260
+#&gt; 113          Bakool    Baidoa 114       NA       NA   300
+#&gt; 114          Bakool    Baidoa 115       NA       NA   350
+#&gt; 115          Bakool    Baidoa 116       NA       NA   250
+#&gt; 116          Bakool    Baidoa 117       NA       NA   270
+#&gt; 117          Bakool    Baidoa 118       NA       NA   400</div><div class='input'>
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#source">Source</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -163,7 +284,7 @@ dataset is from a mother and child health and nutrition survey conducted in
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
