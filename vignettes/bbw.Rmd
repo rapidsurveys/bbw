@@ -58,7 +58,7 @@ Early versions of the `bbw` did not resample observations within *PSU*s followin
 
 <br/>
 
-> Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for inference with clustered errors, Review of Economics and Statistics, 2008:90;414–427 <doi.org/10.1162/rest.90.3.414>
+> Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for inference with clustered errors, Review of Economics and Statistics, 2008:90;414–427 <https://doi.org/10.1162/rest.90.3.414>
 
 <br/>
 
