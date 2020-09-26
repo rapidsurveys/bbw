@@ -17,23 +17,20 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 [![Build
 status](https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true)](https://ci.appveyor.com/project/rapidsurveys/bbw/branch/master)
 ![R-CMD-check](https://github.com/rapidsurveys/bbw/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/rapidsurveys/bbw)
+[![Codecov test
+coverage](https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/rapidsurveys/bbw?branch=master)
 ![test-coverage](https://github.com/rapidsurveys/bbw/workflows/test-coverage/badge.svg)
 <!-- badges: end -->
 
 ## Overview
 
-The `blocked weighted bootstrap (BBW)` is an estimation technique for
-use with data from two-stage cluster sampled surveys in which either
-prior weighting (e.g. *population-proportional sampling* or *PPS* as
-used in **Standardized Monitoring and Assessment of Relief and
-Transitions** or **SMART** surveys) or *posterior weighting* (e.g. as
-used in **Rapid Assessment Method** or **RAM** and **Simple Spatial
-Sampling Method** or **S3M** surveys) is implemented. The method was
-developed by Brixton Health, Global Alliance for Improved Nutrition,
-UNICEF Sierra Leone, UNICEF Sudan and Valid International. It has been
-tested by the Centers for Disease Control (CDC) using infant and young
-child feeding (IYCF) data.
+The **blocked weighted bootstrap** is an estimation technique for use
+with data from two-stage cluster sampled surveys in which either prior
+weighting (e.g. *population-proportional sampling* or *PPS* as used in
+**Standardized Monitoring and Assessment of Relief and Transitions** or
+**SMART** surveys) or *posterior weighting* (e.g. as used in **Rapid
+Assessment Method** or **RAM** and **Simple Spatial Sampling Method** or
+**S3M** surveys) is implemented.
 
 ## Installation
 
@@ -53,14 +50,14 @@ remotes::install_github("rapidsurveys/bbw")
 
 ## Usage
 
-The `bbw` used in **RAM** and **S3M** is a modification to the
-`percentile bootstrap` to include *blocking* and *weighting* to account
+`bbw` as used in **RAM** and **S3M** is a modification to the
+*percentile bootstrap* to include *blocking* and *weighting* to account
 for a *complex sample design*.
 
 With **RAM** and **S3M** surveys, the sample is complex in the sense
 that it is an unweighted cluster sample. Data analysis procedures need
-to account for the sample design. A `blocked weighted bootstrap (bbw)`
-can be used:
+to account for the sample design. A **blocked weighted bootstrap** can
+be used:
 
 <br/>
 
@@ -80,7 +77,7 @@ population) the selection probability of *PSU*s in bootstrap replicates.
 In the case of prior weighting by *PPS* all clusters are given the same
 weight. With posterior weighting (as in **RAM** or **S3M**) the weight
 is the population of each *PSU*. This procedure is very similar to the
-`fitness proportional selection` technique used in *evolutionary
+*fitness proportional selection* technique used in *evolutionary
 computing*.
 
 A total of *m* *PSU*s are sampled with replacement for each bootstrap
