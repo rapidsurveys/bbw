@@ -1,4 +1,4 @@
-# bbw 0.1.4
+# bbw 0.2.0
 
 This is the second CRAN release of `bbw`. In this release:
 
