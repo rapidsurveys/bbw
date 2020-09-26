@@ -79,7 +79,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Ernest Guevarra \email{ernest@guevarra.io} (\href{https://orcid.org/0000-0002-4887-4415}{ORCID})
+\strong{Maintainer}: Ernest Guevarra \email{ernestgmd@gmail.com} (\href{https://orcid.org/0000-0002-4887-4415}{ORCID})
 
 Authors:
 \itemize{
