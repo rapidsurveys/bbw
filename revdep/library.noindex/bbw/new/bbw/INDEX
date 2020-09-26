@@ -1,4 +1,4 @@
-bootBW                  'bootBW' : Blocked Weighted Bootstrap
+bootBW                  Blocked Weighted Bootstrap
 bootClassic             Simple proportion statistics function for
                         bootstrap estimation
 bootPROBIT              PROBIT statistics function for bootstrap
