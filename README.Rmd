@@ -26,6 +26,7 @@ knitr::opts_chunk$set(
 ![R-CMD-check](https://github.com/rapidsurveys/bbw/workflows/R-CMD-check/badge.svg)
 [![Codecov test coverage](https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/rapidsurveys/bbw?branch=master)
 ![test-coverage](https://github.com/rapidsurveys/bbw/workflows/test-coverage/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/rapidsurveys/bbw/badge)](https://www.codefactor.io/repository/github/rapidsurveys/bbw)
 <!-- badges: end -->
 
 ## Overview
@@ -58,9 +59,11 @@ With **RAM** and **S3M** surveys, the sample is complex in the sense that it is 
 
 **Weighted**: **RAM** and **S3M** samples do not use *population proportional sampling (PPS)* to weight the sample prior to data collection (e.g. as is done with **SMART** surveys). This means that a posterior weighting procedure is required. `bbw` uses a *"roulette wheel"* algorithm (see [illustration below](#FIG1)) to weight (i.e. by population) the selection probability of *PSU*s in bootstrap replicates.
 
+<p align="center">
 ```{r, echo = FALSE, eval = TRUE, out.width = "50%", fig.align = "center"}
 knitr::include_graphics("man/figures/rouletteWheel.png")
 ```
+</p>
 
 In the case of prior weighting by *PPS* all clusters are given the same weight. With posterior weighting (as in **RAM** or **S3M**) the weight is the population of each *PSU*. This procedure is very similar to the *fitness proportional selection* technique used in *evolutionary computing*.
 

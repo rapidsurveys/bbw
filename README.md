@@ -20,6 +20,7 @@ status](https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/mast
 [![Codecov test
 coverage](https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/rapidsurveys/bbw?branch=master)
 ![test-coverage](https://github.com/rapidsurveys/bbw/workflows/test-coverage/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/rapidsurveys/bbw/badge)](https://www.codefactor.io/repository/github/rapidsurveys/bbw)
 <!-- badges: end -->
 
 ## Overview
@@ -72,7 +73,11 @@ posterior weighting procedure is required. `bbw` uses a *“roulette
 wheel”* algorithm (see [illustration below](#FIG1)) to weight (i.e. by
 population) the selection probability of *PSU*s in bootstrap replicates.
 
+<p align="center">
+
 <img src="man/figures/rouletteWheel.png" width="50%" style="display: block; margin: auto;" />
+
+</p>
 
 In the case of prior weighting by *PPS* all clusters are given the same
 weight. With posterior weighting (as in **RAM** or **S3M**) the weight
