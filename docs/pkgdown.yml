@@ -1,9 +1,10 @@
-pandoc: 2.0.4
-pkgdown: 1.1.0
+pandoc: 2.7.3
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   bbw: bbw.html
+last_built: 2020-09-26T12:18Z
 urls:
-  reference: https://validmeasures.org/bbw/reference
-  article: https://validmeasures.org/bbw/articles
+  reference: https://rapidsurveys.io/bbw/reference
+  article: https://rapidsurveys.io/bbw/articles
 

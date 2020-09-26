@@ -10,50 +10,50 @@ recode(var, recodes, afr, anr = TRUE, levels)
 \item{var}{Variable to recode}
 
 \item{recodes}{Character string of recode specifications:
-  \itemize{
-    \item Recode specifications in a character string separated by
-    semicolons of the form \code{input=output} as in:
-        \code{"1=1;2=1;3:6=2;else=NA"}
+\itemize{
+\item Recode specifications in a character string separated by
+semicolons of the form \code{input=output} as in:
+\code{"1=1;2=1;3:6=2;else=NA"}\preformatted{\\item If an input value satisfies more than one specification, then the
+first (reading from left to right) is applied
 
-    \item If an input value satisfies more than one specification, then the
-    first (reading from left to right) is applied
+\\item If no specification is satisfied, then the input value is carried
+over to the result unchanged
 
-    \item If no specification is satisfied, then the input value is carried
-    over to the result unchanged
+\\item \code{NA} is allowed on both input and output
 
-    \item \code{NA} is allowed on both input and output
+\\item The following recode specifications are supported:
 
-    \item The following recode specifications are supported:
+    \\tabular\{lll\}\{
+      \\strong\{Specification\} \\tab \\strong\{Example\}          \\tab \\strong\{Notes\}                                                 \\cr
+      Single values          \\tab \code{9=NA}               \\tab                                                                \\cr
+      Set of values          \\tab \code{c(1,2,5)=1}         \\tab The left-hand-side is any R function call that returns a vector\\cr
+                             \\tab \code{seq(1,9,2)='odd'}   \\tab                                                                \\cr
+                             \\tab \code{1:10=1}             \\tab                                                                \\cr
+      Range of values        \\tab \code{7:9=3}              \\tab Special values \code{lo} and \code{hi} may be used             \\cr
+                             \\tab \code{lo:115=1}           \\tab                                                                \\cr
+      Other values           \\tab \code{else=NA}            \\tab
+    \}
 
-        \tabular{lll}{
-          \strong{Specification} \tab \strong{Example}          \tab \strong{Notes}                                                 \cr
-          Single values          \tab \code{9=NA}               \tab                                                                \cr
-          Set of values          \tab \code{c(1,2,5)=1}         \tab The left-hand-side is any R function call that returns a vector\cr
-                                 \tab \code{seq(1,9,2)='odd'}   \tab                                                                \cr
-                                 \tab \code{1:10=1}             \tab                                                                \cr
-          Range of values        \tab \code{7:9=3}              \tab Special values \code{lo} and \code{hi} may be used             \cr
-                                 \tab \code{lo:115=1}           \tab                                                                \cr
-          Other values           \tab \code{else=NA}            \tab
-        }
+\\item Character values are quoted as in :
 
-    \item Character values are quoted as in :
+     \code{recodes = "c(1,2,5)='sanitary' else='unsanitary'"}
 
-         \code{recodes = "c(1,2,5)='sanitary' else='unsanitary'"}
+\\item The output may be the (scalar) result of a function call as in:
 
-    \item The output may be the (scalar) result of a function call as in:
+     \code{recodes = "999=median(var, na.rm = TRUE)"}
 
-         \code{recodes = "999=median(var, na.rm = TRUE)"}
+\\item Users are advised to carefully check the results of \code{recode()} calls
+with any outputs that are the results of a function call.
 
-    \item Users are advised to carefully check the results of \code{recode()} calls
-    with any outputs that are the results of a function call.
+\\item The output may be the (scalar) value of a variable as in:
 
-    \item The output may be the (scalar) value of a variable as in:
+     \code{recodes = "999=scalarVariable"}
 
-         \code{recodes = "999=scalarVariable"}
+\\item If all of the output values are numeric, and if \code{'afr'} is \code{FALSE},
+then a numeric result is returned; if \code{var} is a factor then
+(by default) so is the result.
+}
 
-    \item If all of the output values are numeric, and if \code{'afr'} is \code{FALSE},
-    then a numeric result is returned; if \code{var} is a factor then
-    (by default) so is the result.
 }}
 
 \item{afr}{Return a factor. Default is TRUE if \code{var} is a factor and is

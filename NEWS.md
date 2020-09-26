@@ -1,8 +1,9 @@
-# bbw 0.1.4
+# bbw 0.2.0
 
 This is the second CRAN release of `bbw`. In this release:
 
-* We update package documentation specifically the DESCRIPTION, README, datasets and function/s documentation and vignettes
+* updated package documentation specifically the DESCRIPTION, README, 
+datasets and function/s documentation and vignettes
 
 
 

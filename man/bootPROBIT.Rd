@@ -2,7 +2,7 @@
 % Please edit documentation in R/bootProbit.R
 \name{bootPROBIT}
 \alias{bootPROBIT}
-\title{bootPROBIT}
+\title{PROBIT statistics function for bootstrap estimation}
 \usage{
 bootPROBIT(x, params, threshold = THRESHOLD)
 }
@@ -19,7 +19,7 @@ case and non-case}
 }
 \value{
 A numeric vector of the PROBIT estimate of each continuous variable
-  of interest with length equal to \code{length(params)}
+of interest with length equal to \code{length(params)}
 }
 \description{
 PROBIT statistics function for bootstrap estimation

@@ -1,7 +1,5 @@
 ################################################################################
 #
-#' bootPROBIT
-#'
 #' PROBIT statistics function for bootstrap estimation
 #'
 #' @param x A data frame with \code{primary sampling unit (PSU)} in column named
@@ -21,32 +19,32 @@
 #'            params = "muac1",
 #'            threshold = 115)
 #'
+#' @export
+#'
+#
+################################################################################
+
 bootPROBIT <- function(x, params, threshold = THRESHOLD) {
-  #
-  # Get data
-  #
+  ## Get data
   d <- x[[params[1]]]
-  #
-  # Shift data to the left to avoid "comutation instability" when :
-  #
-  #   max(x) / min(x)
-  #
-  # is small (i.e. close to unity).
-  #
+
+  ## Shift data to the left to avoid "comutation instability" when :
+  ##   max(x) / min(x)
+  ## is small (i.e. close to unity).
   shift <- min(min(d, na.rm = TRUE), threshold) - 1
   d <- d - shift
   threshold <- threshold - shift
-  #
-  # Box-cox transformation
-  #
-  lambda <- powerTransform(d)$lambda
-  d <- bcPower(d, lambda)
-  threshold <- bcPower(threshold, lambda)
+
+  ## Box-cox transformation
+  lambda <- car::powerTransform(d)$lambda
+  d <- car::bcPower(d, lambda)
+  threshold <- car::bcPower(threshold, lambda)
   m <- mean(d, na.rm = TRUE)
-  s <- sd(d, na.rm = T)
-  #
-  # PROBIT estimate
-  #
-  x <- pnorm(q = threshold, mean = m, sd = s)
+  s <- stats::sd(d, na.rm = T)
+
+  ## PROBIT estimate
+  x <- stats::pnorm(q = threshold, mean = m, sd = s)
+
+  ## Return x
   return(x)
 }

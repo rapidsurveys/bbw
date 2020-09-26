@@ -74,6 +74,10 @@
 #' # Recode other values
 #' recode(var = var, recodes = "c(1,2,5)=1;else=NA")
 #'
+#' @export
+#'
+#
+################################################################################
 recode <- function(var, recodes, afr, anr = TRUE, levels) {
   squeezeBlanks <- function(text) {
     gsub(" *", "",  text)
@@ -110,10 +114,12 @@ recode <- function(var, recodes, afr, anr = TRUE, levels) {
     result <- if (!missing(levels)) factor(result, levels = levels) else as.factor(result)
   } else if (anr && (!is.numeric(result))) {
       result.valid <- na.omit(result)
-      opt <- options(warn = -1)
+      #opt <- options(warn = -1)
       result.valid <- as.numeric(result.valid)
-      options(opt)
-      if (!any(is.na(result.valid))) result <- as.numeric(result)
+      withr::with_options(
+        new = list(warn = -1),
+        code = if (!any(is.na(result.valid))) result <- as.numeric(result)
+      )
   }
   return(result)
 }
