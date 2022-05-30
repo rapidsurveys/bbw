@@ -17,3 +17,4 @@
 ^README\.Rmd$
 ^codecov\.yml$
 ^pkgdown$
+^CRAN-SUBMISSION$
