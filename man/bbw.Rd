@@ -59,7 +59,7 @@ Early versions of the \code{bbw} did not resample observations within
 
 \cite{Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for
 inference with clustered errors, Review of Economics and Statistics,
-2008:90;414–427 \url{https://doi.org/10.1162/rest.90.3.414}}
+2008:90;414–427 \doi{10.1162/rest.90.3.414}}
 
 and used a large number (e.g. \eqn{3999}) survey replicates. Current versions of
 the \code{bbw} resample observations within \code{PSUs} and use a smaller
@@ -70,6 +70,7 @@ efficient approach
 Useful links:
 \itemize{
   \item \url{https://github.com/rapidsurveys/bbw}
+  \item \url{https://rapidsurveys.io/bbw/}
   \item Report bugs at \url{https://github.com/rapidsurveys/bbw/issues}
 }
 

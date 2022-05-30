@@ -2,6 +2,8 @@
 
 This is the second CRAN release of `bbw`. In this release:
 
+* addressed CRAN NOTE regarding `\item in \describe must have non-empty label`
+
 * updated package documentation specifically the DESCRIPTION, README, 
 datasets and function/s documentation and vignettes
 
