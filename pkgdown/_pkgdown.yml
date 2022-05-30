@@ -1,0 +1,67 @@
+title: bbw
+
+url: https://rapidsurveys.io/bbw/
+
+template:
+  bootstrap: 5
+  bootswatch: united
+  theme: haddock
+  ganalytics: #
+
+navbar:
+  bg: dark
+  type: light
+  # structure:
+  #   left:  [home, reference, articles, news]
+  #   right: [twitter, linkedin, github]
+  #
+  # components:
+  #   articles:
+  #     text: Articles
+  #     menu:
+  #     - text: "Blocked weighted bootstrap"
+  #       href: articles/bbw.html
+    #   - text: "Detecting inflammation"
+    #     href: articles/inflammation.html
+    #   - text: "Detecting iron deficiency"
+    #     href: articles/iron-deficiency.html
+    #   - text: "Detecting iodine deficiency"
+    #     href: articles/iodine-deficiency.html
+    # twitter:
+    #   icon: "fab fa-twitter fa-lg"
+    #   href: https://twitter.com/katilingban
+    # linkedin:
+    #   icon: "fab fa-linkedin fa-lg"
+    #   href: https://www.linkedin.com/company/katilingban
+
+
+home:
+  #links:
+  #- text: Read more about haemoglobin concentrations for the diagnosis of anaemia and assessment of severity
+  #  href: https://www.who.int/vmnis/indicators/haemoglobin.pdf
+
+reference:
+  - title: Description
+    contents:
+    - bbw
+
+  - title: Bootstrap estimator
+    contents:
+    - bootBW
+
+  - title: Bootstrap statistics
+    contents:
+    - bootClassic
+    - bootPROBIT
+
+  - title: Utility
+    contents:
+    - recode
+
+  - title: Datasets
+    contents:
+    - indicatorsCH1
+    - indicatorsCH2
+    - indicatorsHH
+    - villageData
+

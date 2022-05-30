@@ -54,17 +54,21 @@ bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
   ## Scale weights and accumulate weights
   w$weight <- w$pop / sum(w$pop)
   w$cumWeight <- cumsum(w$weight)
+
   ## Create data.frame with named columns for output
   boot <- data.frame(matrix(ncol = length(outputColumns), nrow = replicates))
   names(boot) <- outputColumns
+
   ## Create an empty data.frame with same structure of 'x' with sufficient rows
   ## to hold the largest possible survey replicates (i.e. number of clusters
   ## multiplied by the size of the largest cluster)
   nClusters <- nrow(w)
   maxRows <- nClusters * max(table(x$psu))
   emptyDF <- rbind(as.data.frame(lapply(x, function(x) rep.int(NA, maxRows))))
+
   ## Vector to hold clusters to be included in a survey replicate
   sampledClusters <- vector(mode = mode(x$psu), length = nClusters)
+
   ## And now ... resample!
   for(i in seq_len(replicates)) {
     ## Create a dataframe to hold a survey replicate
@@ -93,5 +97,6 @@ bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
     ## Apply statistic
     boot[i, ] <- statistic(xBW, params)
   }
+
   return(boot)
 }

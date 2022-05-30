@@ -1,25 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# bbw: Blocked Weighted Bootstrap <img src="man/figures/bbw.png" width="200" align="right" />
+# bbw: Blocked Weighted Bootstrap <img src="man/figures/logo.png" width="200" align="right" />
 
 <!-- badges: start -->
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN](https://img.shields.io/cran/v/bbw.svg)](https://cran.r-project.org/package=bbw)
 [![CRAN](https://img.shields.io/cran/l/bbw.svg)](https://CRAN.R-project.org/package=bbw)
 [![CRAN](http://cranlogs.r-pkg.org/badges/bbw)](https://CRAN.R-project.org/package=bbw)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/bbw)](https://CRAN.R-project.org/package=bbw)
-[![Travis](https://img.shields.io/travis/rapidsurveys/bbw.svg?branch=master)](https://travis-ci.org/rapidsurveys/bbw)
-[![Build
-status](https://ci.appveyor.com/api/projects/status/ruuv1pw3eaxtjf75/branch/master?svg=true)](https://ci.appveyor.com/project/rapidsurveys/bbw/branch/master)
 ![R-CMD-check](https://github.com/rapidsurveys/bbw/workflows/R-CMD-check/badge.svg)
-[![Codecov test
-coverage](https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg)](https://codecov.io/gh/rapidsurveys/bbw?branch=master)
 ![test-coverage](https://github.com/rapidsurveys/bbw/workflows/test-coverage/badge.svg)
+[![Codecov test
+coverage](https://codecov.io/gh/rapidsurveys/bbw/branch/master/graph/badge.svg)](https://app.codecov.io/gh/rapidsurveys/bbw?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/rapidsurveys/bbw/badge)](https://www.codefactor.io/repository/github/rapidsurveys/bbw)
 <!-- badges: end -->
 
@@ -74,9 +72,7 @@ wheel”* algorithm (see [illustration below](#FIG1)) to weight (i.e. by
 population) the selection probability of *PSU*s in bootstrap replicates.
 
 <p align="center">
-
 <img src="man/figures/rouletteWheel.png" width="50%" style="display: block; margin: auto;" />
-
 </p>
 
 In the case of prior weighting by *PPS* all clusters are given the same
