@@ -62,6 +62,10 @@
 #' @importFrom car powerTransform
 #' @importFrom car bcPower
 #' @importFrom withr with_options
+#' @importFrom parallelly availableCores
+#' @importFrom parallel makeCluster
+#' @importFrom foreach foreach %dopar%
+#' @importFrom doParallel registerDoParallel
 #'
 "_PACKAGE"
 

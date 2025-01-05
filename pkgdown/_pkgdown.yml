@@ -42,11 +42,12 @@ reference:
     contents:
     - bbw
 
-  - title: Bootstrap estimator
+  - title: Bootstrap resampling
     contents:
     - bootBW
+    - boot_bw
 
-  - title: Bootstrap statistics
+  - title: Bootstrap estimator
     contents:
     - bootClassic
     - bootPROBIT
@@ -61,4 +62,3 @@ reference:
     - indicatorsCH2
     - indicatorsHH
     - villageData
-
