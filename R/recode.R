@@ -1,5 +1,4 @@
-###############################################################################
-#
+#' 
 #' Recode
 #'
 #' Utility function that recodes variables based on user recode specifications.
@@ -59,7 +58,7 @@
 #'    the sort order of the level names.
 #' @return Recoded variable
 #' @examples
-#' # Recode values from 1 to 9 to varios specifications
+#' # Recode values from 1 to 9 to various specifications
 #' var <- sample(x = 1:9, size = 100, replace = TRUE)
 #'
 #' # Recode single values
@@ -76,8 +75,7 @@
 #'
 #' @export
 #'
-#
-################################################################################
+
 recode <- function(var, recodes, afr, anr = TRUE, levels) {
   squeezeBlanks <- function(text) {
     gsub(" *", "",  text)

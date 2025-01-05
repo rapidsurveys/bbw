@@ -1,4 +1,3 @@
-################################################################################
 #'
 #' Blocked Weighted Bootstrap
 #'
@@ -17,7 +16,7 @@
 #' @param outputColumns Names of columns in output data frame
 #' @param replicates Number of bootstrap replicates
 #'
-#' @return A data frame with:
+#' @return A [data.frame()] with:
 #'   * ncol = length(outputColumns)
 #'   * nrow = replicates
 #'   * names = outputColumns
@@ -47,8 +46,6 @@
 #'
 #' @export
 #'
-#
-################################################################################
 
 bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
   ## Scale weights and accumulate weights
@@ -71,7 +68,7 @@ bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
 
   ## And now ... resample!
   for(i in seq_len(replicates)) {
-    ## Create a dataframe to hold a survey replicate
+    ## Create a data.frame to hold a survey replicate
     xBW <- emptyDF
     ## Blocking Bootstrap from 'x' (blocking on x$psu = cluster identifier)
     for(j in seq_len(nClusters)) {

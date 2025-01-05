@@ -1,11 +1,12 @@
 Package: bbw
 Type: Package
 Title: Blocked Weighted Bootstrap
-Version: 0.2.0
+Version: 0.2.1.9000
 Authors@R: c(
-    person("Mark", "Myatt", email = "mark@brixtonhealth.com", role = "aut"),
+    person("Mark", "Myatt", 
+           email = "mark@brixtonhealth.com", role = c("aut", "cph")),
     person("Ernest", "Guevarra", comment = c(ORCID = "0000-0002-4887-4415"), 
-           email = "ernestgmd@gmail.com", role = c("aut", "cre")))
+           email = "ernestgmd@gmail.com", role = c("aut", "cre", "cph")))
 Description: The blocked weighted bootstrap (BBW) is an estimation technique 
     for use with data from two-stage cluster sampled surveys in which either 
     prior weighting (e.g. population-proportional sampling or PPS as used in 
@@ -17,22 +18,22 @@ Description: The blocked weighted bootstrap (BBW) is an estimation technique
     <doi:10.1371/journal.pone.0163176> and Aaron et al (2016) 
     <doi:10.1371/journal.pone.0162462> for application of the blocked weighted 
     bootstrap to estimate indicators from two-stage cluster sampled surveys.
+License: GPL-3
+Depends: R (>= 3.0.1)
 Imports: 
     car,
     withr
-Depends: R (>= 3.0.1)
 Suggests: 
     knitr,
     rmarkdown,
     testthat,
     spelling,
     covr
-License: GPL-3
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
 URL: https://github.com/rapidsurveys/bbw, https://rapidsurveys.io/bbw/
 BugReports: https://github.com/rapidsurveys/bbw/issues
 VignetteBuilder: knitr

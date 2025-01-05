@@ -4,35 +4,32 @@ url: https://rapidsurveys.io/bbw/
 
 template:
   bootstrap: 5
-  bootswatch: united
-  theme: haddock
-  ganalytics: #
+  theme: breeze-light
+  ganalytics: "G-77JJCGSCV3"
+  bslib:
+    bootswatch: sandstone
+    primary: "#A41034"
 
 navbar:
-  bg: dark
+  bg: primary
   type: light
-  # structure:
-  #   left:  [home, reference, articles, news]
-  #   right: [twitter, linkedin, github]
-  #
-  # components:
-  #   articles:
-  #     text: Articles
-  #     menu:
-  #     - text: "Blocked weighted bootstrap"
-  #       href: articles/bbw.html
-    #   - text: "Detecting inflammation"
-    #     href: articles/inflammation.html
-    #   - text: "Detecting iron deficiency"
-    #     href: articles/iron-deficiency.html
-    #   - text: "Detecting iodine deficiency"
-    #     href: articles/iodine-deficiency.html
-    # twitter:
-    #   icon: "fab fa-twitter fa-lg"
-    #   href: https://twitter.com/katilingban
-    # linkedin:
-    #   icon: "fab fa-linkedin fa-lg"
-    #   href: https://www.linkedin.com/company/katilingban
+  structure:
+    left:  [home, intro, reference, articles, news]
+    right: [search, mastodon, linkedin, github]
+  components:
+    # articles:
+    #   text: Articles
+    #   menu:
+    #   - text: "The RAM-OP Workflow"
+    #     href: articles/ram_op_workflow.html
+    mastodon:
+      icon: "fab fa-mastodon fa-lg"
+      aria-label: Mastodon
+      href: https://fosstodon.org/@katilingban
+    linkedin:
+      icon: "fab fa-linkedin fa-lg"
+      aria-label: LinkedIn
+      href: https://www.linkedin.com/company/katilingban
 
 
 home:

@@ -1,5 +1,4 @@
-################################################################################
-#
+#' 
 #' Simple proportion statistics function for bootstrap estimation
 #'
 #' @param x A data frame with **primary sampling unit (PSU)** in column named
@@ -14,13 +13,10 @@
 #' @examples
 #' # Example call to bootClassic function
 #'
-#' meanResults <- bootClassic(x = indicatorsHH,
-#'                            params = "anc1")
+#' meanResults <- bootClassic(x = indicatorsHH, params = "anc1")
 #'
 #' @export
 #'
-#
-################################################################################
 
 bootClassic <- function(x, params) {
   result <- vector(mode = "numeric", length = length(params))

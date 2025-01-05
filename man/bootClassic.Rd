@@ -24,7 +24,6 @@ Simple proportion statistics function for bootstrap estimation
 \examples{
 # Example call to bootClassic function
 
-meanResults <- bootClassic(x = indicatorsHH,
-                           params = "anc1")
+meanResults <- bootClassic(x = indicatorsHH, params = "anc1")
 
 }

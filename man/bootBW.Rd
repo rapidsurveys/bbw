@@ -22,7 +22,7 @@ specified in \code{statistic}}
 \item{replicates}{Number of bootstrap replicates}
 }
 \value{
-A data frame with:
+A \code{\link[=data.frame]{data.frame()}} with:
 \itemize{
 \item ncol = length(outputColumns)
 \item nrow = replicates

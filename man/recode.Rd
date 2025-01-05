@@ -13,7 +13,9 @@ recode(var, recodes, afr, anr = TRUE, levels)
 \itemize{
 \item Recode specifications in a character string separated by
 semicolons of the form \code{input=output} as in:
-\code{"1=1;2=1;3:6=2;else=NA"}\preformatted{\\item If an input value satisfies more than one specification, then the
+\code{"1=1;2=1;3:6=2;else=NA"}
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{\\item If an input value satisfies more than one specification, then the
 first (reading from left to right) is applied
 
 \\item If no specification is satisfied, then the input value is carried
@@ -52,7 +54,7 @@ with any outputs that are the results of a function call.
 \\item If all of the output values are numeric, and if \code{'afr'} is \code{FALSE},
 then a numeric result is returned; if \code{var} is a factor then
 (by default) so is the result.
-}
+}\if{html}{\out{</div>}}
 
 }}
 
@@ -72,7 +74,7 @@ Utility function that recodes variables based on user recode specifications.
 Handles both numeric or factor variables.
 }
 \examples{
-# Recode values from 1 to 9 to varios specifications
+# Recode values from 1 to 9 to various specifications
 var <- sample(x = 1:9, size = 100, replace = TRUE)
 
 # Recode single values

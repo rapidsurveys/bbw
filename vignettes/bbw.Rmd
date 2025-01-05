@@ -37,7 +37,7 @@ With **RAM** and **S3M** surveys, the sample is complex in the sense that it is 
 <a name="FIG1"></a>
 **Figure 1:** Roulette wheel algorithm
 <p align="center">
-![](../man/figures/rouletteWheel.png)
+![Roulette wheel algorithm](../man/figures/rouletteWheel.png)
 </p>
 
 <br/>

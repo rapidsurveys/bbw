@@ -30,7 +30,7 @@ bootPROBIT <- function(x, params, threshold = THRESHOLD) {
   ## Get data
   d <- x[[params[1]]]
 
-  ## Shift data to the left to avoid "comutation instability" when :
+  ## Shift data to the left to avoid "commutation instability" when :
   ##   max(x) / min(x)
   ## is small (i.e. close to unity).
   shift <- min(min(d, na.rm = TRUE), threshold) - 1

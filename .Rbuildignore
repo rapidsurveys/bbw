@@ -18,3 +18,5 @@
 ^codecov\.yml$
 ^pkgdown$
 ^CRAN-SUBMISSION$
+^README\.html$
+^CODE_OF_CONDUCT\.md$
