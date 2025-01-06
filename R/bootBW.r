@@ -7,52 +7,63 @@
 #' used in **SMART** surveys) or posterior weighting (e.g. as used in
 #' **RAM** and **S3M** surveys).
 #'
-#' @param x A data frame with primary sampling unit (PSU) in column named `psu`
-#' @param w A data frame with primary sampling unit (PSU) in column named `psu`
-#'   and survey weight (i.e. PSU population) in column named `pop`
-#' @param statistic A function operating on data in `x` (see example)
-#' @param params Parameters (named columns in `x`) passed to the function
-#'   specified in `statistic`
-#' @param outputColumns Names of columns in output data frame
-#' @param replicates Number of bootstrap replicates
+#' @param x A [data.frame()] with primary sampling unit (PSU) in variable named
+#'   `psu` and at least one other variable containing data for estimation.
+#' @param w A [data.frame()] with primary sampling unit (PSU) in variable named
+#'   `psu` and survey weights (i.e. PSU population) in variable named `pop`.
+#' @param statistic Am estimator function operating on variables in `x`
+#'   containing data for estimation. The functions [bootClassic()] and
+#'   [bootPROBIT()] are examples.
+#' @param params Parameters specified as names of columns in `x` that are to be
+#'   passed to the function specified in `statistic`.
+#' @param outputColumns Names to be used for columns in output [data.frame()].
+#'   Default to names specified in `params`.
+#' @param replicates Number of bootstrap replicates to be performed. Default is
+#'   400.
 #'
 #' @return A [data.frame()] with:
-#'   * ncol = length(outputColumns)
-#'   * nrow = replicates
-#'   * names = outputColumns
+#'   * number of columns equal to length of `outputColumns`;
+#'   * number of rows equal to number of `replicates`; and,`
+#'   * names equal to `outputColumns`.`
 #'
 #' @examples
-#' # Example function - estimate a proportion for a binary (0/1) variable):
-#'
-#' oneP <- function(x, params) {
-#'   v1 <- params[1]
-#'   v1Data <- x[[v1]]
-#'   oneP <- mean(v1Data, na.rm = TRUE)
-#'   return(oneP)
-#' }
-#'
 #' # Example call to bootBW function using RAM-OP test data:
 #'
-#' bootP <- bootBW(x = indicatorsHH,
-#'                 w = villageData,
-#'                 statistic = oneP,
-#'                 params = "anc1",
-#'                 outputColumns = "anc1",
-#'                 replicates = 9)
+#' bootBW(
+#'   x = indicatorsHH, w = villageData, statistic = bootClassic,
+#'   params = "anc1", outputColumns = "anc1", replicates = 9
+#' )
 #'
 #' # Example estimate with 95% CI:
-#'
-#' quantile(bootP, probs = c(0.500, 0.025, 0.975), na.rm = TRUE)
+#' #quantile(bootP, probs = c(0.500, 0.025, 0.975), na.rm = TRUE)
 #'
 #' @export
 #'
 
-bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
+bootBW <- function(x, w, statistic, 
+                   params, outputColumns = params, 
+                   replicates = 400) {
+  ## Check data ----
+  check_data(x)
+  
+  ## Check weights ----
+  check_weights(w = w)
+  
+  ## Check params ----
+  params <- check_params(x = x, params = params)
+  
+  ## Check outputColumns ----
+  if (length(outputColumns) != length(params)) {
+    cli::cli_abort(
+      "{.arg outputColumns} must have the same length as {.arg params}"
+    )
+  }
+
   ## Scale weights and accumulate weights
   w$weight <- w$pop / sum(w$pop)
   w$cumWeight <- cumsum(w$weight)
 
-  ## Create data.frame with named columns for output
+  ## Create data.frame with named columns for output ----
   boot <- data.frame(matrix(ncol = length(outputColumns), nrow = replicates))
   names(boot) <- outputColumns
 
@@ -63,37 +74,39 @@ bootBW <- function(x, w, statistic, params, outputColumns, replicates = 400) {
   maxRows <- nClusters * max(table(x$psu))
   emptyDF <- rbind(as.data.frame(lapply(x, function(x) rep.int(NA, maxRows))))
 
-  ## Vector to hold clusters to be included in a survey replicate
+  ## Vector to hold clusters to be included in a survey replicate ----
   sampledClusters <- vector(mode = mode(x$psu), length = nClusters)
 
-  ## And now ... resample!
+  ## And now ... resample! ----
   for(i in seq_len(replicates)) {
-    ## Create a data.frame to hold a survey replicate
+    ## Create a data.frame to hold a survey replicate ----
     xBW <- emptyDF
-    ## Blocking Bootstrap from 'x' (blocking on x$psu = cluster identifier)
+    ## Blocking Bootstrap from 'x' (blocking on x$psu = cluster identifier) ----
     for(j in seq_len(nClusters)) {
-      ## "Roulette Wheel" algorithm (to select a weighted sample of clusters)
+      ## "Roulette Wheel" algorithm to select a weighted sample of clusters ----
       sampledClusters[j] <- w$psu[which.max(w$cumWeight >= runif(n = 1, min = 0, max = 1))]
     }
-    ## Pointer for inserting selected clusters into the survey replicate
+    ## Pointer for inserting selected clusters into the survey replicate ----
     rowIndex <- 1
-    ## Build a (blocking weighted) bootstrap replicate from the selected clusters
+    ## Build a blocking weighted bootstrap replicate from the selected ----
+    ## clusters
     for(k in seq_len(nClusters)) {
-      ## Extract data for cluster and resample within the cluster
+      ## Extract data for cluster and resample within the cluster ----
       y <- subset(x, psu == sampledClusters[k])
       clusterN <- nrow(y)
       y <- y[sample(1:clusterN, replace = TRUE), ]
-      ## Insert cluster replicate into survey replicate
+      ## Insert cluster replicate into survey replicate ----
       endRow <- rowIndex + clusterN
       xBW[rowIndex:(endRow - 1), ] <- y
-      ## Update pointer
+      ## Update pointer----
       rowIndex <- endRow
     }
-    ## Select data for analysis
+    ## Select data for analysis ----
     xBW <- xBW[1:(rowIndex - 1), ]
-    ## Apply statistic
+    ## Apply statistic ----
     boot[i, ] <- statistic(xBW, params)
   }
 
-  return(boot)
+  ## Return boot ----
+  boot
 }

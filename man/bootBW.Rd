@@ -4,29 +4,34 @@
 \alias{bootBW}
 \title{Blocked Weighted Bootstrap}
 \usage{
-bootBW(x, w, statistic, params, outputColumns, replicates = 400)
+bootBW(x, w, statistic, params, outputColumns = params, replicates = 400)
 }
 \arguments{
-\item{x}{A data frame with primary sampling unit (PSU) in column named \code{psu}}
+\item{x}{A \code{\link[=data.frame]{data.frame()}} with primary sampling unit (PSU) in variable named
+\code{psu} and at least one other variable containing data for estimation.}
 
-\item{w}{A data frame with primary sampling unit (PSU) in column named \code{psu}
-and survey weight (i.e. PSU population) in column named \code{pop}}
+\item{w}{A \code{\link[=data.frame]{data.frame()}} with primary sampling unit (PSU) in variable named
+\code{psu} and survey weights (i.e. PSU population) in variable named \code{pop}.}
 
-\item{statistic}{A function operating on data in \code{x} (see example)}
+\item{statistic}{Am estimator function operating on variables in \code{x}
+containing data for estimation. The functions \code{\link[=bootClassic]{bootClassic()}} and
+\code{\link[=bootPROBIT]{bootPROBIT()}} are examples.}
 
-\item{params}{Parameters (named columns in \code{x}) passed to the function
-specified in \code{statistic}}
+\item{params}{Parameters specified as names of columns in \code{x} that are to be
+passed to the function specified in \code{statistic}.}
 
-\item{outputColumns}{Names of columns in output data frame}
+\item{outputColumns}{Names to be used for columns in output \code{\link[=data.frame]{data.frame()}}.
+Default to names specified in \code{params}.}
 
-\item{replicates}{Number of bootstrap replicates}
+\item{replicates}{Number of bootstrap replicates to be performed. Default is
+400.}
 }
 \value{
 A \code{\link[=data.frame]{data.frame()}} with:
 \itemize{
-\item ncol = length(outputColumns)
-\item nrow = replicates
-\item names = outputColumns
+\item number of columns equal to length of \code{outputColumns};
+\item number of rows equal to number of \code{replicates}; and,`
+\item names equal to \code{outputColumns}.`
 }
 }
 \description{
@@ -37,26 +42,14 @@ used in \strong{SMART} surveys) or posterior weighting (e.g. as used in
 \strong{RAM} and \strong{S3M} surveys).
 }
 \examples{
-# Example function - estimate a proportion for a binary (0/1) variable):
-
-oneP <- function(x, params) {
-  v1 <- params[1]
-  v1Data <- x[[v1]]
-  oneP <- mean(v1Data, na.rm = TRUE)
-  return(oneP)
-}
-
 # Example call to bootBW function using RAM-OP test data:
 
-bootP <- bootBW(x = indicatorsHH,
-                w = villageData,
-                statistic = oneP,
-                params = "anc1",
-                outputColumns = "anc1",
-                replicates = 9)
+bootBW(
+  x = indicatorsHH, w = villageData, statistic = bootClassic,
+  params = "anc1", outputColumns = "anc1", replicates = 9
+)
 
 # Example estimate with 95\% CI:
-
-quantile(bootP, probs = c(0.500, 0.025, 0.975), na.rm = TRUE)
+#quantile(bootP, probs = c(0.500, 0.025, 0.975), na.rm = TRUE)
 
 }

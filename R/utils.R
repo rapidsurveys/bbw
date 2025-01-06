@@ -60,3 +60,52 @@ check_params <- function(x, params) {
 
   params_in
 }
+
+#'
+#' Check weights
+#' 
+#' @keywords internal
+#' 
+
+check_weights <- function(w) {
+  names_check <- all(c("psu", "pop") %in% names(w))
+
+  if (names_check) {
+    cli::cli_alert_success(
+      "{.arg w} has the needed variables with the appropriate names"
+    )
+  } else {
+    cli::cli_abort(
+      "{.arg w} doesn't have the needed variables or they are not named appropriately"
+    )
+  }
+}
+
+
+#'
+#' Check data
+#' 
+#' @keywords internal
+#' 
+
+check_data <- function(x) {
+  data_name_check <- "psu" %in% names(x)
+
+  data_structure_check <- ncol(x) > 1
+
+  if (data_name_check) {
+    if (data_structure_check) {
+      cli::cli_alert_success(
+        "{.arg x} has the appropriate/expected data structure"
+      )
+    } else {
+      cli::cli_abort(
+        "{.var x} doesn't have variables with data to estimate"
+      )
+    }
+  } else {
+    cli::cli_abort(
+      "{.var x} doesn't have a {.var psu} variable or has a different name"
+    )
+  }
+}

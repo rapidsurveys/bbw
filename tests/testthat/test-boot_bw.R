@@ -10,7 +10,7 @@ test_that("boot_bw_weight works as expected", {
   )
   expect_type(
     boot_bw_sample_clusters(
-      indicatorsHH, w = boot_bw_weight(villageData), index = TRUE
+      indicatorsHH, df_weighted = boot_bw_weight(villageData), index = TRUE
     ),
     "integer"
   )
@@ -23,5 +23,33 @@ mean_boot <- boot_bw(
 
 test_that("boot_bw works as expected", {
   expect_s3_class(mean_boot, "data.frame")
+})
+
+
+
+test_that("boot_bw errors/messages are as expected", {
+  villageDataX <- villageData
+  names(villageDataX) <- c("psu", "population")
+
+  expect_error(
+    boot_bw(indicatorsHH, boot_bw_weight(villageDataX))
+  )
+
+  indicatorsHHX <- indicatorsHH
+  names(indicatorsHHX)[1] <- "PSU"
+
+  expect_error(
+    boot_bw(indicatorsHHX, boot_bw_weight(villageData))
+  )
+
+  expect_error(
+    boot_bw(indicatorsHHX, boot_bw_weight(villageDataX))
+  )
+
+  indicatorsHHx <- subset(indicatorsHH, select = psu)
+
+  expect_error(
+    boot_bw(indicatorsHHx, boot_bw_weight(villageData))
+  )
 })
 

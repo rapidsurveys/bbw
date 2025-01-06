@@ -13,7 +13,7 @@
 #' @examples
 #' # Example call to bootClassic function
 #' sampled_clusters <- boot_bw_sample_clusters(
-#'   x = indicatorsHH, w = boot_bw_weight(villageData)
+#'   x = indicatorsHH, df_weighted = boot_bw_weight(villageData)
 #' )
 #' 
 #' boot <- boot_bw_sample_within_clusters(sampled_clusters)

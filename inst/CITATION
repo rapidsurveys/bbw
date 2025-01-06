@@ -4,7 +4,7 @@ bibentry(
   title    = "bbw: Blocked Weighted Bootstrap",
   author   = c(person("Mark Myatt"), person("Ernest Guevarra")),
   year     = "2025",
-  note     = "R package version 0.2.2",
+  note     = "R package version 0.2.3",
   url      = "https://rapidsurveys.io/bbw/",
-  doi      = "https://doi.org/10.5281/zenodo.6594797"
+  doi      = "10.5281/zenodo.6594797"
 )
