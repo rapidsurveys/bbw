@@ -25,10 +25,14 @@ of interest with length equal to \code{length(params)}
 PROBIT statistics function for bootstrap estimation
 }
 \examples{
-
 # Example call to bootBW function:
+sampled_clusters <- boot_bw_sample_clusters(
+  x = indicatorsCH1, w = boot_bw_weight(villageData)
+)
 
-bootPROBIT(x = indicatorsCH1,
+boot <- boot_bw_sample_within_clusters(sampled_clusters)
+
+bootPROBIT(x = boot,
            params = "muac1",
            threshold = 115)
 
