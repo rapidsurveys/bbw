@@ -16,6 +16,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/bbw)](https://CRAN.R-project.org/package=bbw)
 [![R-CMD-check](https://github.com/rapidsurveys/bbw/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rapidsurveys/bbw/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/rapidsurveys/bbw/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/rapidsurveys/bbw/actions/workflows/test-coverage.yaml)
+[![codecov](https://codecov.io/gh/rapidsurveys/bbw/graph/badge.svg?token=edgQexvxhi)](https://codecov.io/gh/rapidsurveys/bbw)
 [![CodeFactor](https://www.codefactor.io/repository/github/rapidsurveys/bbw/badge)](https://www.codefactor.io/repository/github/rapidsurveys/bbw)
 [![DOI](https://zenodo.org/badge/117305174.svg)](https://doi.org/10.5281/zenodo.6594797)
 <!-- badges: end -->
@@ -113,22 +114,22 @@ follows:
 
 ``` r
 citation("bbw")
-#> Warning in citation("bbw"): could not determine year for 'bbw'
-#> from package DESCRIPTION file
-#> To cite package 'bbw' in publications use:
+#> To cite bbw in publications use:
 #> 
-#>   Myatt M, Guevarra E (????). _bbw: Blocked Weighted
-#>   Bootstrap_. R package version 0.2.1.9000,
-#>   https://rapidsurveys.io/bbw/,
-#>   <https://github.com/rapidsurveys/bbw>.
+#>   Mark Myatt, Ernest Guevarra (2025). _bbw: Blocked Weighted
+#>   Bootstrap_. doi:10.5281/zenodo.6594797
+#>   <https://doi.org/10.5281/zenodo.6594797>, R package
+#>   version 0.2.2, <https://rapidsurveys.io/bbw/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {bbw: Blocked Weighted Bootstrap},
-#>     author = {Mark Myatt and Ernest Guevarra},
-#>     note = {R package version 0.2.1.9000, https://rapidsurveys.io/bbw/},
-#>     url = {https://github.com/rapidsurveys/bbw},
+#>     author = {{Mark Myatt} and {Ernest Guevarra}},
+#>     year = {2025},
+#>     note = {R package version 0.2.2},
+#>     url = {https://rapidsurveys.io/bbw/},
+#>     doi = {https://doi.org/10.5281/zenodo.6594797},
 #>   }
 ```
 
