@@ -1,5 +1,4 @@
-################################################################################
-#
+#' 
 #' PROBIT statistics function for bootstrap estimation
 #'
 #' @param x A data frame with **primary sampling unit (PSU)** in column named
@@ -14,39 +13,45 @@
 #'   of interest with length equal to `length(params)`
 #'
 #' @examples
-#'
 #' # Example call to bootBW function:
-#'
-#' bootPROBIT(x = indicatorsCH1,
+#' sampled_clusters <- boot_bw_sample_clusters(
+#'   x = indicatorsCH1, w = boot_bw_weight(villageData)
+#' )
+#' 
+#' boot <- boot_bw_sample_within_clusters(sampled_clusters)
+#' 
+#' bootPROBIT(x = boot,
 #'            params = "muac1",
 #'            threshold = 115)
 #'
 #' @export
 #'
-#
-################################################################################
 
 bootPROBIT <- function(x, params, threshold = THRESHOLD) {
+  ## Check params ----
+  params <- check_params(x = x, params = params)
+
   ## Get data
   d <- x[[params[1]]]
 
-  ## Shift data to the left to avoid "commutation instability" when :
+  ## Shift data to the left to avoid "commutation instability" when : ----
   ##   max(x) / min(x)
   ## is small (i.e. close to unity).
   shift <- min(min(d, na.rm = TRUE), threshold) - 1
   d <- d - shift
   threshold <- threshold - shift
 
-  ## Box-cox transformation
+  ## Box-cox transformation ----
   lambda <- car::powerTransform(d)$lambda
   d <- car::bcPower(d, lambda)
   threshold <- car::bcPower(threshold, lambda)
   m <- mean(d, na.rm = TRUE)
   s <- stats::sd(d, na.rm = T)
 
-  ## PROBIT estimate
+  ## PROBIT estimate ----
   x <- stats::pnorm(q = threshold, mean = m, sd = s)
+  names(x) <- NULL
 
-  ## Return x
-  return(x)
+  ## Return x ----
+  x
 }

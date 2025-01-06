@@ -23,7 +23,12 @@ Simple proportion statistics function for bootstrap estimation
 }
 \examples{
 # Example call to bootClassic function
+sampled_clusters <- boot_bw_sample_clusters(
+  x = indicatorsHH, w = boot_bw_weight(villageData)
+)
 
-meanResults <- bootClassic(x = indicatorsHH, params = "anc1")
+boot <- boot_bw_sample_within_clusters(sampled_clusters)
+
+bootClassic(boot, "anc1")
 
 }

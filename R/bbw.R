@@ -66,6 +66,7 @@
 #' @importFrom parallel makeCluster
 #' @importFrom foreach foreach %dopar%
 #' @importFrom doParallel registerDoParallel
+#' @importFrom cli cli_abort cli_bullets cli_alert_success
 #'
 "_PACKAGE"
 

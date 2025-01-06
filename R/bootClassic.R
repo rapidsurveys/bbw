@@ -12,16 +12,29 @@
 #'
 #' @examples
 #' # Example call to bootClassic function
-#'
-#' meanResults <- bootClassic(x = indicatorsHH, params = "anc1")
+#' sampled_clusters <- boot_bw_sample_clusters(
+#'   x = indicatorsHH, w = boot_bw_weight(villageData)
+#' )
+#' 
+#' boot <- boot_bw_sample_within_clusters(sampled_clusters)
+#' 
+#' bootClassic(boot, "anc1")
 #'
 #' @export
 #'
 
 bootClassic <- function(x, params) {
+  ## Check params ----
+  params <- check_params(x = x, params = params)
+
+  ## Create concatenating vector ----
   result <- vector(mode = "numeric", length = length(params))
+  
+  ## Apply mean to each param ----
   for(i in seq_len(length(params))) {
     result[i]  <- mean(x[[params[i]]], na.rm = TRUE)
   }
-  return(result)
+
+  ## Return result ----
+  result
 }
