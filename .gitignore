@@ -9,6 +9,7 @@
 /revdep/data.sqlite
 /revdep/library
 /revdep/library.noindex
+/revdep/checks.rds
 
 README.html
 docs
