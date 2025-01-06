@@ -53,7 +53,7 @@ used in <strong>SMART</strong> surveys) or posterior weighting (e.g. as used in
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bootBW</span><span class="op">(</span><span class="va">x</span>, <span class="va">w</span>, <span class="va">statistic</span>, <span class="va">params</span>, <span class="va">outputColumns</span>, replicates <span class="op">=</span> <span class="fl">400</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bootBW</span><span class="op">(</span><span class="va">x</span>, <span class="va">w</span>, <span class="va">statistic</span>, <span class="va">params</span>, outputColumns <span class="op">=</span> <span class="va">params</span>, replicates <span class="op">=</span> <span class="fl">400</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -61,63 +61,76 @@ used in <strong>SMART</strong> surveys) or posterior weighting (e.g. as used in
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>A data frame with primary sampling unit (PSU) in column named <code>psu</code></p></dd>
+<dd><p>A <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> with primary sampling unit (PSU) in variable named
+<code>psu</code> and at least one other variable containing data for estimation.</p></dd>
 
 
 <dt id="arg-w">w<a class="anchor" aria-label="anchor" href="#arg-w"></a></dt>
-<dd><p>A data frame with primary sampling unit (PSU) in column named <code>psu</code>
-and survey weight (i.e. PSU population) in column named <code>pop</code></p></dd>
+<dd><p>A <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> with primary sampling unit (PSU) in variable named
+<code>psu</code> and survey weights (i.e. PSU population) in variable named <code>pop</code>.</p></dd>
 
 
 <dt id="arg-statistic">statistic<a class="anchor" aria-label="anchor" href="#arg-statistic"></a></dt>
-<dd><p>A function operating on data in <code>x</code> (see example)</p></dd>
+<dd><p>Am estimator function operating on variables in <code>x</code>
+containing data for estimation. The functions <code><a href="bootClassic.html">bootClassic()</a></code> and
+<code><a href="bootPROBIT.html">bootPROBIT()</a></code> are examples.</p></dd>
 
 
 <dt id="arg-params">params<a class="anchor" aria-label="anchor" href="#arg-params"></a></dt>
-<dd><p>Parameters (named columns in <code>x</code>) passed to the function
-specified in <code>statistic</code></p></dd>
+<dd><p>Parameters specified as names of columns in <code>x</code> that are to be
+passed to the function specified in <code>statistic</code>.</p></dd>
 
 
 <dt id="arg-outputcolumns">outputColumns<a class="anchor" aria-label="anchor" href="#arg-outputcolumns"></a></dt>
-<dd><p>Names of columns in output data frame</p></dd>
+<dd><p>Names to be used for columns in output <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code>.
+Default to names specified in <code>params</code>.</p></dd>
 
 
 <dt id="arg-replicates">replicates<a class="anchor" aria-label="anchor" href="#arg-replicates"></a></dt>
-<dd><p>Number of bootstrap replicates</p></dd>
+<dd><p>Number of bootstrap replicates to be performed. Default is
+400.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> with:</p><ul><li><p>ncol = length(outputColumns)</p></li>
-<li><p>nrow = replicates</p></li>
-<li><p>names = outputColumns</p></li>
+    <p>A <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> with:</p><ul><li><p>number of columns equal to length of <code>outputColumns</code>;</p></li>
+<li><p>number of rows equal to number of <code>replicates</code>; and,`</p></li>
+<li><p>names equal to <code>outputColumns</code>.`</p></li>
 </ul></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example function - estimate a proportion for a binary (0/1) variable):</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example call to bootBW function using RAM-OP test data:</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">oneP</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">params</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">v1</span> <span class="op">&lt;-</span> <span class="va">params</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-in"><span>  <span class="va">v1Data</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[[</span><span class="va">v1</span><span class="op">]</span><span class="op">]</span></span></span>
-<span class="r-in"><span>  <span class="va">oneP</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">v1Data</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">oneP</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Example call to bootBW function using RAM-OP test data:</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">bootP</span> <span class="op">&lt;-</span> <span class="fu">bootBW</span><span class="op">(</span>x <span class="op">=</span> <span class="va">indicatorsHH</span>,</span></span>
-<span class="r-in"><span>                w <span class="op">=</span> <span class="va">villageData</span>,</span></span>
-<span class="r-in"><span>                statistic <span class="op">=</span> <span class="va">oneP</span>,</span></span>
-<span class="r-in"><span>                params <span class="op">=</span> <span class="st">"anc1"</span>,</span></span>
-<span class="r-in"><span>                outputColumns <span class="op">=</span> <span class="st">"anc1"</span>,</span></span>
-<span class="r-in"><span>                replicates <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">bootBW</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  x <span class="op">=</span> <span class="va">indicatorsHH</span>, w <span class="op">=</span> <span class="va">villageData</span>, statistic <span class="op">=</span> <span class="va">bootClassic</span>,</span></span>
+<span class="r-in"><span>  params <span class="op">=</span> <span class="st">"anc1"</span>, outputColumns <span class="op">=</span> <span class="st">"anc1"</span>, replicates <span class="op">=</span> <span class="fl">9</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> `x` has the appropriate/expected data structure</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> `w` has the needed variables with the appropriate names</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        anc1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2128280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.2122905</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 0.1950629</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.2648467</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 0.2291169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 0.2375904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7 0.1996180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8 0.2349570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9 0.2196060</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Example estimate with 95% CI:</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">bootP</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.500</span>, <span class="fl">0.025</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       50%      2.5%     97.5% </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.2196060 0.1959739 0.2593955 </span>
+<span class="r-in"><span><span class="co">#quantile(bootP, probs = c(0.500, 0.025, 0.975), na.rm = TRUE)</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
