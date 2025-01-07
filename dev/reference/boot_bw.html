@@ -63,12 +63,35 @@ function is discussed here.</p>
 <span>  <span class="va">params</span>,</span>
 <span>  outputColumns <span class="op">=</span> <span class="va">params</span>,</span>
 <span>  replicates <span class="op">=</span> <span class="fl">400</span>,</span>
+<span>  strata <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  parallel <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  cores <span class="op">=</span> <span class="fu">parallelly</span><span class="fu">::</span><span class="fu"><a href="https://parallelly.futureverse.org/reference/availableCores.html" class="external-link">availableCores</a></span><span class="op">(</span>omit <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">boot_bw_parallel</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">w</span>,</span>
+<span>  <span class="va">statistic</span>,</span>
+<span>  <span class="va">params</span>,</span>
+<span>  outputColumns <span class="op">=</span> <span class="va">params</span>,</span>
+<span>  replicates <span class="op">=</span> <span class="fl">400</span>,</span>
+<span>  strata <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cores <span class="op">=</span> <span class="fu">parallelly</span><span class="fu">::</span><span class="fu"><a href="https://parallelly.futureverse.org/reference/availableCores.html" class="external-link">availableCores</a></span><span class="op">(</span>omit <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">boot_bw_sequential</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">w</span>,</span>
+<span>  <span class="va">statistic</span>,</span>
+<span>  <span class="va">params</span>,</span>
+<span>  outputColumns <span class="op">=</span> <span class="va">params</span>,</span>
+<span>  replicates <span class="op">=</span> <span class="fl">400</span>,</span>
+<span>  strata <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">boot_bw_weight</span><span class="op">(</span><span class="va">w</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">boot_bw_sample_clusters</span><span class="op">(</span><span class="va">x</span>, <span class="va">df_weighted</span>, index <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu">boot_bw_sample_clusters</span><span class="op">(</span><span class="va">x</span>, <span class="va">w</span>, index <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">boot_bw_sample_within_clusters</span><span class="op">(</span><span class="va">cluster_df</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -108,16 +131,22 @@ Default to names specified in <code>params</code>.</p></dd>
 400.</p></dd>
 
 
+<dt id="arg-strata">strata<a class="anchor" aria-label="anchor" href="#arg-strata"></a></dt>
+<dd><p>A character value for name of variable in <code>x</code> providing
+information on how <code>x</code> is grouped such that resampling is performed for
+each group. Default to NULL for no grouping and resampling is performed for
+full data.</p></dd>
+
+
+<dt id="arg-parallel">parallel<a class="anchor" aria-label="anchor" href="#arg-parallel"></a></dt>
+<dd><p>Logical. Should resampling be done in parallel? Default to
+TRUE.</p></dd>
+
+
 <dt id="arg-cores">cores<a class="anchor" aria-label="anchor" href="#arg-cores"></a></dt>
 <dd><p>The number of computer cores to use or number of child processes
 to be run simultaneously. Default to one less than the available number of
 cores on current machine.</p></dd>
-
-
-<dt id="arg-df-weighted">df_weighted<a class="anchor" aria-label="anchor" href="#arg-df-weighted"></a></dt>
-<dd><p>A <code><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame()</a></code> based on <code>w</code> with additional variables
-for <code>weight</code> and <code>cumWeight</code>. This is usually produced using the function
-<code>boot_bw_weight()</code>.</p></dd>
 
 
 <dt id="arg-index">index<a class="anchor" aria-label="anchor" href="#arg-index"></a></dt>
@@ -149,59 +178,68 @@ similar in structure to  <code>x</code> of resampled data from each selected clu
 <span class="r-in"><span>  x <span class="op">=</span> <span class="va">indicatorsHH</span>, w <span class="op">=</span> <span class="va">villageData</span>, statistic <span class="op">=</span> <span class="va">bootClassic</span>, </span></span>
 <span class="r-in"><span>  params <span class="op">=</span> <span class="st">"anc1"</span>, replicates <span class="op">=</span> <span class="fl">49</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> `w` has the needed variables with the appropriate names</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> `x` has the appropriate/expected data structure</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">"anc1"</span> is a variable in `x`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Setting up <span style="font-weight: bold;">3</span> parallel operations</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[303ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Resampling with <span style="font-weight: bold;">49</span> replicates in parallel</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling with <span style="font-weight: bold;">49</span> replicates in parallel <span style="color: #B2B2B2;">[2.7s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Tidying up resampling outputs</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Tidying up resampling outputs <span style="color: #B2B2B2;">[22ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Closing <span style="font-weight: bold;">3</span> parallel operations</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Closing <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[16ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         anc1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.2497630</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.2217494</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.2111316</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.2635883</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.2847587</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.2007630</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.2856471</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.2478219</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.2399038</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.2474032</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 0.2286785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 0.2235012</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 0.2333011</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 0.1856459</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 0.2203844</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 0.2469018</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 0.2114286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 0.2320789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 0.1939163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 0.2775097</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 0.2715455</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 0.2597712</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 0.1778412</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 0.1903164</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 0.2188801</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 0.2714561</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 0.2389094</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 0.2284523</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 0.2285714</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 0.2005636</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 0.2633287</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 0.2470643</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 0.2034968</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 0.2358354</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 0.2325792</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 0.2214485</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 0.2737244</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 0.2223278</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 0.2154356</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 0.2292264</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 0.2237796</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 0.2199513</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 0.2215281</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 0.2285847</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 0.2398148</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 0.1870192</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 0.2130150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 0.2274927</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 0.2434944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.2334720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.2025316</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.2152256</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.1983630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.2046784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.2547945</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.2203704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.2592762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.2290770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.2432692</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 0.2075937</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 0.2961001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 0.1658943</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 0.2837518</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 0.2491663</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 0.2554297</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 0.2143200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 0.2094118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 0.1998124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 0.2147182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 0.2121648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 0.2811594</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 0.1944575</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 0.2426401</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 0.1855916</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 0.2237223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 0.2194175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 0.2789575</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 0.2474081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 0.1598513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 0.2289448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 0.2607853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 0.2883523</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 0.2439962</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 0.2162409</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 0.2963867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 0.2947619</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 0.2240412</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 0.2124941</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 0.2503516</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 0.2675991</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 0.2283503</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 0.2008388</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 0.2392344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 0.2102713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 0.2406340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47 0.2049219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 0.1759777</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 0.1878641</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
