@@ -5,8 +5,10 @@
 \alias{indicatorsCH2}
 \title{Infant and Child Feeding Index}
 \format{
-A data frame with 13 columns and 2083 rows.\tabular{ll}{
+A data frame with 15 columns and 2083 rows.\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr
+   \code{region} \tab Region in Somalia from which the cluster belongs to \cr
+   \code{district} \tab District in Somalia from which the cluster belongs to \cr
    \code{psu} \tab The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset \cr
    \code{mID} \tab The mother identifier \cr
    \code{cID} \tab The child identifier \cr

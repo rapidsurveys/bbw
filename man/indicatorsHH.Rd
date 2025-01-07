@@ -5,8 +5,10 @@
 \alias{indicatorsHH}
 \title{Mother Indicators Dataset}
 \format{
-A data frame with 24 columns and 2136 rows:\tabular{ll}{
+A data frame with 26 columns and 2136 rows:\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr
+   \code{region} \tab Region in Somalia from which the cluster belongs to \cr
+   \code{district} \tab District in Somalia from which the cluster belongs to \cr
    \code{psu} \tab The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset \cr
    \code{mID} \tab The mother identifier \cr
    \code{mMUAC} \tab Mothers with mid-upper arm circumference < 230 mm (0/1) \cr

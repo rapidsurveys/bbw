@@ -20,15 +20,15 @@ check_params <- function(x, params) {
     }
   } else {
     if (length(params_in) == length(params)) {
-      if (length(params) == 1) {
-        cli::cli_alert_success(
-          "{.val {params}} is a variable in {.arg x}"
-        )
-      } else {
-        cli::cli_alert_success(
-          "{.val {params}} are variables in {.arg x}"
-        )
-      }
+      # if (length(params) == 1) {
+      #   cli::cli_alert_success(
+      #     "{.val {params}} is a variable in {.arg x}"
+      #   )
+      # } else {
+      #   cli::cli_alert_success(
+      #     "{.val {params}} are variables in {.arg x}"
+      #   )
+      # }
     } else {
       if (length(params_in) == 1) {
         cli::cli_bullets(
@@ -61,26 +61,6 @@ check_params <- function(x, params) {
   params_in
 }
 
-#'
-#' Check weights
-#' 
-#' @keywords internal
-#' 
-
-check_weights <- function(w) {
-  names_check <- all(c("psu", "pop") %in% names(w))
-
-  if (names_check) {
-    cli::cli_alert_success(
-      "{.arg w} has the needed variables with the appropriate names"
-    )
-  } else {
-    cli::cli_abort(
-      "{.arg w} doesn't have the needed variables or they are not named appropriately"
-    )
-  }
-}
-
 
 #'
 #' Check data
@@ -90,7 +70,6 @@ check_weights <- function(w) {
 
 check_data <- function(x) {
   data_name_check <- "psu" %in% names(x)
-
   data_structure_check <- ncol(x) > 1
 
   if (data_name_check) {
@@ -108,4 +87,33 @@ check_data <- function(x) {
       "{.var x} doesn't have a {.var psu} variable or has a different name"
     )
   }
+}
+
+#'
+#' Tidy bootstraps
+#' 
+#' @keywords internal
+#' 
+
+tidy_boot <- function(boot, w, strata, outputColumns) {
+  if (is.list(boot)) {
+    boot <- lapply(
+      X = boot,
+      FUN = function(x) {
+        ## Rename output data.frame ----
+        x <- as.data.frame(x)
+        row.names(x) <- NULL
+        names(x) <- outputColumns
+        x
+      }
+    ) |>
+      (\(x) { names(x) <- unique(w[[strata]]); x })()
+  } else {
+    boot <- as.data.frame(boot)
+    row.names(boot) <- NULL
+    names(boot) <- outputColumns
+  }
+
+  ## Return boot ----
+  boot
 }

@@ -1,5 +1,3 @@
-################################################################################
-#
 #'
 #' Cluster Population Weights Dataset
 #'
@@ -24,23 +22,21 @@
 #'
 #' @source Mother and child health and nutrition survey in 3 regions of Somalia
 #'
-#
-################################################################################
 "villageData"
 
 
-################################################################################
-#
 #'
 #' Mother Indicators Dataset
 #'
 #' Mother indicators for health and nutrition calculated from survey data
 #' collected in survey conducted in 4 districts from 3 regions in Somalia.
 #'
-#' @format A data frame with 24 columns and 2136 rows:
+#' @format A data frame with 26 columns and 2136 rows:
 #'
 #' | **Variable** | **Description** |
 #' | :--- | :--- |
+#' | `region` | Region in Somalia from which the cluster belongs to |
+#' | `district` | District in Somalia from which the cluster belongs to |
 #' | `psu` | The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset |
 #' | `mID` | The mother identifier |
 #' | `mMUAC` | Mothers with mid-upper arm circumference < 230 mm (0/1) |
@@ -71,13 +67,9 @@
 #'
 #' @source Mother and child health and nutrition survey in 3 regions of Somalia
 #'
-#
-################################################################################
 "indicatorsHH"
 
 
-################################################################################
-#
 #'
 #' Child Morbidity, Health Service Coverage, Anthropometry
 #'
@@ -85,10 +77,12 @@
 #' calculated from survey data collected in survey conducted in 4 districts
 #' from 3 regions in Somalia.
 #'
-#' @format A data frame with 14 columns and 3090 rows.
+#' @format A data frame with 16 columns and 3090 rows.
 #'
 #' | **Variable** | **Description** |
 #' | :--- | :--- |
+#' | `region` | Region in Somalia from which the cluster belongs to |
+#' | `district` | District in Somalia from which the cluster belongs to |
 #' | `psu` | The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset |
 #' | `mID` | The mother identifier |
 #' | `cID` | The child identifier |
@@ -109,13 +103,9 @@
 #'
 #' @source Mother and child health and nutrition survey in 3 regions of Somalia
 #'
-#
-################################################################################
 "indicatorsCH1"
 
 
-################################################################################
-#
 #'
 #' Infant and Child Feeding Index
 #'
@@ -123,10 +113,12 @@
 #' index (ICFI) by Arimond and Ruel. Calculated from survey data collected in
 #' survey conducted in 4 districts from 3 regions in Somalia.
 #'
-#' @format A data frame with 13 columns and 2083 rows.
+#' @format A data frame with 15 columns and 2083 rows.
 #'
 #' | **Variable** | **Description** |
 #' | :--- | :--- |
+#' | `region` | Region in Somalia from which the cluster belongs to |
+#' | `district` | District in Somalia from which the cluster belongs to |
 #' | `psu` | The PSU identifier. This must use the same coding system used to identify the PSUs that is used in the indicators dataset |
 #' | `mID` | The mother identifier |
 #' | `cID` | The child identifier |
@@ -146,6 +138,4 @@
 #'
 #' @source Mother and child health and nutrition survey in 3 regions of Somalia
 #'
-#
-################################################################################
 "indicatorsCH2"
