@@ -64,11 +64,11 @@
 #' @importFrom withr with_options
 #' @importFrom parallelly availableCores
 #' @importFrom parallel makeCluster
-#' @importFrom foreach foreach %dopar%
+#' @importFrom foreach foreach %dopar% %do% %:%
 #' @importFrom doParallel registerDoParallel
 #' @importFrom cli cli_abort cli_bullets cli_alert_success
 #'
 "_PACKAGE"
 
 ## quiets concerns of R CMD check re: the psus and THRESHOLD that appear in bbw
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("psu", "THRESHOLD"))
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("psu", "THRESHOLD", "i"))

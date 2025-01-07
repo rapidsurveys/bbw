@@ -27,7 +27,7 @@ PROBIT statistics function for bootstrap estimation
 \examples{
 # Example call to bootBW function:
 sampled_clusters <- boot_bw_sample_clusters(
-  x = indicatorsCH1, df_weighted = boot_bw_weight(villageData)
+  x = indicatorsCH1, w = boot_bw_weight(villageData)
 )
 
 boot <- boot_bw_sample_within_clusters(sampled_clusters)

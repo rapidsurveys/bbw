@@ -47,7 +47,7 @@ bootBW <- function(x, w, statistic,
   check_data(x)
   
   ## Check weights ----
-  check_weights(w = w)
+  w <- boot_bw_weight(w)
   
   ## Check params ----
   params <- check_params(x = x, params = params)

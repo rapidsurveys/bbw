@@ -2,6 +2,8 @@
 % Please edit documentation in R/boot_bw.R
 \name{boot_bw}
 \alias{boot_bw}
+\alias{boot_bw_parallel}
+\alias{boot_bw_sequential}
 \alias{boot_bw_weight}
 \alias{boot_bw_sample_clusters}
 \alias{boot_bw_sample_within_clusters}
@@ -14,12 +16,35 @@ boot_bw(
   params,
   outputColumns = params,
   replicates = 400,
+  strata = NULL,
+  parallel = TRUE,
   cores = parallelly::availableCores(omit = 1)
+)
+
+boot_bw_parallel(
+  x,
+  w,
+  statistic,
+  params,
+  outputColumns = params,
+  replicates = 400,
+  strata = NULL,
+  cores = parallelly::availableCores(omit = 1)
+)
+
+boot_bw_sequential(
+  x,
+  w,
+  statistic,
+  params,
+  outputColumns = params,
+  replicates = 400,
+  strata = NULL
 )
 
 boot_bw_weight(w)
 
-boot_bw_sample_clusters(x, df_weighted, index = FALSE)
+boot_bw_sample_clusters(x, w, index = FALSE)
 
 boot_bw_sample_within_clusters(cluster_df)
 }
@@ -43,13 +68,17 @@ Default to names specified in \code{params}.}
 \item{replicates}{Number of bootstrap replicates to be performed. Default is
 400.}
 
+\item{strata}{A character value for name of variable in \code{x} providing
+information on how \code{x} is grouped such that resampling is performed for
+each group. Default to NULL for no grouping and resampling is performed for
+full data.}
+
+\item{parallel}{Logical. Should resampling be done in parallel? Default to
+TRUE.}
+
 \item{cores}{The number of computer cores to use or number of child processes
 to be run simultaneously. Default to one less than the available number of
 cores on current machine.}
-
-\item{df_weighted}{A \code{\link[=data.frame]{data.frame()}} based on \code{w} with additional variables
-for \code{weight} and \code{cumWeight}. This is usually produced using the function
-\code{\link[=boot_bw_weight]{boot_bw_weight()}}.}
 
 \item{index}{Logical. Should index values be returned or a list of
 \code{\link[=data.frame]{data.frame()}}s. Default to FALSE.}
