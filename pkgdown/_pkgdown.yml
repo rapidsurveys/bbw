@@ -56,6 +56,10 @@ reference:
     - bootClassic
     - bootPROBIT
 
+  - title: Stratified weighted estimation
+    contents:
+    - estimate_total
+
   - title: Utility
     contents:
     - recode
