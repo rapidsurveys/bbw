@@ -58,7 +58,7 @@
 #' @docType package
 #' @name bbw
 #' @keywords internal
-#' @importFrom stats runif na.omit pnorm sd
+#' @importFrom stats runif na.omit pnorm sd quantile
 #' @importFrom car powerTransform
 #' @importFrom car bcPower
 #' @importFrom withr with_options
@@ -66,7 +66,9 @@
 #' @importFrom parallel makeCluster
 #' @importFrom foreach foreach %dopar% %do% %:%
 #' @importFrom doParallel registerDoParallel
-#' @importFrom cli cli_abort cli_bullets cli_alert_success
+#' @importFrom cli cli_abort cli_bullets cli_alert_success cli_progress_bar
+#'   cli_progress_message cli_alert_info cli_progress_update cli_progress_done
+#'   cli_h2 cli_h3
 #'
 "_PACKAGE"
 

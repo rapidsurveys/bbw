@@ -116,9 +116,10 @@ follows:
 citation("bbw")
 #> To cite bbw in publications use:
 #> 
-#>   Mark Myatt, Ernest Guevarra (2025). _bbw: Blocked Weighted Bootstrap_.
-#>   doi:10.5281/zenodo.6594797 <https://doi.org/10.5281/zenodo.6594797>, R package version 0.2.3,
-#>   <https://rapidsurveys.io/bbw/>.
+#>   Mark Myatt, Ernest Guevarra (2025). _bbw: Blocked
+#>   Weighted Bootstrap_. doi:10.5281/zenodo.6594797
+#>   <https://doi.org/10.5281/zenodo.6594797>, R package
+#>   version 0.2.3, <https://rapidsurveys.io/bbw/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 

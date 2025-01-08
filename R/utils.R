@@ -117,3 +117,37 @@ tidy_boot <- function(boot, w, strata, outputColumns) {
   ## Return boot ----
   boot
 }
+
+#'
+#' Boot estimate
+#' 
+#' @keywords internal
+#' 
+
+boot_percentile <- function(boot_df) {
+  if (is.data.frame(boot_df)) {
+    est <- lapply(
+      X = boot_df,
+      FUN = stats::quantile,
+      probs = c(0.5, 0.025, 0.975),
+      na.rm = TRUE
+    ) |>
+      do.call(rbind, args = _) |>
+      data.frame()
+
+    # est <- data.frame(
+    #   indicator = row.names(est),
+    #   est
+    # )
+
+    names(est) <- c("est", "lcl", "ucl")
+  } else {
+    est <- quantile(x = boot_df, probs = c(0.5, 0.025, 0.975), na.rm = TRUE) |>
+      rbind() |>
+      data.frame()
+    
+    names(est) <- c("est", "lcl", "ucl")
+  }
+
+  est
+}
