@@ -25,22 +25,27 @@ boot_bw_estimate <- function(boot_df) {
   est <- lapply(
     X = boot_df,
     FUN = boot_percentile
-  ) |>
+  )
+  
+  ## Structure list names ----
+  if (nrow(est[[1]]) == 1) {
+    names(est) <- paste(
+      names(est),
+      lapply(X = est, FUN = row.names) |> unlist(), 
+      sep = "."
+    )
+  }
+  
+  ## Flatten list ----
+  est <- est |>
     do.call(rbind, args = _)
 
   ## Re-structure results ----
-  if (all(grepl("\\.", row.names(est)))) {
-    est <- data.frame(
-      strata = gsub("\\.[^\\.]{1,}", "", row.names(est)),
-      indicator = gsub("[^\\.]{1,}\\.", "", row.names(est)),
-      est
-    )
-  } else {
-    est <- data.frame(
-      indicator = row.names(est),
-      est
-    )
-  }
+  est <- data.frame(
+    strata = gsub("\\.[^\\.]{1,}", "", row.names(est)),
+    indicator = gsub("[^\\.]{1,}\\.", "", row.names(est)),
+    est
+  )
 
   ## Tidy up row names ----
   row.names(est) <- NULL
