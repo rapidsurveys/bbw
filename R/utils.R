@@ -120,32 +120,58 @@ tidy_boot <- function(boot, w, strata, outputColumns) {
 
 
 #'
-#' Boot estimate
+#' Check est_df
 #' 
 #' @keywords internal
 #' 
 
-boot_percentile <- function(boot_df) {
-  if (is.data.frame(boot_df)) {
-    est <- lapply(
-      X = boot_df,
-      FUN = stats::quantile,
-      probs = c(0.5, 0.025, 0.975),
-      na.rm = TRUE
-    ) |>
-      do.call(rbind, args = _) |>
-      data.frame()
+check_est_df <- function(est_df) {
+  data_name_check <- c("strata", "est", "se") %in% names(est_df)
+  data_name_in <- c("strata", "est", "se")[which(data_name_check)]
+  data_name_out <- c("strata", "est", "se")[which(!data_name_check)]
 
-    names(est) <- c("est", "lcl", "ucl")
+  arg_name <- deparse(substitute(est_df))
+
+  message_out <- ifelse(
+    length(data_name_out) == 1,
+    "{.strong {.val {arg_name}}} doesn't have a {.strong {.val {data_name_out}}} variable or has a different name",
+    "{.strong {.val {arg_name}}} doesn't have {.strong {.val {data_name_out}}} variables or have different names"
+  )
+
+  if (all(data_name_check)) {
+    cli::cli_alert_success(
+      "{.arg est_df} has the appropriate/expected variables"
+    )
   } else {
-    est <- stats::quantile(
-      x = boot_df, probs = c(0.5, 0.025, 0.975), na.rm = TRUE
-    ) |>
-      rbind() |>
-      data.frame()
-    
-    names(est) <- c("est", "lcl", "ucl")
+    cli::cli_abort(message_out)
   }
+}
 
-  est
+
+#'
+#' Check pop_df
+#' 
+#' @keywords internal
+#' 
+
+check_pop_df <- function(pop_df) {
+  data_name_check <- c("strata", "pop") %in% names(pop_df)
+  data_name_in <- c("strata", "pop")[which(data_name_check)]
+  data_name_out <- c("strata", "pop")[which(!data_name_check)]
+
+  arg_name <- deparse(substitute(pop_df))
+
+  message_out <- ifelse(
+    length(data_name_out) == 1,
+    "{.strong {.val {arg_name}}} doesn't have a {.strong {.val {data_name_out}}} variable or has a different name",
+    "{.strong {.val {arg_name}}} doesn't have {.strong {.val {data_name_out}}} variables or have different names"
+  )
+
+  if (all(data_name_check)) {
+    cli::cli_alert_success(
+      "{.arg pop_df} has the appropriate/expected variables"
+    )
+  } else {
+    cli::cli_abort(message_out)
+  }
 }

@@ -53,3 +53,47 @@ boot_bw_estimate <- function(boot_df) {
   ## Return est ----
   est
 }
+
+
+#'
+#' Boot estimate
+#' 
+#' @keywords internal
+#' 
+
+boot_percentile <- function(boot_df) {
+  if (is.data.frame(boot_df)) {
+    est <- lapply(
+      X = boot_df,
+      FUN = stats::quantile,
+      probs = c(0.5, 0.025, 0.975),
+      na.rm = TRUE
+    ) |>
+      do.call(rbind, args = _) |>
+      as.data.frame()
+
+    se <- lapply(
+      X = boot_df,
+      FUN = stats::sd,
+      na.rm = TRUE
+    ) |>
+      do.call(rbind, args = _) |>
+      as.data.frame()
+
+    est <- data.frame(est, se)
+
+    names(est) <- c("est", "lcl", "ucl", "se")
+  } else {
+    est <- stats::quantile(
+      x = boot_df, probs = c(0.5, 0.025, 0.975), na.rm = TRUE
+    ) |>
+      rbind() |>
+      data.frame(
+        se = stats::sd(x = boot_df, na.rm = TRUE)
+      )
+
+    names(est) <- c("est", "lcl", "ucl", "se")
+  }
+
+  est
+}

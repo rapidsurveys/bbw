@@ -1,0 +1,21 @@
+---
+title: "Blocked weighted bootstrap estimation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Blocked weighted bootstrap estimation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(bbw)
+```
+
+The `{bbw}` package was developed primarily as a tool for analysing complex survey data. 

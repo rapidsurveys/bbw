@@ -46,7 +46,7 @@ bootPROBIT <- function(x, params, threshold = THRESHOLD) {
   d <- car::bcPower(d, lambda)
   threshold <- car::bcPower(threshold, lambda)
   m <- mean(d, na.rm = TRUE)
-  s <- stats::sd(d, na.rm = T)
+  s <- stats::sd(d, na.rm = TRUE)
 
   ## PROBIT estimate ----
   x <- stats::pnorm(q = threshold, mean = m, sd = s)
