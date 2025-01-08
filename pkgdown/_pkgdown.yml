@@ -49,8 +49,9 @@ reference:
     contents:
     - bootBW
     - boot_bw
+    - boot_bw_estimate
 
-  - title: Bootstrap estimator
+  - title: Bootstrap statistic
     contents:
     - bootClassic
     - bootPROBIT
