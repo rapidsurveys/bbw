@@ -17,7 +17,7 @@ function is discussed here."><meta property="og:image" content="https://rapidsur
 
     <a class="navbar-brand me-2" href="../index.html">bbw</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.4.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.5.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +27,10 @@ function is discussed here."><meta property="og:image" content="https://rapidsur
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/bbw.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/bbw-estimation.html">Blocked weighted bootstrap estimation</a></li>
+  </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -179,10 +183,10 @@ similar in structure to  <code>x</code> of resampled data from each selected clu
 <span class="r-in"><span>  params <span class="op">=</span> <span class="st">"anc1"</span>, replicates <span class="op">=</span> <span class="fl">49</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Setting up <span style="font-weight: bold;">3</span> parallel operations</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[308ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[297ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Resampling with <span style="font-weight: bold;">49</span> replicates in parallel</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling with <span style="font-weight: bold;">49</span> replicates in parallel <span style="color: #B2B2B2;">[2.6s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling with <span style="font-weight: bold;">49</span> replicates in parallel <span style="color: #B2B2B2;">[2.5s]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Tidying up resampling outputs</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Tidying up resampling outputs <span style="color: #B2B2B2;">[26ms]</span></span>
@@ -191,55 +195,55 @@ similar in structure to  <code>x</code> of resampled data from each selected clu
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Closing <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[15ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         anc1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.2407407</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.2433442</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.2690257</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.2539606</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.2176190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.2250819</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.2530176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.1954922</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.2572104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.2129719</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 0.1956204</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 0.2523277</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 0.2478551</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 0.2309535</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 0.2447917</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 0.2155856</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 0.2404295</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 0.2735043</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 0.2963844</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 0.2339713</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 0.2050428</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 0.2362849</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 0.2438908</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 0.1986333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 0.2276893</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 0.2341742</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 0.2393954</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 0.2223247</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 0.2651229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 0.2064607</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 0.2390771</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 0.2053790</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 0.1976190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 0.2042959</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 0.2465953</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 0.2351826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 0.2087653</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 0.2314327</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 0.1866181</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 0.2673675</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 0.1971831</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 0.2942607</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 0.2057594</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 0.1711331</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 0.2013652</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 0.1850789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 0.2064176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 0.2207971</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 0.2028169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.1927481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.2507205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.2415784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.2237272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.2092703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.1915198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.2772182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.2482793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.1895298</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.2956642</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 0.2303665</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 0.2548647</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 0.1941748</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 0.1841720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 0.2108006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 0.2056704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 0.2342557</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 0.2253923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 0.1953010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 0.1763566</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 0.2235577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 0.2004717</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 0.1572052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 0.2238593</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 0.1914272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 0.1692671</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 0.2642512</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 0.2103269</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 0.1923264</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 0.2377960</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 0.2276984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 0.2560739</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 0.1952607</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 0.1881517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 0.2238946</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 0.2476636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 0.2690282</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 0.2456814</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 0.1653091</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 0.1662125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 0.2176360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 0.2087494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 0.2232314</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 0.2383200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 0.2870906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 0.2108779</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47 0.2125693</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 0.2271442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 0.2334740</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
