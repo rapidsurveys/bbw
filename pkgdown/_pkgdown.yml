@@ -56,6 +56,10 @@ reference:
     - bootClassic
     - bootPROBIT
 
+  - title: Stratified weighted estimation
+    contents:
+    - estimate_total
+
   - title: Utility
     contents:
     - recode
@@ -66,3 +70,4 @@ reference:
     - indicatorsCH2
     - indicatorsHH
     - villageData
+    - somalia_population

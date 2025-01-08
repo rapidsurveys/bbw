@@ -16,7 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-The **blocked weighted bootstrap** is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. *population-proportional sampling* or *PPS* as used in **Standardized Monitoring and Assessment of Relief and Transitions** or **SMART** surveys) or *posterior weighting* (e.g. as used in **Rapid Assessment Method** or **RAM** and **Simple Spatial Sampling Method** or **S3M** surveys).
+The **blocked weighted bootstrap** is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. *population-proportional sampling (PPS)* as used in [Standardized Monitoring and Assessment of Relief and Transitions (SMART)](https://smartmethodology.org/) surveys) or *posterior weighting* (e.g. as used in [Rapid Assessment Method (RAM)](https://rapidsurveys.io/ramOPmanual/) and [Simple Spatial Sampling Method (S3M)](https://researchonline.lshtm.ac.uk/id/eprint/2572543)surveys).
+
+## Features of blocked weighted bootstrap
 
 The bootstrap technique is described in this [article](https://en.wikipedia.org/wiki/Bootstrapping_(statistics)). The blocked weighted bootstrap used in RAM and S3M is a modification to the *percentile bootstrap* to include *blocking* and *weighting* to account for a *complex sample design*.
 
@@ -24,23 +26,30 @@ With RAM and S3M surveys, the sample is complex in the sense that it is an unwei
 
 * **Blocked**: The block corresponds to the primary sampling unit (`PSU = cluster`). *PSU*s are resampled with replacement. Observations within the resampled PSUs are also sampled with replacement.
 
-* **Weighted**: RAM and S3M samples do not use *population proportional sampling (PPS)* to weight the sample prior to data collection (e.g. as is done with **SMART** surveys). This means that a posterior weighting procedure is required. `{bbw}` uses a *"roulette wheel"* algorithm (see [Figure 1](#FIG1) below) to weight (i.e. by population) the selection probability of PSUs in bootstrap replicates.
+* **Weighted**: RAM and S3M samples do not use *population proportional sampling (PPS)* to weight the sample prior to data collection (e.g. as is done with **SMART** surveys). This means that a posterior weighting procedure is required. `{bbw}` uses a *"roulette wheel"* algorithm (see [Figure 1](#fig1) below) to weight (i.e. by population) the selection probability of PSUs in bootstrap replicates.
 
 <br/>
 
-<a name="FIG1"></a>
+<a name="fig1"></a>
 **Figure 1:** Roulette wheel algorithm
 <p align="center">
-![Roulette wheel algorithm](../man/figures/rouletteWheel.png)
+```{r, echo = FALSE, eval = TRUE, out.width = "50%", fig.alt = "Roulette wheel algorithm", fig.align = "center"}
+knitr::include_graphics("../man/figures/rouletteWheel.png")
+```
 </p>
 
+
 <br/>
+
+## Posterior weighting through resampling
 
 In the case of prior weighting by *PPS* all clusters are given the same weight. With posterior weighting (as in RAM or S3M) the weight is the population of each PSU. This procedure is very similar to the [fitness proportional selection](https://en.wikipedia.org/wiki/Fitness_proportionate_selection) technique used in *evolutionary computing*.
 
 A total of `m` PSUs are sampled with replacement for each bootstrap replicate (where `m` is the number of PSUs in the survey sample).
 
 The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (*95\% LCL*), 0.5th (*point estimate*), and 0.975th (*95\% UCL*) quantiles of the distribution of the statistic across all survey replicates.
+
+## Development history
 
 Early versions of the `{bbw}` did not resample observations within PSUs following:
 
@@ -50,6 +59,18 @@ Early versions of the `{bbw}` did not resample observations within PSUs followin
 
 <br/>
 
-and used a large number (e.g. `3999`) survey replicates. Current versions of the `{bbw}` resample observations within PSUs and use a smaller number of survey replicates (e.g. `n = 400`). This is a more computationally efficient approach.
+and used a large number (e.g. `3999`) survey replicates. Next versions (up to *v0.2.0*) of the `{bbw}` resample observations within PSUs and use a smaller number of survey replicates (e.g. `n = 400`). This is a more computationally efficient approach and is demonstrated in the following:
+
+<br/>
+
+> Aaron GJ, Sodani PR, Sankar R, Fairhurst J, Siling K, Guevarra E, et al. (2016) Household Coverage of Fortified Staple Food Commodities in Rajasthan, India. PLoS ONE 11(10): e0163176. https://doi.org/10.1371/journal.pone.0163176
+
+> Aaron GJ, Strutt N, Boateng NA, Guevarra E, Siling K, Norris A, et al. (2016) Assessing Program Coverage of Two Approaches to Distributing a Complementary Feeding Supplement to Infants and Young Children in Ghana. PLoS ONE 11(10): e0162462. https://doi.org/10.1371/journal.pone.0162462
+
+<br/>
+
+The current version (*v0.3.0*) now includes further improvements in computational efficiency using a vectorised algorithm and provides an option for parallel computation which when used reduces the computational overhead by at least 80%.
+
+## Advantages
 
 The main reason to use `{bbw}` is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The `{bbw}` also allows for a wider range of hypothesis tests to be used with complex sample survey data.
