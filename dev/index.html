@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="index.html">bbw</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.5.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.6.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>The <strong>blocked weighted bootstrap</strong> is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. <em>population-proportional sampling</em> or <em>PPS</em> as used in <strong>Standardized Monitoring and Assessment of Relief and Transitions</strong> or <strong>SMART</strong> surveys) or <em>posterior weighting</em> (e.g. as used in <strong>Rapid Assessment Method</strong> or <strong>RAM</strong> and <strong>Simple Spatial Sampling Method</strong> or <strong>S3M</strong> surveys) is implemented.</p>
+<p>The <strong>blocked weighted bootstrap</strong> is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. <em>population-proportional sampling</em> or <em>PPS</em> as used in <a href="https://smartmethodology.org/" class="external-link">Standardized Monitoring and Assessment of Relief and Transitions (SMART)</a> surveys) or <em>posterior weighting</em> (e.g. as used in <a href="https://rapidsurveys.io/ramOPmanual/" class="external-link">Rapid Assessment Method (RAM)</a> and <a href="https://researchonline.lshtm.ac.uk/id/eprint/2572543" class="external-link">Simple Spatial Sampling Method (S3M)</a> surveys) is implemented.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -97,14 +97,14 @@
 <p><br></p>
 <ul>
 <li><p><strong>Blocked</strong>: The block corresponds to the primary sampling unit (<em>PSU = cluster</em>). PSUs are resampled with replacement. Observations within the resampled PSUs are also sampled with replacement.</p></li>
-<li><p><strong>Weighted</strong>: RAM and S3M samples do not use population proportional sampling (PPS) to weight the sample prior to data collection (e.g. as is done with SMART surveys). This means that a posterior weighting procedure is required. <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> uses a <em>“roulette wheel”</em> algorithm (see <a href="#FIG1">illustration below</a>) to weight (i.e. by population) the selection probability of PSUs in bootstrap replicates.</p></li>
+<li><p><strong>Weighted</strong>: RAM and S3M samples do not use population proportional sampling (PPS) to weight the sample prior to data collection (e.g. as is done with SMART surveys). This means that a posterior weighting procedure is required. <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> uses a <em>“roulette wheel”</em> algorithm (see <a href="#fig1">illustration below</a>) to weight (i.e. by population) the selection probability of PSUs in bootstrap replicates.</p></li>
 </ul>
-<p><a name="FIG1"></a></p>
+<p><a name="fig1"></a></p>
 <p align="center">
 </p>
 <p><img src="reference/figures/rouletteWheel.png" alt="Roulette wheel algorithm" width="50%" style="display: block; margin: auto;"></p>
 
-<p>In the case of prior weighting by PPS all clusters are given the same weight. With posterior weighting (as in RAM or S3M) the weight is the population of each PSU. This procedure is very similar to the <em>fitness proportional selection</em> technique used in <em>evolutionary computing</em>.</p>
+<p>In the case of prior weighting by PPS all clusters are given the same weight. With posterior weighting (as in RAM or S3M) the weight is the population of each PSU. This procedure is very similar to the <a href="https://en.wikipedia.org/wiki/Fitness_proportionate_selection" class="external-link"><em>fitness proportional selection</em></a> technique used in <em>evolutionary computing</em>.</p>
 <p>A total of <code>m</code> PSUs are sampled with replacement for each bootstrap replicate (where <code>m</code> is the number of PSUs in the survey sample).</p>
 <p>The required statistic is applied to each replicate. The reported estimate consists of the 0.025th (<em>95% LCL</em>), 0.5th (<em>point estimate</em>), and 0.975th (<em>95% UCL</em>) quantiles of the distribution of the statistic across all survey replicates.</p>
 <p>The main reason to use <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> is that the bootstrap allows a wider range statistics to be calculated than model-based techniques without resort to grand assumptions about the sampling distribution of the required statistic. A good example for this is the confidence interval on the difference between two medians which might be used for many socio-economic variables. The <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> also allows for a wider range of hypothesis tests to be used with complex sample survey data.</p>
