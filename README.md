@@ -26,10 +26,13 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 The **blocked weighted bootstrap** is an estimation technique for use
 with data from two-stage cluster sampled surveys in which either prior
 weighting (e.g. *population-proportional sampling* or *PPS* as used in
-**Standardized Monitoring and Assessment of Relief and Transitions** or
-**SMART** surveys) or *posterior weighting* (e.g. as used in **Rapid
-Assessment Method** or **RAM** and **Simple Spatial Sampling Method** or
-**S3M** surveys) is implemented.
+[Standardized Monitoring and Assessment of Relief and Transitions
+(SMART)](https://smartmethodology.org/) surveys) or *posterior
+weighting* (e.g. as used in [Rapid Assessment Method
+(RAM)](https://rapidsurveys.io/ramOPmanual/) and [Simple Spatial
+Sampling Method
+(S3M)](https://researchonline.lshtm.ac.uk/id/eprint/2572543) surveys) is
+implemented.
 
 ## Installation
 
@@ -73,11 +76,11 @@ for the sample design. A blocked weighted bootstrap can be used:
     sampling (PPS) to weight the sample prior to data collection
     (e.g. as is done with SMART surveys). This means that a posterior
     weighting procedure is required. `{bbw}` uses a *“roulette wheel”*
-    algorithm (see [illustration below](#FIG1)) to weight (i.e. by
+    algorithm (see [illustration below](#fig1)) to weight (i.e. by
     population) the selection probability of PSUs in bootstrap
     replicates.
 
-<a name="FIG1"></a>
+<a name="fig1"></a>
 
 <p align="center">
 
@@ -87,8 +90,10 @@ for the sample design. A blocked weighted bootstrap can be used:
 
 In the case of prior weighting by PPS all clusters are given the same
 weight. With posterior weighting (as in RAM or S3M) the weight is the
-population of each PSU. This procedure is very similar to the *fitness
-proportional selection* technique used in *evolutionary computing*.
+population of each PSU. This procedure is very similar to the [*fitness
+proportional
+selection*](https://en.wikipedia.org/wiki/Fitness_proportionate_selection)
+technique used in *evolutionary computing*.
 
 A total of `m` PSUs are sampled with replacement for each bootstrap
 replicate (where `m` is the number of PSUs in the survey sample).
