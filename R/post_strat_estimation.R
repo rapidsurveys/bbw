@@ -21,7 +21,7 @@
 #' @examples
 #' est_df <- boot_bw(
 #'   x = indicatorsHH, w = villageData, statistic = bootClassic, 
-#'   params = "anc1", strata = "region", replicates = 9
+#'   params = "anc1", strata = "region", replicates = 9, parallel = TRUE
 #' ) |>
 #'   boot_bw_estimate()
 #' 

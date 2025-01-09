@@ -17,7 +17,7 @@ boot_bw(
   outputColumns = params,
   replicates = 400,
   strata = NULL,
-  parallel = TRUE,
+  parallel = FALSE,
   cores = parallelly::availableCores(omit = 1)
 )
 
@@ -74,7 +74,7 @@ each group. Default to NULL for no grouping and resampling is performed for
 full data.}
 
 \item{parallel}{Logical. Should resampling be done in parallel? Default to
-TRUE.}
+FALSE.}
 
 \item{cores}{The number of computer cores to use or number of child processes
 to be run simultaneously. Default to one less than the available number of
@@ -108,7 +108,7 @@ function is discussed here.
 \examples{
 boot_bw(
   x = indicatorsHH, w = villageData, statistic = bootClassic, 
-  params = "anc1", replicates = 49
+  params = "anc1", replicates = 49, parallel = TRUE
 )
 
 }

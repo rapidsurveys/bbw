@@ -15,7 +15,7 @@
 #'   each group. Default to NULL for no grouping and resampling is performed for
 #'   full data.
 #' @param parallel Logical. Should resampling be done in parallel? Default to
-#'   TRUE. 
+#'   FALSE. 
 #' @param cores The number of computer cores to use or number of child processes
 #'   to be run simultaneously. Default to one less than the available number of
 #'   cores on current machine.
@@ -37,7 +37,7 @@
 #' @examples
 #' boot_bw(
 #'   x = indicatorsHH, w = villageData, statistic = bootClassic, 
-#'   params = "anc1", replicates = 49
+#'   params = "anc1", replicates = 49, parallel = TRUE
 #' )
 #' 
 #' @export
@@ -48,7 +48,7 @@ boot_bw <- function(x, w, statistic,
                     params, outputColumns = params, 
                     replicates = 400,
                     strata = NULL,
-                    parallel = TRUE,
+                    parallel = FALSE,
                     cores = parallelly::availableCores(omit = 1)) {
   # Get cumulative weights for clusters ----
   w <- suppressMessages(boot_bw_weight(w), classes = "cliMessage")
@@ -289,6 +289,7 @@ boot_bw_weight <- function(w) {
   w
 }
 
+
 #'
 #' @keywords internal
 #' 
@@ -300,6 +301,7 @@ boot_bw_sample_cluster <- function(p, w) {
   ## Return psu ----
   psu
 }
+
 
 #'
 #' @export
@@ -359,5 +361,4 @@ boot_bw_sample_within_clusters <- function(cluster_df) {
   ) |>
     do.call(rbind, args = _)
 }
-
 
