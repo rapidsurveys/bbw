@@ -17,7 +17,16 @@ test_that("boot_bw_weight works as expected", {
 })
 
 mean_boot <- boot_bw(
-  x = indicatorsHH, w = boot_bw_weight(villageData),
+  x = indicatorsHH, w = villageData,
+  statistic = bootClassic, params = "anc1", replicates = 9, parallel = TRUE
+)
+
+test_that("boot_bw works as expected", {
+  expect_s3_class(mean_boot$boot_data, "data.frame")
+})
+
+mean_boot <- boot_bw(
+  x = indicatorsHH, w = villageData,
   statistic = bootClassic, params = "anc1", replicates = 9
 )
 
@@ -25,20 +34,10 @@ test_that("boot_bw works as expected", {
   expect_s3_class(mean_boot$boot_data, "data.frame")
 })
 
-mean_boot <- boot_bw(
-  x = indicatorsHH, w = boot_bw_weight(villageData),
-  statistic = bootClassic, params = "anc1", replicates = 9,
-  parallel = FALSE
-)
-
-test_that("boot_bw works as expected", {
-  expect_s3_class(mean_boot$boot_data, "data.frame")
-})
-
 
 mean_boot <- boot_bw(
-  x = indicatorsHH, w = boot_bw_weight(villageData),
-  statistic = bootClassic, params = "anc1", replicates = 9, 
+  x = indicatorsHH, w = villageData,
+  statistic = bootClassic, params = "anc1", replicates = 9, parallel = TRUE,
   strata = "region"
 )
 
@@ -47,9 +46,9 @@ test_that("boot_bw works as expected", {
 })
 
 mean_boot <- boot_bw(
-  x = indicatorsHH, w = boot_bw_weight(villageData),
+  x = indicatorsHH, w = villageData,
   statistic = bootClassic, params = "anc1", replicates = 9,
-  parallel = FALSE, strata = "region"
+  strata = "region"
 )
 
 test_that("boot_bw works as expected", {
