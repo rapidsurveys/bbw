@@ -25,9 +25,11 @@ Imports:
     cli,
     doParallel,
     foreach,
+    methods,
     parallel,
     parallelly,
     stats,
+    stringr,
     withr
 Suggests: 
     knitr,

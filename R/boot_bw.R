@@ -120,13 +120,15 @@ boot_bw_parallel <- function(x, w, statistic,
       "Resampling by {.strong {strata}} - {.strong {replicates}} replicates in parallel"
     )
 
-    boot <- foreach::foreach(i = unique(w[[strata]])) %:%
+    .by <- apply(X = x[strata], MARGIN = 1, FUN = paste, collapse = ".")
+
+    boot <- foreach::foreach(i = get_strata(x, strata = strata)) %:%
       foreach::foreach(seq_len(replicates), .combine = rbind) %dopar% {
         ## Subset x to strata ----
-        y <- x[which(x[[strata]] == i), ]
+        y <- x[which(.by == i), ]
 
-        ## Subset df_weighted to strata ----replicates = 400,
-        z <- w[which(w[[strata]] == i), ]
+        ## Subset df_weighted to strata ----
+        z <- w[which(w$psu %in% y$psu), ]
 
         ## Sample clusters ----
         sampled_clusters <- boot_bw_sample_clusters(x = y, w = z)
@@ -141,13 +143,24 @@ boot_bw_parallel <- function(x, w, statistic,
     ## Re-structure boot to identify outputs list and rename data.frames ----
     cli::cli_progress_step("Tidying up resampling outputs")
     boot <- tidy_boot(
-      boot, w = w, strata = strata, outputColumns = outputColumns
+      boot, x = x, strata = strata, outputColumns = outputColumns
     )
   }
 
   ## Stop parallelism ----
   cli::cli_progress_step("Closing {.strong {cores}} parallel operations")
   parallel::stopCluster(cl)
+
+  ## Create list output and append class ----
+  boot <- list(
+    statistic = deparse(substitute(statistic)),
+    params = params,
+    replicates = replicates,
+    strata = strata,
+    boot_data = boot
+  )
+
+  class(boot) <- "boot_bw"
 
   ## Return boot ----
   boot
@@ -171,6 +184,7 @@ boot_bw_sequential <- function(x, w, statistic,
   if (is.null(strata)) {
     cli::cli_h3("Resampling with {.strong {replicates}} replicates")
     cli::cli_progress_bar("Resampling", total = replicates, clear = FALSE)
+    
     boot <- foreach::foreach(
       replicate = seq_len(replicates), .combine = rbind
     ) %do% {
@@ -195,18 +209,20 @@ boot_bw_sequential <- function(x, w, statistic,
     cli::cli_h3(
       "Resampling by {.strong {strata}} with {.strong {replicates}} replicates"
     )
+
+    .by <- apply(X = x[strata], MARGIN = 1, FUN = paste, collapse = ".")
     
-    boot <- foreach::foreach(i = unique(w[[strata]])) %:%
+    boot <- foreach::foreach(i = get_strata(x, strata = strata)) %:%
       foreach::foreach(replicate = seq_len(replicates), .combine = rbind) %do% {
         cli::cli_progress_message(
           "Resampling {.strong {strata} -} {.strong {i}} sequentially: replicate {.strong {replicate}}"
         )
 
         ## Subset x to strata ----
-        y <- x[which(x[[strata]] == i), ]
+        y <- x[which(.by == i), ]
 
         ## Subset df_weighted to strata ----
-        z <- w[which(w[[strata]] == i), ]
+        z <- w[which(w$psu %in% y$psu), ]
 
         ## Sample clusters ----
         sampled_clusters <- boot_bw_sample_clusters(x = y, w = z)
@@ -222,9 +238,20 @@ boot_bw_sequential <- function(x, w, statistic,
     ## Re-structure boot to identify outputs list and rename data.frames ----
     cli::cli_progress_step("Tidying up resampling outputs")
     boot <- tidy_boot(
-      boot, w = w, strata = strata, outputColumns = outputColumns
+      boot, x = x, strata = strata, outputColumns = outputColumns
     )
   }
+
+  ## Create list output and append class ----
+  boot <- list(
+    statistic = deparse(substitute(statistic)),
+    params = params,
+    replicates = replicates,
+    strata = strata,
+    boot_data = boot
+  )
+
+  class(boot) <- "boot_bw"
 
   ## Return boot ----
   boot

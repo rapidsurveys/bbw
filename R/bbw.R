@@ -69,6 +69,8 @@
 #' @importFrom cli cli_abort cli_bullets cli_alert_success cli_progress_bar
 #'   cli_progress_message cli_alert_info cli_progress_update cli_progress_done
 #'   cli_h2 cli_h3
+#' @importFrom methods is
+#' @importFrom stringr str_split
 #'
 "_PACKAGE"
 

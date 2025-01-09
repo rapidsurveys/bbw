@@ -4,7 +4,7 @@
 \alias{tidy_boot}
 \title{Tidy bootstraps}
 \usage{
-tidy_boot(boot, w, strata, outputColumns)
+tidy_boot(boot, x, strata, outputColumns)
 }
 \description{
 Tidy bootstraps

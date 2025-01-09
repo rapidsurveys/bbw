@@ -11,6 +11,8 @@
 #' @param pop_df A [data.frame()] with at least two variables: `strata` for the
 #'   stratification/grouping information that matches `strata` in `est_df` and
 #'   `pop` for information on population for the given `strata`.
+#' @param strata A character value of the variable name in `est_df` that
+#'   corresponds to the `strata` values to match with values in `pop_df`
 #' 
 #' @returns A vector of values for the overall estimate, overall 95% lower
 #'   confidence limit, and overall 95% upper confidence limit for each of the
@@ -29,17 +31,18 @@
 #' 
 #' names(pop_df) <- c("strata", "pop")
 #' 
-#' estimate_total(est_df, pop_df)
+#' estimate_total(est_df, pop_df, strata = "region")
 #' 
 #' @export
 #' 
 
-estimate_total <- function(est_df, pop_df) {
+estimate_total <- function(est_df, pop_df, strata) {
   ## Check the data ----
-  check_est_df(est_df)
+  check_est_df(est_df, strata = strata)
   check_pop_df(pop_df)
 
   ## Merge estimates with population data ----
+  est_df$strata <- est_df[[strata]]
   est_pop_df <- merge(pop_df, est_df, by = "strata", all.y = TRUE)
 
   ## Get total estimates ----
