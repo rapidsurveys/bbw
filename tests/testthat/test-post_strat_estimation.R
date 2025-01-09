@@ -3,7 +3,7 @@
 test_that("estimate_total works as expected", {
   boot_df <- boot_bw(
     indicatorsHH, villageData, statistic = bootClassic, params = "anc1",
-    replicates = 9
+    replicates = 9, strata = "region"
   )
   
   est_df <- boot_bw_estimate(boot_df)
@@ -13,15 +13,6 @@ test_that("estimate_total works as expected", {
   
   names(pop_df) <- c("strata", "pop")
 
-  expect_s3_class(estimate_total(est_df, pop_df), "data.frame")
-
-  boot_df <- boot_bw(
-    indicatorsHH, villageData, statistic = bootClassic, params = "anc1",
-    replicates = 9, strata = "region"
-  )
-  
-  est_df <- boot_bw_estimate(boot_df)
-  
   expect_s3_class(estimate_total(est_df, pop_df), "data.frame")
 
   boot_df <- boot_bw(

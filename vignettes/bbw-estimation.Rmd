@@ -1,5 +1,7 @@
 ---
 title: "Blocked weighted bootstrap estimation"
+author: "Ernest Guevarra"
+date: "8 January 2025"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Blocked weighted bootstrap estimation}
@@ -18,4 +20,4 @@ knitr::opts_chunk$set(
 library(bbw)
 ```
 
-The `{bbw}` package was developed primarily as a tool for analysing complex survey data. 
+The `{bbw}` package was developed primarily as a tool for analysing complex sample survey data. 

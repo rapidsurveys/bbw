@@ -28,24 +28,33 @@ boot_bw_estimate <- function(boot_df) {
   )
   
   ## Structure list names ----
-  if (nrow(est[[1]]) == 1) {
-    names(est) <- paste(
-      names(est),
-      lapply(X = est, FUN = row.names) |> unlist(), 
-      sep = "."
-    )
-  }
-  
-  ## Flatten list ----
-  est <- est |>
-    do.call(rbind, args = _)
+  if (!is.data.frame(boot_df)) {
+    if (nrow(est[[1]]) == 1) {
+      names(est) <- paste(
+        names(est),
+        lapply(X = est, FUN = row.names) |> unlist(), 
+        sep = "."
+      )
+    }
 
-  ## Re-structure results ----
-  est <- data.frame(
-    strata = gsub("\\.[^\\.]{1,}", "", row.names(est)),
-    indicator = gsub("[^\\.]{1,}\\.", "", row.names(est)),
-    est
-  )
+    ## Flatten list ----
+    est <- est |>
+      do.call(rbind, args = _)
+
+    ## Re-structure results ----
+    est <- data.frame(
+      strata = gsub("\\.[^\\.]{1,}", "", row.names(est)),
+      indicator = gsub("[^\\.]{1,}\\.", "", row.names(est)),
+      est
+    )
+  } else {
+    ## Flatten list ----
+    est <- est |>
+      do.call(rbind, args = _)
+
+    ## Re-structure results ----
+    est <- data.frame(indicator = row.names(est), est)
+  }
 
   ## Tidy up row names ----
   row.names(est) <- NULL
