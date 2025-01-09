@@ -22,7 +22,7 @@ mean_boot <- boot_bw(
 )
 
 test_that("boot_bw works as expected", {
-  expect_s3_class(mean_boot, "data.frame")
+  expect_s3_class(mean_boot$boot_data, "data.frame")
 })
 
 mean_boot <- boot_bw(
@@ -32,7 +32,7 @@ mean_boot <- boot_bw(
 )
 
 test_that("boot_bw works as expected", {
-  expect_s3_class(mean_boot, "data.frame")
+  expect_s3_class(mean_boot$boot_data, "data.frame")
 })
 
 
@@ -43,7 +43,7 @@ mean_boot <- boot_bw(
 )
 
 test_that("boot_bw works as expected", {
-  expect_type(mean_boot, "list")
+  expect_type(mean_boot$boot_data, "list")
 })
 
 mean_boot <- boot_bw(
@@ -53,7 +53,7 @@ mean_boot <- boot_bw(
 )
 
 test_that("boot_bw works as expected", {
-  expect_type(mean_boot, "list")
+  expect_type(mean_boot$boot_data, "list")
 })
 
 

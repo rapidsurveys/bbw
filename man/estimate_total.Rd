@@ -4,7 +4,7 @@
 \alias{estimate_total}
 \title{Post-stratification analysis}
 \usage{
-estimate_total(est_df, pop_df)
+estimate_total(est_df, pop_df, strata)
 }
 \arguments{
 \item{est_df}{A \code{\link[=data.frame]{data.frame()}} of stratified indicator estimates to get
@@ -18,6 +18,9 @@ indicator estimate. This is usually produced via a call to
 \item{pop_df}{A \code{\link[=data.frame]{data.frame()}} with at least two variables: \code{strata} for the
 stratification/grouping information that matches \code{strata} in \code{est_df} and
 \code{pop} for information on population for the given \code{strata}.}
+
+\item{strata}{A character value of the variable name in \code{est_df} that
+corresponds to the \code{strata} values to match with values in \code{pop_df}}
 }
 \value{
 A vector of values for the overall estimate, overall 95\% lower
@@ -40,6 +43,6 @@ pop_df <- somalia_population |>
 
 names(pop_df) <- c("strata", "pop")
 
-estimate_total(est_df, pop_df)
+estimate_total(est_df, pop_df, strata = "region")
 
 }

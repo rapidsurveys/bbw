@@ -13,7 +13,9 @@ test_that("estimate_total works as expected", {
   
   names(pop_df) <- c("strata", "pop")
 
-  expect_s3_class(estimate_total(est_df, pop_df), "data.frame")
+  expect_s3_class(
+    estimate_total(est_df, pop_df, strata = "region"), "data.frame"
+  )
 
   boot_df <- boot_bw(
     indicatorsHH, villageData, statistic = bootClassic, 
@@ -22,7 +24,9 @@ test_that("estimate_total works as expected", {
   
   est_df <- boot_bw_estimate(boot_df)
   
-  expect_s3_class(estimate_total(est_df, pop_df), "data.frame")
+  expect_s3_class(
+    estimate_total(est_df, pop_df, strata = "region"), "data.frame"
+  )
 
   est_dfx <- est_df
   names(est_dfx) <- c("strat", "indicator", "es", "lcl", "ucl", "sse")
@@ -30,6 +34,6 @@ test_that("estimate_total works as expected", {
   pop_dfx <- pop_df
   names(pop_dfx) <- c("strat", "pop")
 
-  expect_error(estimate_total(est_dfx, pop_df))
-  expect_error(estimate_total(est_df, pop_dfx))
+  expect_error(estimate_total(est_dfx, pop_df, strata = "region"))
+  expect_error(estimate_total(est_df, pop_dfx, strata = "region"))
 })

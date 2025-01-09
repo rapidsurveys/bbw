@@ -95,7 +95,7 @@ check_data <- function(x) {
 #' @keywords internal
 #' 
 
-tidy_boot <- function(boot, w, strata, outputColumns) {
+tidy_boot <- function(boot, x, strata, outputColumns) {
   if (is.list(boot)) {
     boot <- lapply(
       X = boot,
@@ -107,7 +107,7 @@ tidy_boot <- function(boot, w, strata, outputColumns) {
         x
       }
     ) |>
-      (\(x) { names(x) <- unique(w[[strata]]); x })()
+      (\(y) { names(y) <- get_strata(x, strata); y })()
   } else {
     boot <- as.data.frame(boot)
     row.names(boot) <- NULL
@@ -125,10 +125,10 @@ tidy_boot <- function(boot, w, strata, outputColumns) {
 #' @keywords internal
 #' 
 
-check_est_df <- function(est_df) {
-  data_name_check <- c("strata", "est", "se") %in% names(est_df)
-  data_name_in <- c("strata", "est", "se")[which(data_name_check)]
-  data_name_out <- c("strata", "est", "se")[which(!data_name_check)]
+check_est_df <- function(est_df, strata) {
+  data_name_check <- c(strata, "est", "se") %in% names(est_df)
+  data_name_in <- c(strata, "est", "se")[which(data_name_check)]
+  data_name_out <- c(strata, "est", "se")[which(!data_name_check)]
 
   arg_name <- deparse(substitute(est_df))
 
@@ -174,4 +174,20 @@ check_pop_df <- function(pop_df) {
   } else {
     cli::cli_abort(message_out)
   }
+}
+
+
+#'
+#' Get levels of stratification
+#' 
+#' @keywords internal
+#' 
+
+get_strata <- function(x, strata) {
+  y <- lapply(
+    X = x[strata],
+    FUN = factor
+  )
+
+  names(split(x, y))
 }

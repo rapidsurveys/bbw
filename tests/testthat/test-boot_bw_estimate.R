@@ -14,4 +14,6 @@ test_that("boot_bw_estimate works as expected", {
   )
 
   expect_s3_class(boot_bw_estimate(boot_df), "data.frame")
+
+  expect_error(boot_bw_estimate(boot_df$boot_data))
 })

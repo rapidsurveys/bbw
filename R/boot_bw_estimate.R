@@ -21,14 +21,20 @@
 #' 
 
 boot_bw_estimate <- function(boot_df) {
+  ## Check that boot_df is class boot_bw ----
+  if (!is(boot_df, "boot_bw"))
+    cli::cli_abort(
+      "{.arg boot_df} is not a {.strong {.var boot_bw}} object"
+    )
+
   ## Get estimates ----
   est <- lapply(
-    X = boot_df,
+    X = boot_df$boot_data,
     FUN = boot_percentile
   )
   
   ## Structure list names ----
-  if (!is.data.frame(boot_df)) {
+  if (!is.data.frame(boot_df$boot_data)) {
     if (nrow(est[[1]]) == 1) {
       names(est) <- paste(
         names(est),
@@ -42,11 +48,12 @@ boot_bw_estimate <- function(boot_df) {
       do.call(rbind, args = _)
 
     ## Re-structure results ----
-    est <- data.frame(
-      strata = gsub("\\.[^\\.]{1,}", "", row.names(est)),
-      indicator = gsub("[^\\.]{1,}\\.", "", row.names(est)),
-      est
-    )
+    est <- stringr::str_split(
+      row.names(est), pattern = "\\.", simplify = TRUE
+    ) |>
+      as.data.frame() |>
+      (\(x) { names(x) <- c(boot_df$strata, "indicator"); x })() |>
+      data.frame(est)
   } else {
     ## Flatten list ----
     est <- est |>
