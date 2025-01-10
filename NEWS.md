@@ -1,3 +1,22 @@
+# bbw 0.2.7.9000
+
+## New features
+
+* added alternative set of boot functions that implement vectorised and parallel resampling algorithm with option for stratification
+
+* added functions for percentile estimation from bootstrap replicates
+
+* added function for post-stratification estimation
+
+## Updates
+
+* improved function documentation
+
+* improved information, warning, and error messages
+
+* improved vignettes
+
+
 # bbw 0.2.0
 
 This is the second CRAN release of `bbw`. In this release:
