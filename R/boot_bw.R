@@ -89,7 +89,9 @@ boot_bw_parallel <- function(x, w, statistic,
                              params, outputColumns = params,
                              replicates = 400,
                              strata = NULL,
-                             cores = parallelly::availableCores(omit = 1)) {    
+                             cores = parallelly::availableCores(omit = 1)) {  
+  cli::cli_h2("Resampling in parallel")
+  
   ## Setup parallelism ----
   cli::cli_progress_step("Setting up {.strong {cores}} parallel operations")
   cl <- parallel::makeCluster(cores)
@@ -153,7 +155,6 @@ boot_bw_parallel <- function(x, w, statistic,
 
   ## Create list output and append class ----
   boot <- list(
-    statistic = deparse(substitute(statistic)),
     params = params,
     replicates = replicates,
     strata = strata,
@@ -176,10 +177,8 @@ boot_bw_sequential <- function(x, w, statistic,
                                params, outputColumns = params,
                                replicates = 400,
                                strata = NULL) {
-  x_name <- deparse(substitute(x))
-  stat_name <- deparse(substitute(statistic))
-
   cli::cli_h2("Resampling sequentially")
+
   ## Resample ----
   if (is.null(strata)) {
     cli::cli_h3("Resampling with {.strong {replicates}} replicates")
@@ -244,7 +243,6 @@ boot_bw_sequential <- function(x, w, statistic,
 
   ## Create list output and append class ----
   boot <- list(
-    statistic = deparse(substitute(statistic)),
     params = params,
     replicates = replicates,
     strata = strata,
@@ -264,6 +262,8 @@ boot_bw_sequential <- function(x, w, statistic,
 #' 
 
 boot_bw_weight <- function(w) {
+  w_name <- as.character(substitute(w))
+
   req_names <- c("psu", "pop", "weight", "cumWeight")
   names_check <- req_names %in% names(w)
   names_in <- req_names[names_check]
@@ -280,7 +280,7 @@ boot_bw_weight <- function(w) {
       w$cumWeight <- cumsum(w$weight)
     } else {
       cli::cli_abort(
-        "{.arg w} doesn't have the needed variables or they are not named appropriately"
+        "{.strong {w_name}} doesn't have the needed variables or they are not named appropriately"
       )
     }
   }

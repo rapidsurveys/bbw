@@ -8,14 +8,16 @@ check_params <- function(x, params) {
   params_in <- params[which(params %in% names(x))]
   params_out <- params[which(!params %in% names(x))]
 
+  x_name <- as.character(substitute(x))
+
   if (length(params_in) == 0) {
     if (length(params) > 1) {
       cli::cli_abort(
-        "{.val {params}} are not variables in {.arg x}"
+        "{.strong {params}} are not variables in {.strong {x_name}}"
       )
     } else {
       cli::cli_abort(
-        "{.val {params}} is not a variable in {.arg x}"
+        "{.strong {params}} is not a variable in {.strong {x_name}}"
       )
     }
   } else {
@@ -33,25 +35,25 @@ check_params <- function(x, params) {
       if (length(params_in) == 1) {
         cli::cli_bullets(
           c(
-            "v" = "{.val {params_in}} is a variable in {.arg x}",
+            "v" = "{.strong {params_in}} is a variable in {.strong {x_name}}",
             "!" = ifelse(
               length(params_out) > 1,
-              "{.val {params_out}} are not variables in {.arg x}",
-              "{.val {params_out}} is not a variable in {.arg x}"
+              "{.strong {params_out}} are not variables in {.strong {x_name}}",
+              "{.strong {params_out}} is not a variable in {.strong {x_name}}"
             ),
-            "i" = "Returning {.val {params_in}}"
+            "i" = "Returning {.strong {params_in}}"
           )
         )
       } else {
         cli::cli_bullets(
           c(
-            "v" = "{.val {params_in}} are variables in {.arg x}",
+            "v" = "{.strong {params_in}} are variables in {.strong {x_name}}",
             "!" = ifelse(
               length(params_out) > 1,
-              "{.val {params_out}} are not variables in {.arg x}",
-              "{.val {params_out}} is not a variable in {.arg x}"
+              "{.strong {params_out}} are not variables in {.strong {x_name}}",
+              "{.strong {params_out}} is not a variable in {.strong {x_name}}"
             ),
-            "i" = "Returning {.val {params_in}}"
+            "i" = "Returning {.strong {params_in}}"
           )
         )
       }
@@ -72,19 +74,21 @@ check_data <- function(x) {
   data_name_check <- "psu" %in% names(x)
   data_structure_check <- ncol(x) > 1
 
+  x_name <- as.character(substitute(x))
+
   if (data_name_check) {
     if (data_structure_check) {
       cli::cli_alert_success(
-        "{.arg x} has the appropriate/expected data structure"
+        "{.strong {x_name}} has the appropriate/expected data structure"
       )
     } else {
       cli::cli_abort(
-        "{.var x} doesn't have variables with data to estimate"
+        "{.strong {x_name}} doesn't have variables with data to estimate"
       )
     }
   } else {
     cli::cli_abort(
-      "{.var x} doesn't have a {.var psu} variable or has a different name"
+      "{.strong {x_name}} doesn't have a {.var psu} variable or has a different name"
     )
   }
 }
@@ -130,17 +134,17 @@ check_est_df <- function(est_df, strata) {
   data_name_in <- c(strata, "est", "se")[which(data_name_check)]
   data_name_out <- c(strata, "est", "se")[which(!data_name_check)]
 
-  arg_name <- deparse(substitute(est_df))
+  arg_name <- as.character(substitute(est_df))
 
   message_out <- ifelse(
     length(data_name_out) == 1,
-    "{.strong {.val {arg_name}}} doesn't have a {.strong {.val {data_name_out}}} variable or has a different name",
-    "{.strong {.val {arg_name}}} doesn't have {.strong {.val {data_name_out}}} variables or have different names"
+    "{.strong {arg_name}} doesn't have a {.strong {data_name_out}} variable or has a different name",
+    "{.strong {arg_name}} doesn't have {.strong {data_name_out}} variables or have different names"
   )
 
   if (all(data_name_check)) {
     cli::cli_alert_success(
-      "{.arg est_df} has the appropriate/expected variables"
+      "{.strong {arg_name}} has the appropriate/expected variables"
     )
   } else {
     cli::cli_abort(message_out)
@@ -159,17 +163,17 @@ check_pop_df <- function(pop_df) {
   data_name_in <- c("strata", "pop")[which(data_name_check)]
   data_name_out <- c("strata", "pop")[which(!data_name_check)]
 
-  arg_name <- deparse(substitute(pop_df))
+  arg_name <- as.character(substitute(pop_df))
 
   message_out <- ifelse(
     length(data_name_out) == 1,
-    "{.strong {.val {arg_name}}} doesn't have a {.strong {.val {data_name_out}}} variable or has a different name",
-    "{.strong {.val {arg_name}}} doesn't have {.strong {.val {data_name_out}}} variables or have different names"
+    "{.strong {arg_name}} doesn't have a {.strong {data_name_out}} variable or has a different name",
+    "{.strong {arg_name}} doesn't have {.strong {data_name_out}} variables or have different names"
   )
 
   if (all(data_name_check)) {
     cli::cli_alert_success(
-      "{.arg pop_df} has the appropriate/expected variables"
+      "{.strong {arg_name}} has the appropriate/expected variables"
     )
   } else {
     cli::cli_abort(message_out)
