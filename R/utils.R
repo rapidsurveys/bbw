@@ -195,3 +195,4 @@ get_strata <- function(x, strata) {
 
   names(split(x, y))
 }
+
