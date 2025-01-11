@@ -161,7 +161,7 @@ boot_bw_parallel <- function(x, w, statistic,
     boot_data = boot
   )
 
-  class(boot) <- "boot_bw"
+  attr(boot, which = "class") <- c("boot_bw", "list")
 
   ## Return boot ----
   boot
@@ -249,7 +249,7 @@ boot_bw_sequential <- function(x, w, statistic,
     boot_data = boot
   )
 
-  class(boot) <- "boot_bw"
+  attr(boot, which = "class") <- c("boot_bw", "list")
 
   ## Return boot ----
   boot
