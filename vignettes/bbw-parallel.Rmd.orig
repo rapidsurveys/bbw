@@ -1,0 +1,347 @@
+---
+title: "Using bbw with parallel computation"
+author: "Ernest Guevarra"
+date: "12 January 2025"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using bbw with parallel computation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(bbw)
+RNGkind("L'Ecuyer-CMRG")
+set.seed(1977)
+```
+
+A key feature of the most recent `{bbw}` update is its new function set that uses parallelisation for bootstrap resampling. This vignette explores the bootstrap resampling efficiencies gained with parallelisation.
+
+Applying the original and the alternative function/set to the Somalia survey dataset available from this package, bootstrap resampling is applied using the same parameters and the time the operation it takes to run is measured and compared.
+
+## Bootstrap resampling without parallelisation
+
+In this comparison, the original and alternative function/set both implement *sequential* bootstrap resampling with number of *parameters* set at varying values.
+
+### Using one parameter and 400 replicates
+
+```{r boot-sequential, message = FALSE}
+## Original bootstrap ----
+boot_orig_1_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, params = "anc1"
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+## Alternative bootstrap ----
+boot_alt_1_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, params = "anc1"
+  ) |>
+    boot_bw_estimate()
+)
+```
+
+```{r boot-sequential-results, echo = FALSE}
+data.frame(
+  cbind(
+    c(
+      "Original - 400 replicates - 1 parameter",
+      "Alternative - 400 replicates - 1 parameter"
+    ),
+  rbind(boot_orig_1_param, boot_alt_1_param) |>
+    (\(x) x[ , 1:3])()
+  ),
+  row.names = NULL
+) |>
+  setNames(c(" ", "User", "System", "Elapsed")) |>
+  gt::gt() |>
+  gt::tab_header(
+    title = "Original vs Alternative bootstrap resampling function/set",
+    subtitle = "Sequential resampling with 1 parameter and 400 replicates"
+  )
+```
+
+Performing bootstrap resampling sequentially, the original function took **`r boot_orig_1_param[3]`** seconds to run while the alternative function set took **`r boot_alt_1_param[3]`** seconds to run. There was very little difference between the original and the alternative function/set.
+
+### Using varying number of parameters and 400 replicates
+
+```{r boot-sequential-multi-params, message = FALSE}
+## Original bootstrap ----
+boot_orig_2_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2")
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+boot_orig_4_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4")
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+boot_orig_8_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    )
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+## Alternative bootstrap ----
+boot_alt_2_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2")
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4")
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    )
+  ) |>
+    boot_bw_estimate()
+)
+```
+
+```{r boot-sequential-multi-params-results, echo = FALSE}
+data.frame(
+  n_params = c(1, 2, 4, 8),
+  rbind(
+    boot_orig_1_param, 
+    boot_orig_2_param, 
+    boot_orig_4_param,
+    boot_orig_8_param
+  )[ , 1:3],
+  rbind(
+    boot_alt_1_param, 
+    boot_alt_2_param, 
+    boot_alt_4_param,
+    boot_alt_8_param
+  )[ , 1:3],
+  row.names = NULL
+) |>
+  setNames(
+    c(
+      "No. of parameters", 
+      "User - Original", 
+      "System - Original", 
+      "Elapsed - Original", 
+      "User - Alternative", 
+      "System - Alternative", 
+      "Elapsed - Alternative"
+    )
+  ) |>
+  gt::gt() |>
+  gt::tab_header(
+    title = "Original vs Alternative bootstrap resampling function/set",
+    subtitle = "Sequential resampling with increasing number of parameters and 400 replicates"
+  )
+```
+
+There are marginal gains with the alternative function set when the number of parameters more than 1 but the gains do not increase with the increase in the number of parameters.
+
+## Bootstrap resampling with parallelisation
+
+In this comparison, the alternative function/set implements *parallel* bootstrap resampling with number of *parameters* set at varying values and number of parallel cores set at varying values and then compared to performance of the original function as above.
+
+```{r boot-parallel, message = FALSE}
+## Alternative bootstrap - 2 cores ----
+boot_alt_1_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = "anc1", parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_2_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2"), parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4"), parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    ), parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+
+## Alternative bootstrap - 4 cores ----
+boot_alt_1_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = "anc1", parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_2_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2"), parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4"), parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    ), parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+
+## Alternative bootstrap - 8 cores ----
+boot_alt_1_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = "anc1", parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_2_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2"), parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4"), parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    ), parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+```
+
+```{r boot-parallel-results, echo = FALSE}
+data.frame(
+  n_params = c(1, 2, 4, 8),
+  rbind(
+    boot_orig_1_param, 
+    boot_orig_2_param, 
+    boot_orig_4_param,
+    boot_orig_8_param
+  )[ , 3],
+  rbind(
+    boot_alt_1_param, 
+    boot_alt_2_param, 
+    boot_alt_4_param,
+    boot_alt_8_param
+  )[ , 3],
+  rbind(
+    boot_alt_1_param_2_cores, 
+    boot_alt_2_param_2_cores, 
+    boot_alt_4_param_2_cores,
+    boot_alt_8_param_2_cores
+  )[ , 3],
+  rbind(
+    boot_alt_1_param_4_cores, 
+    boot_alt_2_param_4_cores, 
+    boot_alt_4_param_4_cores,
+    boot_alt_8_param_4_cores
+  )[ , 3],
+  rbind(
+    boot_alt_1_param_8_cores, 
+    boot_alt_2_param_8_cores, 
+    boot_alt_4_param_8_cores,
+    boot_alt_8_param_8_cores
+  )[ , 3],  
+  row.names = NULL
+) |>
+  setNames(
+    c(
+      "No. of parameters",
+      "Original",
+      "Alternative - sequential",
+      "Alternative - 2 cores", 
+      "Alternative - 4 cores", 
+      "Alternative - 8 cores"
+    )
+  ) |>
+  gt::gt() |>
+  gt::tab_header(
+    title = "Original vs Alternative bootstrap resampling function/set",
+    subtitle = "Parallel resampling with increasing number of parameters and increasing number of cores"
+  )
+```
+
+Parallelisation reduces runtimes by up to 50%.
