@@ -1,0 +1,1712 @@
+---
+title: "Using bbw with parallel computation"
+author: "Ernest Guevarra"
+date: "12 January 2025"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using bbw with parallel computation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+
+
+A key feature of the most recent `{bbw}` update is its new function set that uses parallelisation for bootstrap resampling. This vignette explores the bootstrap resampling efficiencies gained with parallelisation.
+
+Applying the original and the alternative function/set to the Somalia survey dataset available from this package, bootstrap resampling is applied using the same parameters and the time the operation it takes to run is measured and compared.
+
+## Bootstrap resampling without parallelisation
+
+In this comparison, the original and alternative function/set both implement *sequential* bootstrap resampling with number of *parameters* set at varying values.
+
+### Using one parameter and 400 replicates
+
+
+``` r
+## Original bootstrap ----
+boot_orig_1_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, params = "anc1"
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+## Alternative bootstrap ----
+boot_alt_1_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, params = "anc1"
+  ) |>
+    boot_bw_estimate()
+)
+```
+
+<!--html_preserve--><div id="tgcehtuokl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tgcehtuokl table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#tgcehtuokl thead, #tgcehtuokl tbody, #tgcehtuokl tfoot, #tgcehtuokl tr, #tgcehtuokl td, #tgcehtuokl th {
+  border-style: none;
+}
+
+#tgcehtuokl p {
+  margin: 0;
+  padding: 0;
+}
+
+#tgcehtuokl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tgcehtuokl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tgcehtuokl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tgcehtuokl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tgcehtuokl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tgcehtuokl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tgcehtuokl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tgcehtuokl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tgcehtuokl .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tgcehtuokl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tgcehtuokl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tgcehtuokl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tgcehtuokl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tgcehtuokl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tgcehtuokl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tgcehtuokl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tgcehtuokl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tgcehtuokl .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tgcehtuokl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tgcehtuokl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tgcehtuokl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tgcehtuokl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tgcehtuokl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tgcehtuokl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tgcehtuokl .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tgcehtuokl .gt_left {
+  text-align: left;
+}
+
+#tgcehtuokl .gt_center {
+  text-align: center;
+}
+
+#tgcehtuokl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tgcehtuokl .gt_font_normal {
+  font-weight: normal;
+}
+
+#tgcehtuokl .gt_font_bold {
+  font-weight: bold;
+}
+
+#tgcehtuokl .gt_font_italic {
+  font-style: italic;
+}
+
+#tgcehtuokl .gt_super {
+  font-size: 65%;
+}
+
+#tgcehtuokl .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tgcehtuokl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tgcehtuokl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tgcehtuokl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tgcehtuokl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tgcehtuokl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tgcehtuokl .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#tgcehtuokl .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#tgcehtuokl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_title gt_font_normal" style>Original vs Alternative bootstrap resampling function/set</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Sequential resampling with 1 parameter and 400 replicates</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="a-"> </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="User">User</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="System">System</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Elapsed">Elapsed</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers=" " class="gt_row gt_left">Original - 400 replicates - 1 parameter</td>
+<td headers="User" class="gt_row gt_right">31.505</td>
+<td headers="System" class="gt_row gt_right">0.0320000000000036</td>
+<td headers="Elapsed" class="gt_row gt_right">31.4860000000008</td></tr>
+    <tr><td headers=" " class="gt_row gt_left">Alternative - 400 replicates - 1 parameter</td>
+<td headers="User" class="gt_row gt_right">25.956</td>
+<td headers="System" class="gt_row gt_right">0</td>
+<td headers="Elapsed" class="gt_row gt_right">25.8919999999998</td></tr>
+  </tbody>
+  
+  
+</table>
+</div><!--/html_preserve-->
+
+Performing bootstrap resampling sequentially, the original function took **31.486** seconds to run while the alternative function set took **25.892** seconds to run. There was very little difference between the original and the alternative function/set.
+
+### Using varying number of parameters and 400 replicates
+
+
+``` r
+## Original bootstrap ----
+boot_orig_2_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2")
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+boot_orig_4_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4")
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+boot_orig_8_param <- system.time(
+  boot1_results <- bootBW(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    )
+  ) |>
+    lapply(
+      FUN = quantile,
+      probs = c(0.5, 0.025, 0.975)
+    )
+)
+
+## Alternative bootstrap ----
+boot_alt_2_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2")
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4")
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    )
+  ) |>
+    boot_bw_estimate()
+)
+```
+
+<!--html_preserve--><div id="yliaqxmopd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yliaqxmopd table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yliaqxmopd thead, #yliaqxmopd tbody, #yliaqxmopd tfoot, #yliaqxmopd tr, #yliaqxmopd td, #yliaqxmopd th {
+  border-style: none;
+}
+
+#yliaqxmopd p {
+  margin: 0;
+  padding: 0;
+}
+
+#yliaqxmopd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yliaqxmopd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yliaqxmopd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yliaqxmopd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yliaqxmopd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yliaqxmopd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yliaqxmopd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yliaqxmopd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yliaqxmopd .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yliaqxmopd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yliaqxmopd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yliaqxmopd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yliaqxmopd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yliaqxmopd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yliaqxmopd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yliaqxmopd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yliaqxmopd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yliaqxmopd .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yliaqxmopd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yliaqxmopd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yliaqxmopd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yliaqxmopd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yliaqxmopd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yliaqxmopd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yliaqxmopd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yliaqxmopd .gt_left {
+  text-align: left;
+}
+
+#yliaqxmopd .gt_center {
+  text-align: center;
+}
+
+#yliaqxmopd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yliaqxmopd .gt_font_normal {
+  font-weight: normal;
+}
+
+#yliaqxmopd .gt_font_bold {
+  font-weight: bold;
+}
+
+#yliaqxmopd .gt_font_italic {
+  font-style: italic;
+}
+
+#yliaqxmopd .gt_super {
+  font-size: 65%;
+}
+
+#yliaqxmopd .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yliaqxmopd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yliaqxmopd .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yliaqxmopd .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yliaqxmopd .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yliaqxmopd .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yliaqxmopd .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yliaqxmopd .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yliaqxmopd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal" style>Original vs Alternative bootstrap resampling function/set</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Sequential resampling with increasing number of parameters and 400 replicates</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="No.-of-parameters">No. of parameters</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="User---Original">User - Original</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="System---Original">System - Original</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Elapsed---Original">Elapsed - Original</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="User---Alternative">User - Alternative</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="System---Alternative">System - Alternative</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Elapsed---Alternative">Elapsed - Alternative</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="No. of parameters" class="gt_row gt_right">1</td>
+<td headers="User - Original" class="gt_row gt_right">31.505</td>
+<td headers="System - Original" class="gt_row gt_right">0.032</td>
+<td headers="Elapsed - Original" class="gt_row gt_right">31.486</td>
+<td headers="User - Alternative" class="gt_row gt_right">25.956</td>
+<td headers="System - Alternative" class="gt_row gt_right">0</td>
+<td headers="Elapsed - Alternative" class="gt_row gt_right">25.892</td></tr>
+    <tr><td headers="No. of parameters" class="gt_row gt_right">2</td>
+<td headers="User - Original" class="gt_row gt_right">32.442</td>
+<td headers="System - Original" class="gt_row gt_right">0.000</td>
+<td headers="Elapsed - Original" class="gt_row gt_right">32.363</td>
+<td headers="User - Alternative" class="gt_row gt_right">25.747</td>
+<td headers="System - Alternative" class="gt_row gt_right">0</td>
+<td headers="Elapsed - Alternative" class="gt_row gt_right">25.690</td></tr>
+    <tr><td headers="No. of parameters" class="gt_row gt_right">4</td>
+<td headers="User - Original" class="gt_row gt_right">32.485</td>
+<td headers="System - Original" class="gt_row gt_right">0.000</td>
+<td headers="Elapsed - Original" class="gt_row gt_right">32.404</td>
+<td headers="User - Alternative" class="gt_row gt_right">25.302</td>
+<td headers="System - Alternative" class="gt_row gt_right">0</td>
+<td headers="Elapsed - Alternative" class="gt_row gt_right">25.244</td></tr>
+    <tr><td headers="No. of parameters" class="gt_row gt_right">8</td>
+<td headers="User - Original" class="gt_row gt_right">31.727</td>
+<td headers="System - Original" class="gt_row gt_right">0.000</td>
+<td headers="Elapsed - Original" class="gt_row gt_right">31.652</td>
+<td headers="User - Alternative" class="gt_row gt_right">25.660</td>
+<td headers="System - Alternative" class="gt_row gt_right">0</td>
+<td headers="Elapsed - Alternative" class="gt_row gt_right">25.604</td></tr>
+  </tbody>
+  
+  
+</table>
+</div><!--/html_preserve-->
+
+There are marginal gains with the alternative function set when the number of parameters more than 1 but the gains do not increase with the increase in the number of parameters.
+
+## Bootstrap resampling with parallelisation
+
+In this comparison, the alternative function/set implements *parallel* bootstrap resampling with number of *parameters* set at varying values and number of parallel cores set at varying values and then compared to performance of the original function as above.
+
+
+``` r
+## Alternative bootstrap - 2 cores ----
+boot_alt_1_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = "anc1", parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_2_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2"), parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4"), parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param_2_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    ), parallel = TRUE, cores = 2
+  ) |>
+    boot_bw_estimate()
+)
+
+
+## Alternative bootstrap - 4 cores ----
+boot_alt_1_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = "anc1", parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_2_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2"), parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4"), parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param_4_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    ), parallel = TRUE, cores = 4
+  ) |>
+    boot_bw_estimate()
+)
+
+
+## Alternative bootstrap - 8 cores ----
+boot_alt_1_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = "anc1", parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_2_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2"), parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_4_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c("anc1", "anc2", "anc3", "anc4"), parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+
+boot_alt_8_param_8_cores <- system.time(
+  boot2_results <- boot_bw(
+    x = indicatorsHH, w = villageData, statistic = bootClassic, 
+    params = c(
+      "anc1", "anc2", "anc3", "anc4", "hhs1", "hhs2", "hhs3", "hhs4"
+    ), parallel = TRUE, cores = 8
+  ) |>
+    boot_bw_estimate()
+)
+```
+
+<!--html_preserve--><div id="ccotcrngkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ccotcrngkr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ccotcrngkr thead, #ccotcrngkr tbody, #ccotcrngkr tfoot, #ccotcrngkr tr, #ccotcrngkr td, #ccotcrngkr th {
+  border-style: none;
+}
+
+#ccotcrngkr p {
+  margin: 0;
+  padding: 0;
+}
+
+#ccotcrngkr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ccotcrngkr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ccotcrngkr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ccotcrngkr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ccotcrngkr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ccotcrngkr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ccotcrngkr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ccotcrngkr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ccotcrngkr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ccotcrngkr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ccotcrngkr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ccotcrngkr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ccotcrngkr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ccotcrngkr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ccotcrngkr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ccotcrngkr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ccotcrngkr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ccotcrngkr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ccotcrngkr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ccotcrngkr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ccotcrngkr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ccotcrngkr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ccotcrngkr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ccotcrngkr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ccotcrngkr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ccotcrngkr .gt_left {
+  text-align: left;
+}
+
+#ccotcrngkr .gt_center {
+  text-align: center;
+}
+
+#ccotcrngkr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ccotcrngkr .gt_font_normal {
+  font-weight: normal;
+}
+
+#ccotcrngkr .gt_font_bold {
+  font-weight: bold;
+}
+
+#ccotcrngkr .gt_font_italic {
+  font-style: italic;
+}
+
+#ccotcrngkr .gt_super {
+  font-size: 65%;
+}
+
+#ccotcrngkr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ccotcrngkr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ccotcrngkr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ccotcrngkr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ccotcrngkr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ccotcrngkr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ccotcrngkr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ccotcrngkr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ccotcrngkr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_title gt_font_normal" style>Original vs Alternative bootstrap resampling function/set</td>
+    </tr>
+    <tr class="gt_heading">
+      <td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Parallel resampling with increasing number of parameters and increasing number of cores</td>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="No.-of-parameters">No. of parameters</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Original">Original</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Alternative---sequential">Alternative - sequential</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Alternative---2-cores">Alternative - 2 cores</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Alternative---4-cores">Alternative - 4 cores</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Alternative---8-cores">Alternative - 8 cores</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="No. of parameters" class="gt_row gt_right">1</td>
+<td headers="Original" class="gt_row gt_right">31.486</td>
+<td headers="Alternative - sequential" class="gt_row gt_right">25.892</td>
+<td headers="Alternative - 2 cores" class="gt_row gt_right">16.904</td>
+<td headers="Alternative - 4 cores" class="gt_row gt_right">10.392</td>
+<td headers="Alternative - 8 cores" class="gt_row gt_right">7.361</td></tr>
+    <tr><td headers="No. of parameters" class="gt_row gt_right">2</td>
+<td headers="Original" class="gt_row gt_right">32.363</td>
+<td headers="Alternative - sequential" class="gt_row gt_right">25.690</td>
+<td headers="Alternative - 2 cores" class="gt_row gt_right">16.754</td>
+<td headers="Alternative - 4 cores" class="gt_row gt_right">10.634</td>
+<td headers="Alternative - 8 cores" class="gt_row gt_right">7.398</td></tr>
+    <tr><td headers="No. of parameters" class="gt_row gt_right">4</td>
+<td headers="Original" class="gt_row gt_right">32.404</td>
+<td headers="Alternative - sequential" class="gt_row gt_right">25.244</td>
+<td headers="Alternative - 2 cores" class="gt_row gt_right">17.017</td>
+<td headers="Alternative - 4 cores" class="gt_row gt_right">10.545</td>
+<td headers="Alternative - 8 cores" class="gt_row gt_right">7.585</td></tr>
+    <tr><td headers="No. of parameters" class="gt_row gt_right">8</td>
+<td headers="Original" class="gt_row gt_right">31.652</td>
+<td headers="Alternative - sequential" class="gt_row gt_right">25.604</td>
+<td headers="Alternative - 2 cores" class="gt_row gt_right">17.568</td>
+<td headers="Alternative - 4 cores" class="gt_row gt_right">10.240</td>
+<td headers="Alternative - 8 cores" class="gt_row gt_right">7.624</td></tr>
+  </tbody>
+  
+  
+</table>
+</div><!--/html_preserve-->
+
+Parallelisation reduces runtimes by up to 50%.

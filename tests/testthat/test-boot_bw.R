@@ -14,6 +14,7 @@ test_that("boot_bw_weight works as expected", {
     ),
     "integer"
   )
+  expect_message(boot_bw_weight(boot_bw_weight(villageData)))
 })
 
 mean_boot <- boot_bw(

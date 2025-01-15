@@ -16,7 +16,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/bbw)](https://CRAN.R-project.org/package=bbw)
 [![R-CMD-check](https://github.com/rapidsurveys/bbw/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rapidsurveys/bbw/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/rapidsurveys/bbw/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/rapidsurveys/bbw/actions/workflows/test-coverage.yaml)
-[![codecov](https://codecov.io/gh/rapidsurveys/bbw/graph/badge.svg?token=edgQexvxhi)](https://codecov.io/gh/rapidsurveys/bbw)
+[![codecov](https://codecov.io/gh/rapidsurveys/bbw/graph/badge.svg?token=edgQexvxhi)](https://app.codecov.io/gh/rapidsurveys/bbw)
 [![CodeFactor](https://www.codefactor.io/repository/github/rapidsurveys/bbw/badge)](https://www.codefactor.io/repository/github/rapidsurveys/bbw)
 [![DOI](https://zenodo.org/badge/117305174.svg)](https://doi.org/10.5281/zenodo.6594797)
 <!-- badges: end -->
@@ -121,10 +121,10 @@ follows:
 citation("bbw")
 #> To cite bbw in publications use:
 #> 
-#>   Mark Myatt, Ernest Guevarra (2025). _bbw: Blocked
-#>   Weighted Bootstrap_. doi:10.5281/zenodo.6594797
-#>   <https://doi.org/10.5281/zenodo.6594797>, R package
-#>   version 0.2.3, <https://rapidsurveys.io/bbw/>.
+#>   Mark Myatt, Ernest Guevarra (2025). _bbw: Blocked Weighted
+#>   Bootstrap_. doi:10.5281/zenodo.6594797
+#>   <https://doi.org/10.5281/zenodo.6594797>, R package version 0.2.3,
+#>   <https://rapidsurveys.io/bbw/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
