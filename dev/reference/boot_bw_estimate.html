@@ -20,6 +20,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/bbw-estimation.html">Blocked weighted bootstrap estimation</a></li>
+    <li><a class="dropdown-item" href="../articles/bbw-parallel.html">Using bbw with parallel computation</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -75,10 +76,10 @@ by a call to <code><a href="boot_bw.html">boot_bw()</a></code>.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Resampling in parallel</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Setting up <span style="font-weight: bold;">3</span> parallel operations</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[273ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[282ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Resampling with <span style="font-weight: bold;">9</span> replicates in parallel</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling with <span style="font-weight: bold;">9</span> replicates in parallel <span style="color: #B2B2B2;">[744ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling with <span style="font-weight: bold;">9</span> replicates in parallel <span style="color: #B2B2B2;">[750ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Tidying up resampling outputs</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Tidying up resampling outputs <span style="color: #B2B2B2;">[15ms]</span></span>
@@ -89,7 +90,7 @@ by a call to <code><a href="boot_bw.html">boot_bw()</a></code>.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">boot_bw_estimate</span><span class="op">(</span><span class="va">boot_df</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   indicator       est       lcl       ucl         se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      anc1 0.2428707 0.1911676 0.2750831 0.03490788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      anc1 0.2496533 0.2154621 0.2894947 0.02435746</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

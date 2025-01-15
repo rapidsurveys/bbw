@@ -20,6 +20,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/bbw-estimation.html">Blocked weighted bootstrap estimation</a></li>
+    <li><a class="dropdown-item" href="../articles/bbw-parallel.html">Using bbw with parallel computation</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -91,16 +92,16 @@ confidence limit, and overall 95% upper confidence limit for each of the
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Resampling in parallel</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Setting up <span style="font-weight: bold;">3</span> parallel operations</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[279ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[290ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Resampling by <span style="font-weight: bold;">region</span> - <span style="font-weight: bold;">9</span> replicates in parallel</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling by <span style="font-weight: bold;">region</span> - <span style="font-weight: bold;">9</span> replicates in parallel <span style="color: #B2B2B2;">[745ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling by <span style="font-weight: bold;">region</span> - <span style="font-weight: bold;">9</span> replicates in parallel <span style="color: #B2B2B2;">[770ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Tidying up resampling outputs</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Tidying up resampling outputs <span style="color: #B2B2B2;">[18ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Closing <span style="font-weight: bold;">3</span> parallel operations</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Closing <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[15ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Closing <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[18ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Add population ----</span></span></span>
@@ -112,8 +113,8 @@ confidence limit, and overall 95% upper confidence limit for each of the
 <span class="r-in"><span><span class="fu">estimate_total</span><span class="op">(</span><span class="va">est_df</span>, <span class="va">pop_df</span>, strata <span class="op">=</span> <span class="st">"region"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">est_df</span> has the appropriate/expected variables</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> <span style="font-weight: bold;">pop_df</span> has the appropriate/expected variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    strata indicator       est      lcl       ucl          se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Overall      anc1 0.4774833 0.414623 0.5403436 0.001028586</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    strata indicator       est       lcl      ucl         se</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Overall      anc1 0.4756798 0.3999786 0.551381 0.00149174</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
