@@ -1,4 +1,4 @@
-# bbw 0.2.7.9000
+# bbw 0.3.0
 
 ## New features
 
@@ -23,8 +23,7 @@ This is the second CRAN release of `bbw`. In this release:
 
 * addressed CRAN NOTE regarding `\item in \describe must have non-empty label`
 
-* updated package documentation specifically the DESCRIPTION, README, 
-datasets and function/s documentation and vignettes
+* updated package documentation specifically the DESCRIPTION, README, datasets and function/s documentation and vignettes
 
 * added CodeFactor workflow
 
@@ -41,15 +40,11 @@ specifications.
 
 # bbw 0.1.2
 
-* added references to classical approach to bootstrapping for cluster samples 
-and references for application of the blocked weighted bootstrap for analysing 
-data from cluster surveys.
+* added references to classical approach to bootstrapping for cluster samples and references for application of the blocked weighted bootstrap for analysing data from cluster surveys.
 
 # bbw 0.1.1
 
-* Corrected authors' specifications in `DESCRIPTION` by combining two calls 
-to `person()` to provide details for each of the two authors/contributors to 
-the package.
+* Corrected authors' specifications in `DESCRIPTION` by combining two calls to `person()` to provide details for each of the two authors/contributors to the package.
 
 # bbw 0.1.0
 
