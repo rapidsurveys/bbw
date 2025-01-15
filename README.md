@@ -123,7 +123,7 @@ citation("bbw")
 #> 
 #>   Mark Myatt, Ernest Guevarra (2025). _bbw: Blocked Weighted
 #>   Bootstrap_. doi:10.5281/zenodo.6594797
-#>   <https://doi.org/10.5281/zenodo.6594797>, R package version 0.2.3,
+#>   <https://doi.org/10.5281/zenodo.6594797>, R package version 0.3.0,
 #>   <https://rapidsurveys.io/bbw/>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -132,7 +132,7 @@ citation("bbw")
 #>     title = {bbw: Blocked Weighted Bootstrap},
 #>     author = {{Mark Myatt} and {Ernest Guevarra}},
 #>     year = {2025},
-#>     note = {R package version 0.2.3},
+#>     note = {R package version 0.3.0},
 #>     url = {https://rapidsurveys.io/bbw/},
 #>     doi = {10.5281/zenodo.6594797},
 #>   }
