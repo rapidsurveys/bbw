@@ -108,7 +108,7 @@ function is discussed here.
 \examples{
 boot_bw(
   x = indicatorsHH, w = villageData, statistic = bootClassic, 
-  params = "anc1", replicates = 49, parallel = TRUE
+  params = "anc1", replicates = 9, parallel = TRUE
 )
 
 }

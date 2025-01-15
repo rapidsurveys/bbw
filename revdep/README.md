@@ -10,14 +10,14 @@
 |collate  |en_GB.UTF-8                         |
 |ctype    |en_GB.UTF-8                         |
 |tz       |Europe/London                       |
-|date     |2025-01-06                          |
+|date     |2025-01-15                          |
 |pandoc   |2.9.2.1 @ /usr/bin/ (via rmarkdown) |
 
 # Dependencies
 
 |package        |old        |new        |Δ  |
 |:--------------|:----------|:----------|:--|
-|bbw            |0.2.0      |0.2.2.9000 |*  |
+|bbw            |0.2.0      |0.3.0      |*  |
 |abind          |1.4-8      |1.4-8      |   |
 |backports      |1.5.0      |1.5.0      |   |
 |broom          |1.0.7      |1.0.7      |   |
@@ -43,7 +43,7 @@
 |iterators      |NA         |1.0.14     |*  |
 |labeling       |0.4.3      |0.4.3      |   |
 |lifecycle      |1.0.4      |1.0.4      |   |
-|lme4           |1.1-35.5   |1.1-35.5   |   |
+|lme4           |1.1-36     |1.1-36     |   |
 |magrittr       |2.0.3      |2.0.3      |   |
 |MatrixModels   |0.5-3      |0.5-3      |   |
 |microbenchmark |1.5.0      |1.5.0      |   |
@@ -54,14 +54,17 @@
 |numDeriv       |2016.8-1.1 |2016.8-1.1 |   |
 |parallelly     |NA         |1.41.0     |*  |
 |pbkrtest       |0.5.3      |0.5.3      |   |
-|pillar         |1.10.0     |1.10.0     |   |
+|pillar         |1.10.1     |1.10.1     |   |
 |pkgconfig      |2.0.3      |2.0.3      |   |
 |purrr          |1.0.2      |1.0.2      |   |
 |quantreg       |5.99.1     |5.99.1     |   |
 |R6             |2.5.1      |2.5.1      |   |
+|rbibutils      |2.3        |2.3        |   |
 |RColorBrewer   |1.1-3      |1.1-3      |   |
-|Rcpp           |1.0.13-1   |1.0.13-1   |   |
+|Rcpp           |1.0.14     |1.0.14     |   |
 |RcppEigen      |0.3.4.0.2  |0.3.4.0.2  |   |
+|Rdpack         |2.6.2      |2.6.2      |   |
+|reformulas     |0.4.0      |0.4.0      |   |
 |rlang          |1.1.4      |1.1.4      |   |
 |scales         |1.3.0      |1.3.0      |   |
 |SparseM        |1.84-2     |1.84-2     |   |

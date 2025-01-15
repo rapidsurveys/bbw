@@ -1,31 +1,31 @@
 ## Release summary
 
-This is the second CRAN release of `bbw`. In this release:
+This is the third CRAN release of `bbw`. In this release:
 
-* addressed CRAN NOTE regarding `\item in \describe must have non-empty label`
+* added alternative set of boot functions that implement vectorised and parallel resampling algorithm with option for stratification
 
-* updated package documentation specifically the DESCRIPTION, README, 
-datasets and function/s documentation and vignettes
+* added functions for percentile estimation from bootstrap replicates
 
-* added CodeFactor workflow
+* added function for post-stratification estimation
 
-* corrected some code styling to be consistent with entire package
+* improved function documentation
 
-* added GitHub actions workflows for `R CMD check` and for testing coverage
+* improved information, warning, and error messages
 
-* changed license to GPL-3
+* improved vignettes
 
 
 ## Test environments
-* local OS X install, R 4.2.0
-* local ubuntu 20.04 install, R 4.2.0
+* local OS X install, R 4.4.2
+* local ubuntu 22.04 install, R 4.4.2
 * win-builder (devel, release and old release)
 * github actions windows-latest, r: release
 * github actions macOS-latest, r: release
-* github actions ubuntu-20.04, r: release, devel
+* github actions ubuntu-20.04, r: release, devel, old release
 * rhub windows-latest r devel
-* rhub ubuntu 20.04 r release
-* rhub fedora r devel
+* rhub ubuntu 22.04 r devel
+* rhub macos r devel
+* rhub macos-arm64 r devel
 
 
 ## R CMD check results
@@ -44,16 +44,10 @@ datasets and function/s documentation and vignettes
 
 ### rhub checks
 
-0 errors | 0 warnings | 1 notes
-
-```
-❯ checking for detritus in the temp directory ... NOTE
-  Found the following files/directories:
-    'lastMiKTeXException'
-```
+0 errors | 0 warnings | 0 notes
 
 
 ## Reverse dependencies
 `bbw` doesn't have any downstream / reverse dependencies 
-(see https://github.com/rapidsurveys/bbw/tree/master/revdep)
+(see https://github.com/rapidsurveys/bbw/tree/main/revdep)
 
