@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">bbw</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,13 @@
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="../articles/bbw.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/bbw-estimation.html">Blocked weighted bootstrap estimation</a></li>
+    <li><a class="dropdown-item" href="../articles/bbw-parallel.html">Using bbw with parallel computation</a></li>
+  </ul>
+</li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
@@ -62,7 +69,7 @@
                         <h4 data-toc-skip class="author">Mark Myatt and
 Ernest Guevarra</h4>
             
-            <h4 data-toc-skip class="date">2025-01-05</h4>
+            <h4 data-toc-skip class="date">6 January 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rapidsurveys/bbw/blob/main/vignettes/bbw.Rmd" class="external-link"><code>vignettes/bbw.Rmd</code></a></small>
       <div class="d-none name"><code>bbw.Rmd</code></div>
@@ -72,91 +79,104 @@ Ernest Guevarra</h4>
     
 <p>The <strong>blocked weighted bootstrap</strong> is an estimation
 technique for use with data from two-stage cluster sampled surveys in
-which either prior weighting (e.g. <em>population-proportional
-sampling</em> or <em>PPS</em> as used in <strong>Standardized Monitoring
-and Assessment of Relief and Transitions</strong> or
-<strong>SMART</strong> surveys) or <em>posterior weighting</em> (e.g. as
-used in <strong>Rapid Assessment Method</strong> or <strong>RAM</strong>
-and <strong>Simple Spatial Sampling Method</strong> or
-<strong>S3M</strong> surveys).</p>
-<p><br></p>
+which either prior weighting (e.g. <em>population-proportional sampling
+(PPS)</em> as used in <a href="https://smartmethodology.org/" class="external-link">Standardized Monitoring and
+Assessment of Relief and Transitions (SMART)</a> surveys) or
+<em>posterior weighting</em> (e.g. as used in <a href="https://rapidsurveys.io/ramOPmanual/" class="external-link">Rapid Assessment Method
+(RAM)</a> and <a href="https://researchonline.lshtm.ac.uk/id/eprint/2572543" class="external-link">Simple
+Spatial Sampling Method (S3M)</a>surveys).</p>
+<div class="section level2">
+<h2 id="features-of-blocked-weighted-bootstrap">Features of blocked weighted bootstrap<a class="anchor" aria-label="anchor" href="#features-of-blocked-weighted-bootstrap"></a>
+</h2>
 <p>The bootstrap technique is described in this <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)" class="external-link">article</a>.
-The <strong>blocked weighted bootstrap</strong> used in
-<strong>RAM</strong> and <strong>S3M</strong> is a modification to the
-<em>percentile bootstrap</em> to include <em>blocking</em> and
-<em>weighing</em> to account for a <em>complex sample design</em>.</p>
+The blocked weighted bootstrap used in RAM and S3M is a modification to
+the <em>percentile bootstrap</em> to include <em>blocking</em> and
+<em>weighting</em> to account for a <em>complex sample design</em>.</p>
+<p>With RAM and S3M surveys, the sample is complex in the sense that it
+is an unweighted cluster sample. Data analysis procedures need to
+account for the sample design. A blocked weighted bootstrap can be
+used:</p>
+<ul>
+<li><p><strong>Blocked</strong>: The block corresponds to the primary
+sampling unit (<code>PSU = cluster</code>). <em>PSU</em>s are resampled
+with replacement. Observations within the resampled PSUs are also
+sampled with replacement.</p></li>
+<li><p><strong>Weighted</strong>: RAM and S3M samples do not use
+<em>population proportional sampling (PPS)</em> to weight the sample
+prior to data collection (e.g. as is done with <strong>SMART</strong>
+surveys). This means that a posterior weighting procedure is required.
+<a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> uses a <em>“roulette wheel”</em> algorithm (see <a href="#fig1">Figure 1</a> below) to weight (i.e. by population) the
+selection probability of PSUs in bootstrap replicates.</p></li>
+</ul>
 <p><br></p>
-<p>With <strong>RAM</strong> and <strong>S3M</strong> surveys, the
-sample is complex in the sense that it is an unweighted cluster sample.
-Data analysis procedures need to account for the sample design. A
-<em>blocked weighted bootstrap</em> can be used:</p>
-<p><br></p>
-<p><strong>Blocked</strong>: The block corresponds to the primary
-sampling unit
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>S</mi><mi>U</mi><mo>=</mo><mi>c</mi><mi>l</mi><mi>u</mi><mi>s</mi><mi>t</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">PSU = cluster</annotation></semantics></math>).
-<em>PSU</em>s are resampled with replacement. Observations within the
-resampled <em>PSU</em>s are also sampled with replacement.</p>
-<p><strong>Weighted</strong>: <strong>RAM</strong> and
-<strong>S3M</strong> samples do not use <em>population proportional
-sampling (PPS)</em> to weight the sample prior to data collection
-(e.g. as is done with <strong>SMART</strong> surveys). This means that a
-posterior weighting procedure is required. <code>bbw</code> uses a
-<em>“roulette wheel”</em> algorithm (see <a href="#FIG1">Figure 1</a>
-below) to weight (i.e. by population) the selection probability of
-<em>PSU</em>s in bootstrap replicates.</p>
-<p><br></p>
-<a name="FIG1"></a> <strong>Figure 1:</strong> Roulette wheel algorithm
+<a name="fig1"></a> <strong>Figure 1:</strong> Roulette wheel algorithm
 <p align="center">
-</p>
-<div class="float">
-<img src="../reference/figures/rouletteWheel.png" alt="Roulette wheel algorithm"><div class="figcaption">Roulette wheel algorithm</div>
-</div>
-
+<img src="../reference/figures/rouletteWheel.png" alt="Roulette wheel algorithm" width="50%" style="display: block; margin: auto;"></p>
 <p><br></p>
+</div>
+<div class="section level2">
+<h2 id="posterior-weighting-through-resampling">Posterior weighting through resampling<a class="anchor" aria-label="anchor" href="#posterior-weighting-through-resampling"></a>
+</h2>
 <p>In the case of prior weighting by <em>PPS</em> all clusters are given
-the same weight. With posterior weighting (as in <strong>RAM</strong> or
-<strong>S3M</strong>) the weight is the population of each <em>PSU</em>.
-This procedure is very similar to the <a href="https://en.wikipedia.org/wiki/Fitness_proportionate_selection" class="external-link">fitness
+the same weight. With posterior weighting (as in RAM or S3M) the weight
+is the population of each PSU. This procedure is very similar to the <a href="https://en.wikipedia.org/wiki/Fitness_proportionate_selection" class="external-link">fitness
 proportional selection</a> technique used in <em>evolutionary
 computing</em>.</p>
-<p><br></p>
-<p>A total of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>)
-<em>PSU</em>s are sampled with replacement for each bootstrap replicate
-(where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>)
-is the number of <em>PSU</em>s in the survey sample).</p>
-<p><br></p>
+<p>A total of <code>m</code> PSUs are sampled with replacement for each
+bootstrap replicate (where <code>m</code> is the number of PSUs in the
+survey sample).</p>
 <p>The required statistic is applied to each replicate. The reported
 estimate consists of the 0.025th (<em>95% LCL</em>), 0.5th (<em>point
 estimate</em>), and 0.975th (<em>95% UCL</em>) quantiles of the
 distribution of the statistic across all survey replicates.</p>
-<p><br></p>
-<p>Early versions of the <code>bbw</code> did not resample observations
-within <em>PSU</em>s following:</p>
+</div>
+<div class="section level2">
+<h2 id="development-history">Development history<a class="anchor" aria-label="anchor" href="#development-history"></a>
+</h2>
+<p>Early versions of the <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> did not resample
+observations within PSUs following:</p>
 <p><br></p>
 <blockquote>
 <p>Cameron AC, Gelbach JB, Miller DL, Bootstrap-based improvements for
 inference with clustered errors, Review of Economics and Statistics,
-2008:90;414–427 <a href="https://doi.org/10.1162/rest.90.3.414" class="external-link uri">https://doi.org/10.1162/rest.90.3.414</a></p>
+2008:90;414–427 <a href="https://www.nber.org/papers/t0344" class="external-link uri">https://www.nber.org/papers/t0344</a></p>
 </blockquote>
 <p><br></p>
-<p>and used a large number
-(e.g. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3999</mn><annotation encoding="application/x-tex">3999</annotation></semantics></math>)
-survey replicates. Current versions of the <code>bbw</code> resample
-observations within <em>PSU</em>s and use a smaller number of survey
-replicates
-(e.g. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>400</mn></mrow><annotation encoding="application/x-tex">n = 400</annotation></semantics></math>).
-This is a more computationally efficient approach.</p>
+<p>and used a large number (e.g. <code>3999</code>) survey replicates.
+Next versions (up to <em>v0.2.0</em>) of the <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> resample
+observations within PSUs and use a smaller number of survey replicates
+(e.g. <code>n = 400</code>). This is a more computationally efficient
+approach and is demonstrated in the following:</p>
 <p><br></p>
-<p>The main reason to use <code>bbw</code> is that the bootstrap allows
-a wider range statistics to be calculated than model-based techniques
-without resort to grand assumptions about the sampling distribution of
-the required statistic. A good example for this is the confidence
-interval on the difference between two medians which might be used for
-many socio-economic variables. The <code>bbw</code> also allows for a
-wider range of hypothesis tests to be used with complex sample survey
-data.</p>
+<blockquote>
+<p>Aaron GJ, Sodani PR, Sankar R, Fairhurst J, Siling K, Guevarra E, et
+al. (2016) Household Coverage of Fortified Staple Food Commodities in
+Rajasthan, India. PLoS ONE 11(10): e0163176. <a href="https://doi.org/10.1371/journal.pone.0163176" class="external-link uri">https://doi.org/10.1371/journal.pone.0163176</a></p>
+</blockquote>
+<blockquote>
+<p>Aaron GJ, Strutt N, Boateng NA, Guevarra E, Siling K, Norris A, et
+al. (2016) Assessing Program Coverage of Two Approaches to Distributing
+a Complementary Feeding Supplement to Infants and Young Children in
+Ghana. PLoS ONE 11(10): e0162462. <a href="https://doi.org/10.1371/journal.pone.0162462" class="external-link uri">https://doi.org/10.1371/journal.pone.0162462</a></p>
+</blockquote>
+<p><br></p>
+<p>The current version (<em>v0.3.0</em>) now includes further
+improvements in computational efficiency using a vectorised algorithm
+and provides an option for parallel computation which when used reduces
+the computational overhead by at least 80%.</p>
+</div>
+<div class="section level2">
+<h2 id="advantages">Advantages<a class="anchor" aria-label="anchor" href="#advantages"></a>
+</h2>
+<p>The main reason to use <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> is that the bootstrap
+allows a wider range statistics to be calculated than model-based
+techniques without resort to grand assumptions about the sampling
+distribution of the required statistic. A good example for this is the
+confidence interval on the difference between two medians which might be
+used for many socio-economic variables. The <a href="https://github.com/rapidsurveys/bbw" class="external-link">bbw</a> also
+allows for a wider range of hypothesis tests to be used with complex
+sample survey data.</p>
+</div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>

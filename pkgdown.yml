@@ -2,8 +2,10 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
+  bbw-estimation: bbw-estimation.html
+  bbw-parallel: bbw-parallel.html
   bbw: bbw.html
-last_built: 2025-01-05T23:53Z
+last_built: 2025-01-15T18:55Z
 urls:
   reference: https://rapidsurveys.io/bbw/reference
   article: https://rapidsurveys.io/bbw/articles

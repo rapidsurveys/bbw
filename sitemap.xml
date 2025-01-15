@@ -3,6 +3,8 @@
 <url><loc>https://rapidsurveys.io/bbw/CODE_OF_CONDUCT.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/CONTRIBUTING.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/LICENSE.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/articles/bbw-estimation.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/articles/bbw-parallel.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/articles/bbw.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/articles/index.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/authors.html</loc></url>
@@ -13,11 +15,25 @@
 <url><loc>https://rapidsurveys.io/bbw/reference/bootClassic.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/bootPROBIT.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/boot_bw.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/boot_bw_estimate.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/boot_percentile.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/calc_total_ci.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/calc_total_estimate.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/calc_total_sd.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/check_data.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/check_est_df.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/check_params.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/check_pop_df.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/estimate_total.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/estimate_total_.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/get_strata.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/index.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/indicatorsCH1.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/indicatorsCH2.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/indicatorsHH.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/recode.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/somalia_population.html</loc></url>
+<url><loc>https://rapidsurveys.io/bbw/reference/tidy_boot.html</loc></url>
 <url><loc>https://rapidsurveys.io/bbw/reference/villageData.html</loc></url>
 </urlset>
 

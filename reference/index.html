@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">bbw</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +17,11 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/bbw.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/bbw-estimation.html">Blocked weighted bootstrap estimation</a></li>
+    <li><a class="dropdown-item" href="../articles/bbw-parallel.html">Using bbw with parallel computation</a></li>
+  </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -69,12 +74,18 @@
         <dd>Blocked Weighted Bootstrap</dd>
       </dl><dl><dt>
 
-          <code><a href="boot_bw.html">boot_bw_weight()</a></code> <code><a href="boot_bw.html">boot_bw_sample_cluster()</a></code> <code><a href="boot_bw.html">boot_bw_sample_clusters()</a></code> <code><a href="boot_bw.html">boot_bw_sample_within_cluster()</a></code> <code><a href="boot_bw.html">boot_bw_sample_within_clusters()</a></code> <code><a href="boot_bw.html">boot_bw()</a></code>
+          <code><a href="boot_bw.html">boot_bw()</a></code> <code><a href="boot_bw.html">boot_bw_parallel()</a></code> <code><a href="boot_bw.html">boot_bw_sequential()</a></code> <code><a href="boot_bw.html">boot_bw_weight()</a></code> <code><a href="boot_bw.html">boot_bw_sample_clusters()</a></code> <code><a href="boot_bw.html">boot_bw_sample_within_clusters()</a></code>
 
         </dt>
-        <dd>Blocked weighted bootstrap - vectorised and parallel</dd>
+        <dd>Blocked Weighted Bootstrap - vectorised and parallel</dd>
+      </dl><dl><dt>
+
+          <code><a href="boot_bw_estimate.html">boot_bw_estimate()</a></code>
+
+        </dt>
+        <dd>Estimate median and confidence intervals from bootstrap replicates</dd>
       </dl></div><div class="section level2">
-      <h2 id="bootstrap-estimator">Bootstrap estimator<a class="anchor" aria-label="anchor" href="#bootstrap-estimator"></a></h2>
+      <h2 id="bootstrap-statistic">Bootstrap statistic<a class="anchor" aria-label="anchor" href="#bootstrap-statistic"></a></h2>
 
 
 
@@ -96,6 +107,23 @@
 
         </dt>
         <dd>PROBIT statistics function for bootstrap estimation</dd>
+      </dl></div><div class="section level2">
+      <h2 id="stratified-weighted-estimation">Stratified weighted estimation<a class="anchor" aria-label="anchor" href="#stratified-weighted-estimation"></a></h2>
+
+
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="estimate_total.html">estimate_total()</a></code>
+
+        </dt>
+        <dd>Post-stratification analysis</dd>
       </dl></div><div class="section level2">
       <h2 id="utility">Utility<a class="anchor" aria-label="anchor" href="#utility"></a></h2>
 
@@ -148,6 +176,12 @@
 
         </dt>
         <dd>Cluster Population Weights Dataset</dd>
+      </dl><dl><dt>
+
+          <code><a href="somalia_population.html">somalia_population</a></code>
+
+        </dt>
+        <dd>Somalia regional population in 2022</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
