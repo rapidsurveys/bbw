@@ -17,7 +17,7 @@ function is discussed here."><meta property="og:image" content="https://rapidsur
 
     <a class="navbar-brand me-2" href="../index.html">bbw</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.2.7.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -181,83 +181,43 @@ similar in structure to  <code>x</code> of resampled data from each selected clu
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">boot_bw</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  x <span class="op">=</span> <span class="va">indicatorsHH</span>, w <span class="op">=</span> <span class="va">villageData</span>, statistic <span class="op">=</span> <span class="va">bootClassic</span>, </span></span>
-<span class="r-in"><span>  params <span class="op">=</span> <span class="st">"anc1"</span>, replicates <span class="op">=</span> <span class="fl">49</span>, parallel <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>  params <span class="op">=</span> <span class="st">"anc1"</span>, replicates <span class="op">=</span> <span class="fl">9</span>, parallel <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ── <span style="font-weight: bold;">Resampling in parallel</span> ──</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Setting up <span style="font-weight: bold;">3</span> parallel operations</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[298ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting up <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[299ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Resampling with <span style="font-weight: bold;">49</span> replicates in parallel</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling with <span style="font-weight: bold;">49</span> replicates in parallel <span style="color: #B2B2B2;">[2.8s]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Resampling with <span style="font-weight: bold;">9</span> replicates in parallel</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Resampling with <span style="font-weight: bold;">9</span> replicates in parallel <span style="color: #B2B2B2;">[763ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Tidying up resampling outputs</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Tidying up resampling outputs <span style="color: #B2B2B2;">[26ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Tidying up resampling outputs <span style="color: #B2B2B2;">[21ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Closing <span style="font-weight: bold;">3</span> parallel operations</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Closing <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[15ms]</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Closing <span style="font-weight: bold;">3</span> parallel operations <span style="color: #B2B2B2;">[19ms]</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $params</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "anc1"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $replicates</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $strata</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $boot_data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         anc1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.2088221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.1719564</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.2424383</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.2027410</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.2134462</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.2086431</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.2513395</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.2195693</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.2140546</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.2044487</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 0.2171239</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 0.2328634</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 0.2432171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 0.2238454</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 0.2655367</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 0.1882865</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 0.1872104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 0.2965451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 0.2743022</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 0.2167372</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 0.2478303</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 0.2215341</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 0.2069746</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 0.1872926</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 0.2296157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 0.2398489</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 0.2306183</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 0.2258523</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 0.1970420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 0.2294007</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 0.2679924</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 0.1999032</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 0.2314946</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 0.2367309</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 0.1971831</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 0.1929991</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 0.2229949</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 0.1901608</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 0.2391203</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 0.2089552</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 0.2468959</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 0.2319961</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 0.2590503</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 0.1938924</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 0.2255639</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 0.2602804</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 0.2209302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 0.1917808</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 0.2037392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        anc1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 0.2630072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0.2357501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 0.2178988</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 0.1844894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 0.2614858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 0.2752204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7 0.2826821</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8 0.2312383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9 0.2122233</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "boot_bw" "list"   </span>
