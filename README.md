@@ -36,11 +36,10 @@ alt="DOI" /></a> <!-- badges: end -->
 The **blocked weighted bootstrap** is an estimation technique for use
 with data from two-stage cluster sampled surveys in which either prior
 weighting (e.g. *population-proportional sampling* or *PPS* as used in
-[Standardized Monitoring and Assessment of Relief and Transitions
-(SMART)](https://smartmethodology.org/) surveys) or *posterior
-weighting* (e.g. as used in [Rapid Assessment Method
-(RAM)](https://rapidsurveys.io/ramOPmanual/) and [Simple Spatial
-Sampling Method
+Standardized Monitoring and Assessment of Relief and Transitions or
+SMART surveys) or *posterior weighting* (e.g. as used in [Rapid
+Assessment Method (RAM)](https://rapidsurveys.io/ramOPmanual/) and
+[Simple Spatial Sampling Method
 (S3M)](https://researchonline.lshtm.ac.uk/id/eprint/2572543) surveys) is
 implemented.
 
