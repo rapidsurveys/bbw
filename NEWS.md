@@ -1,4 +1,7 @@
-# bbw 0.3.0.9000 (development version)
+# bbw 0.3.1
+
+This is the fourth CRAN release of `bbw`. This is a patch release which contains general upkeep and maintenance updates and changes.
+
 
 # bbw 0.3.0
 

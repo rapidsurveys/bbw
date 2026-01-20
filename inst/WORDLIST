@@ -3,6 +3,7 @@ Bakool
 Boateng
 CMD
 CodeFactor
+Codecov
 DL
 Fairhurst
 FeFol
@@ -25,9 +26,10 @@ Sankar
 Shabelle
 Siling
 Sodani
-codecov
+cran
 df
 doi
+pkgdown
 psu
 runtimes
 sd
