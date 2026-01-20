@@ -76,4 +76,5 @@ Useful links:
 
 Authors:
 
-- Mark Myatt <mark@brixtonhealth.com> \[copyright holder\]
+- Mark Myatt <mark@brixtonhealth.com>
+  ([ORCID](https://orcid.org/0000-0003-1119-1474)) \[copyright holder\]

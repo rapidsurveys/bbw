@@ -51,10 +51,10 @@ est_df <- boot_bw(
 #> ── Resampling in parallel ──
 #> 
 #> ℹ Setting up 3 parallel operations
-#> ✔ Setting up 3 parallel operations [301ms]
+#> ✔ Setting up 3 parallel operations [291ms]
 #> 
 #> ℹ Resampling by region - 9 replicates in parallel
-#> ✔ Resampling by region - 9 replicates in parallel [812ms]
+#> ✔ Resampling by region - 9 replicates in parallel [770ms]
 #> 
 #> ℹ Tidying up resampling outputs
 #> ✔ Tidying up resampling outputs [20ms]
@@ -72,6 +72,6 @@ names(pop_df) <- c("strata", "pop")
 estimate_total(est_df, pop_df, strata = "region")
 #> ✔ est_df has the appropriate/expected variables
 #> ✔ pop_df has the appropriate/expected variables
-#>    strata indicator       est       lcl       ucl         se
-#> 1 Overall      anc1 0.4802566 0.4218456 0.5386675 0.00088813
+#>    strata indicator       est       lcl       ucl          se
+#> 1 Overall      anc1 0.4907506 0.4103968 0.5711044 0.001680741
 ```
