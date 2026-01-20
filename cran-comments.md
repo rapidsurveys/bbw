@@ -30,9 +30,9 @@ This is the fourth CRAN release of `bbw`. This is a patch release to address the
 
 0 errors | 0 warnings | 1 note
 
-Author field differs from that derived from Authors@R     
-  Author:    'Ernest Guevarra [aut, cre] (ORCID: <https://orcid.org/0000-0002-4887-4415>)'     
-  Authors@R: 'Ernest Guevarra [aut, cre] (<https://orcid.org/0000-0002-4887-4415>)'     
+Author field differs from that derived from Authors@R
+  Author:    'Mark Myatt [aut, cph], Ernest Guevarra [aut, cre, cph] (ORCID: <https://orcid.org/0000-0002-4887-4415>)'
+  Authors@R: 'Mark Myatt [aut, cph], Ernest Guevarra [aut, cre, cph] (<https://orcid.org/0000-0002-4887-4415>)'
 
 Both ORCID information are the same but formatted differently.
 
