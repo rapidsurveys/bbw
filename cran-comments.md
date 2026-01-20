@@ -1,32 +1,20 @@
 ## Release summary
 
-This is the third CRAN release of `bbw`. In this release:
-
-* added alternative set of boot functions that implement vectorised and parallel resampling algorithm with option for stratification
-
-* added functions for percentile estimation from bootstrap replicates
-
-* added function for post-stratification estimation
-
-* improved function documentation
-
-* improved information, warning, and error messages
-
-* improved vignettes
+This is the fourth CRAN release of `bbw`. This is a patch release to address the CRAN NOTE regarding the missing dependency to R >= 4.2.0 because of the package using the pipe placeholder syntax added in R 4.2.0.
 
 
 ## Test environments
-* local OS X install, R 4.4.2
-* local ubuntu 22.04 install, R 4.4.2
-* win-builder (devel, release and old release)
+* local OS X install, R 4.5.2
+* local ubuntu 22.04 install, R 4.5.2
+* win-builder (devel, release, and old release)
 * github actions windows-latest, r: release
 * github actions macOS-latest, r: release
-* github actions ubuntu-20.04, r: release, devel, old release
+* github actions ubuntu-24.04, r: release, devel, old release
 * rhub windows-latest r devel
-* rhub ubuntu 22.04 r devel
+* rhub ubuntu 24.04 r devel
 * rhub macos r devel
 * rhub macos-arm64 r devel
-
+* macbuilder (devel)
 
 ## R CMD check results
 
@@ -34,9 +22,19 @@ This is the third CRAN release of `bbw`. In this release:
 
 0 errors | 0 warnings | 0 notes
 
-### win-builder checks
+### win-builder checks - devel and release
 
 0 errors | 0 warnings | 0 notes
+
+### win-builder checks - old release
+
+0 errors | 0 warnings | 1 note
+
+Author field differs from that derived from Authors@R     
+  Author:    'Ernest Guevarra [aut, cre] (ORCID: <https://orcid.org/0000-0002-4887-4415>)'     
+  Authors@R: 'Ernest Guevarra [aut, cre] (<https://orcid.org/0000-0002-4887-4415>)'     
+
+Both ORCID information are the same but formatted differently.
 
 ### GitHub Actions checks
 
@@ -46,8 +44,11 @@ This is the third CRAN release of `bbw`. In this release:
 
 0 errors | 0 warnings | 0 notes
 
+### macbuilder checks
+
+0 errors | 0 warnings | 0 notes
+
 
 ## Reverse dependencies
-`bbw` doesn't have any downstream / reverse dependencies 
-(see https://github.com/rapidsurveys/bbw/tree/main/revdep)
+`bbw` has one downstream / reverse dependency with no issues arising with the proposed update (see https://github.com/rapidsurveys/bbw/tree/main/revdep)
 

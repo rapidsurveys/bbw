@@ -1,0 +1,301 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "bbw" in publications use:'
+type: software
+license: GPL-3.0-only
+title: 'bbw: Blocked Weighted Bootstrap'
+version: 0.3.1
+doi: 10.5281/zenodo.6594797
+identifiers:
+- type: doi
+  value: 10.32614/CRAN.package.bbw
+abstract: The blocked weighted bootstrap (BBW) is an estimation technique for use
+  with data from two-stage cluster sampled surveys in which either prior weighting
+  (e.g. population-proportional sampling or PPS as used in Standardized Monitoring
+  and Assessment of Relief and Transitions or SMART surveys) or posterior weighting
+  (e.g. as used in rapid assessment method or RAM and simple spatial sampling method
+  or S3M surveys) is implemented. See Cameron et al (2008) <https://doi.org/10.1162/rest.90.3.414>
+  for application of bootstrap to cluster samples. See Aaron et al (2016) <https://doi.org/10.1371/journal.pone.0163176>
+  and Aaron et al (2016) <https://doi.org/10.1371/journal.pone.0162462> for application
+  of the blocked weighted bootstrap to estimate indicators from two-stage cluster
+  sampled surveys.
+authors:
+- family-names: Myatt
+  given-names: Mark
+  email: mark@brixtonhealth.com
+- family-names: Guevarra
+  given-names: Ernest
+  email: ernestgmd@gmail.com
+  orcid: https://orcid.org/0000-0002-4887-4415
+preferred-citation:
+  type: manual
+  title: 'bbw: Blocked Weighted Bootstrap'
+  authors:
+  - name: Mark Myatt
+  - name: Ernest Guevarra
+  year: '2026'
+  notes: R package version 0.3.1
+  url: https://rapidsurveys.io/bbw/
+  doi: 10.5281/zenodo.6594797
+repository: https://CRAN.R-project.org/package=bbw
+repository-code: https://github.com/rapidsurveys/bbw
+url: https://rapidsurveys.io/bbw/
+contact:
+- family-names: Guevarra
+  given-names: Ernest
+  email: ernestgmd@gmail.com
+  orcid: https://orcid.org/0000-0002-4887-4415
+keywords:
+- bootstrapping-statistics
+- r
+- ram
+- surveys
+references:
+- type: software
+  title: 'R: A Language and Environment for Statistical Computing'
+  notes: Depends
+  url: https://www.R-project.org/
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2026'
+  version: '>= 4.2.0'
+- type: software
+  title: car
+  abstract: 'car: Companion to Applied Regression'
+  notes: Imports
+  url: https://CRAN.R-project.org/package=car
+  repository: https://CRAN.R-project.org/package=car
+  authors:
+  - family-names: Fox
+    given-names: John
+    email: jfox@mcmaster.ca
+  - family-names: Weisberg
+    given-names: Sanford
+    email: sandy@umn.edu
+  - family-names: Price
+    given-names: Brad
+    email: brad.price@mail.wvu.edu
+  year: '2026'
+  doi: 10.32614/CRAN.package.car
+- type: software
+  title: cli
+  abstract: 'cli: Helpers for Developing Command Line Interfaces'
+  notes: Imports
+  url: https://cli.r-lib.org
+  repository: https://CRAN.R-project.org/package=cli
+  authors:
+  - family-names: Csárdi
+    given-names: Gábor
+    email: gabor@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.cli
+- type: software
+  title: doParallel
+  abstract: 'doParallel: Foreach Parallel Adaptor for the ''parallel'' Package'
+  notes: Imports
+  url: https://github.com/RevolutionAnalytics/doparallel
+  repository: https://CRAN.R-project.org/package=doParallel
+  authors:
+  - family-names: Corporation
+    given-names: Microsoft
+  - family-names: Weston
+    given-names: Steve
+  year: '2026'
+  doi: 10.32614/CRAN.package.doParallel
+- type: software
+  title: foreach
+  abstract: 'foreach: Provides Foreach Looping Construct'
+  notes: Imports
+  url: https://github.com/RevolutionAnalytics/foreach
+  repository: https://CRAN.R-project.org/package=foreach
+  authors:
+  - name: Microsoft
+  - family-names: Weston
+    given-names: Steve
+  year: '2026'
+  doi: 10.32614/CRAN.package.foreach
+- type: software
+  title: methods
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2026'
+- type: software
+  title: parallel
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2026'
+- type: software
+  title: parallelly
+  abstract: 'parallelly: Enhancing the ''parallel'' Package'
+  notes: Imports
+  url: https://parallelly.futureverse.org
+  repository: https://CRAN.R-project.org/package=parallelly
+  authors:
+  - family-names: Bengtsson
+    given-names: Henrik
+    email: henrikb@braju.com
+    orcid: https://orcid.org/0000-0002-7579-5165
+  year: '2026'
+  doi: 10.32614/CRAN.package.parallelly
+- type: software
+  title: stats
+  abstract: 'R: A Language and Environment for Statistical Computing'
+  notes: Imports
+  authors:
+  - name: R Core Team
+  institution:
+    name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2026'
+- type: software
+  title: stringr
+  abstract: 'stringr: Simple, Consistent Wrappers for Common String Operations'
+  notes: Imports
+  url: https://stringr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=stringr
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.stringr
+- type: software
+  title: withr
+  abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
+  notes: Imports
+  url: https://withr.r-lib.org
+  repository: https://CRAN.R-project.org/package=withr
+  authors:
+  - family-names: Hester
+    given-names: Jim
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@posit.co
+  - family-names: Müller
+    given-names: Kirill
+    email: krlmlr+r@mailbox.org
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevinushey@gmail.com
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Chang
+    given-names: Winston
+  year: '2026'
+  doi: 10.32614/CRAN.package.withr
+- type: software
+  title: knitr
+  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  notes: Suggests
+  url: https://yihui.org/knitr/
+  repository: https://CRAN.R-project.org/package=knitr
+  authors:
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  year: '2026'
+  doi: 10.32614/CRAN.package.knitr
+- type: software
+  title: rmarkdown
+  abstract: 'rmarkdown: Dynamic Documents for R'
+  notes: Suggests
+  url: https://pkgs.rstudio.com/rmarkdown/
+  repository: https://CRAN.R-project.org/package=rmarkdown
+  authors:
+  - family-names: Allaire
+    given-names: JJ
+    email: jj@posit.co
+  - family-names: Xie
+    given-names: Yihui
+    email: xie@yihui.name
+    orcid: https://orcid.org/0000-0003-0645-5666
+  - family-names: Dervieux
+    given-names: Christophe
+    email: cderv@posit.co
+    orcid: https://orcid.org/0000-0003-4474-2498
+  - family-names: McPherson
+    given-names: Jonathan
+    email: jonathan@posit.co
+  - family-names: Luraschi
+    given-names: Javier
+  - family-names: Ushey
+    given-names: Kevin
+    email: kevin@posit.co
+  - family-names: Atkins
+    given-names: Aron
+    email: aron@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  - family-names: Cheng
+    given-names: Joe
+    email: joe@posit.co
+  - family-names: Chang
+    given-names: Winston
+    email: winston@posit.co
+  - family-names: Iannone
+    given-names: Richard
+    email: rich@posit.co
+    orcid: https://orcid.org/0000-0003-3925-190X
+  year: '2026'
+  doi: 10.32614/CRAN.package.rmarkdown
+- type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Suggests
+  url: https://testthat.r-lib.org
+  repository: https://CRAN.R-project.org/package=testthat
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.testthat
+- type: software
+  title: spelling
+  abstract: 'spelling: Tools for Spell Checking in R'
+  notes: Suggests
+  url: https://ropensci.r-universe.dev/spelling
+  repository: https://CRAN.R-project.org/package=spelling
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroenooms@gmail.com
+    orcid: https://orcid.org/0000-0002-4035-0289
+  - family-names: Hester
+    given-names: Jim
+    email: james.hester@rstudio.com
+  year: '2026'
+  doi: 10.32614/CRAN.package.spelling
+- type: software
+  title: covr
+  abstract: 'covr: Test Coverage for Packages'
+  notes: Suggests
+  url: https://covr.r-lib.org
+  repository: https://CRAN.R-project.org/package=covr
+  authors:
+  - family-names: Hester
+    given-names: Jim
+    email: james.f.hester@gmail.com
+  year: '2026'
+  doi: 10.32614/CRAN.package.covr
+

@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The **blocked weighted bootstrap** is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. *population-proportional sampling (PPS)* as used in [Standardized Monitoring and Assessment of Relief and Transitions (SMART)](https://smartmethodology.org/) surveys) or *posterior weighting* (e.g. as used in [Rapid Assessment Method (RAM)](https://rapidsurveys.io/ramOPmanual/) and [Simple Spatial Sampling Method (S3M)](https://researchonline.lshtm.ac.uk/id/eprint/2572543)surveys).
+The **blocked weighted bootstrap** is an estimation technique for use with data from two-stage cluster sampled surveys in which either prior weighting (e.g. *population-proportional sampling (PPS)* as used in Standardized Monitoring and Assessment of Relief and Transitions (SMART) or *posterior weighting* (e.g. as used in [Rapid Assessment Method (RAM)](https://rapidsurveys.io/ramOPmanual/) and [Simple Spatial Sampling Method (S3M)](https://researchonline.lshtm.ac.uk/id/eprint/2572543)surveys).
 
 ## Features of blocked weighted bootstrap
 
@@ -69,7 +69,7 @@ and used a large number (e.g. `3999`) survey replicates. Next versions (up to *v
 
 <br/>
 
-The current version (*v0.3.0*) now includes further improvements in computational efficiency using a vectorised algorithm and provides an option for parallel computation which when used reduces the computational overhead by at least 80%.
+The current version (*v0.3.0* and later) now includes further improvements in computational efficiency using a vectorised algorithm and provides an option for parallel computation which when used reduces the computational overhead by at least 80%.
 
 ## Advantages
 
