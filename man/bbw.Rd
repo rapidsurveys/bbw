@@ -75,7 +75,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Mark Myatt \email{mark@brixtonhealth.com} [copyright holder]
+  \item Mark Myatt \email{mark@brixtonhealth.com} (\href{https://orcid.org/0000-0003-1119-1474}{ORCID}) [copyright holder]
 }
 
 }
