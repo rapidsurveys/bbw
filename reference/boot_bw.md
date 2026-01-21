@@ -146,16 +146,16 @@ boot_bw(
 #> ── Resampling in parallel ──
 #> 
 #> ℹ Setting up 3 parallel operations
-#> ✔ Setting up 3 parallel operations [306ms]
+#> ✔ Setting up 3 parallel operations [304ms]
 #> 
 #> ℹ Resampling with 9 replicates in parallel
-#> ✔ Resampling with 9 replicates in parallel [777ms]
+#> ✔ Resampling with 9 replicates in parallel [767ms]
 #> 
 #> ℹ Tidying up resampling outputs
-#> ✔ Tidying up resampling outputs [22ms]
+#> ✔ Tidying up resampling outputs [23ms]
 #> 
 #> ℹ Closing 3 parallel operations
-#> ✔ Closing 3 parallel operations [33ms]
+#> ✔ Closing 3 parallel operations [29ms]
 #> 
 #> $params
 #> [1] "anc1"
@@ -168,15 +168,15 @@ boot_bw(
 #> 
 #> $boot_data
 #>        anc1
-#> 1 0.2113895
-#> 2 0.2336493
-#> 3 0.2816834
-#> 4 0.2331754
-#> 5 0.2046011
-#> 6 0.2535885
-#> 7 0.2071197
-#> 8 0.1994560
-#> 9 0.2049453
+#> 1 0.2241779
+#> 2 0.2122799
+#> 3 0.1947566
+#> 4 0.2765550
+#> 5 0.2538536
+#> 6 0.2407932
+#> 7 0.2492837
+#> 8 0.2071120
+#> 9 0.2328960
 #> 
 #> attr(,"class")
 #> [1] "boot_bw" "list"   

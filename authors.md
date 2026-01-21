@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/rapidsurveys/bbw/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/rapidsurveys/bbw/blob/v0.3.1/inst/CITATION)
 
 Mark Myatt, Ernest Guevarra (2026). *bbw: Blocked Weighted Bootstrap*.
 [doi:10.5281/zenodo.6594797](https://doi.org/10.5281/zenodo.6594797), R

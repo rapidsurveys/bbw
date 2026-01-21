@@ -36,19 +36,19 @@ boot_df <- boot_bw(
 #> ── Resampling in parallel ──
 #> 
 #> ℹ Setting up 3 parallel operations
-#> ✔ Setting up 3 parallel operations [300ms]
+#> ✔ Setting up 3 parallel operations [287ms]
 #> 
 #> ℹ Resampling with 9 replicates in parallel
-#> ✔ Resampling with 9 replicates in parallel [758ms]
+#> ✔ Resampling with 9 replicates in parallel [772ms]
 #> 
 #> ℹ Tidying up resampling outputs
 #> ✔ Tidying up resampling outputs [16ms]
 #> 
 #> ℹ Closing 3 parallel operations
-#> ✔ Closing 3 parallel operations [29ms]
+#> ✔ Closing 3 parallel operations [28ms]
 #> 
 
 boot_bw_estimate(boot_df)
-#>   indicator       est       lcl       ucl         se
-#> 1      anc1 0.2050548 0.1814304 0.2666045 0.03344222
+#>   indicator      est       lcl       ucl         se
+#> 1      anc1 0.244488 0.1973004 0.2987841 0.03482181
 ```

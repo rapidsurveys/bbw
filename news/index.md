@@ -2,6 +2,8 @@
 
 ## bbw 0.3.1
 
+CRAN release: 2026-01-21
+
 This is the fourth CRAN release of `bbw`. This is a patch release which
 contains general upkeep and maintenance updates and changes.
 
